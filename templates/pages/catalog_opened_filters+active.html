@@ -1,0 +1,81 @@
+{% set page_name = 'Одежда женская' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Каталог Одежда с открытыми фильтрами + активные фильтры начало -->
+
+{% include "partials/catalog_opened_filters_panel+active.html" %}
+
+<div class="container catalog_opened_filters">
+
+    <div class="side_panel_filters">
+
+        <div class="filter_section">
+            <div class="filter_section__name">
+                <p class="main_text uppercase">категория</p>
+                <a href="catalog_opened_filters+checkbox+active.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M5.83366 8.33398L10.0003 12.5007L14.167 8.33398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="filter_section">
+            <div class="filter_section__name">
+                <p class="main_text uppercase">цвет</p>
+                <a href="catalog_opened_filters+checkbox+active.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M5.83366 8.33398L10.0003 12.5007L14.167 8.33398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="filter_section">
+            <div class="filter_section__name">
+                <p class="main_text uppercase">размер</p>
+                <a href="catalog_opened_filters+checkbox+active.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M5.83366 8.33398L10.0003 12.5007L14.167 8.33398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="filter_section">
+            <div class="filter_section__name">
+                <p class="main_text uppercase">материал</p>
+                <a href="catalog_opened_filters+checkbox+active.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M5.83366 8.33398L10.0003 12.5007L14.167 8.33398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="catalog">
+
+        <div class="catalog_cards">
+            {% include "partials/women_products_all.html" %}
+        </div>
+    
+    {% include "partials/view_more_products.html" %}
+    
+    {% include "partials/pagination.html" %}
+    
+    </div>
+</div>
+
+
+
+
+<!-- Каталог Одежда с открытыми фильтрами + активные фильтры конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

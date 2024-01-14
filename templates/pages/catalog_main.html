@@ -1,0 +1,31 @@
+{% set page_name = 'Каталог' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Главная страница каталога начало -->
+
+<div class="container catalog_banners">
+    <div class="catalog_banners__row">
+        <a href="catalog_women.html" class="catalog_small_banner women_banner">
+            <p class="title_first_light">женщины</p>
+        </a>
+        <a href="#" class="catalog_small_banner men_banner">
+            <p class="title_first_light">мужчины</p>
+        </a>
+    </div>
+    <div class="catalog_banners__row">
+        <a href="catalog_sales.html" class="catalog_large_banner sale_banner">
+            <p class="title_first_light">распродажа</p>
+        </a>
+    </div>
+</div>
+
+<!-- Главная страница каталога конец -->
+
+
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

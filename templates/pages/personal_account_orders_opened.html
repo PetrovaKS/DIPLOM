@@ -1,0 +1,238 @@
+{% set page_name = 'Личный кабинет' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Личный кабинет заказы начало -->
+
+<div class="container block_tabs">
+
+    <div class="row_tabs">
+        <a href="personal_account_info.html" class="tab_inactive_left">
+            <p class="main_text_addit_dark uppercase">личная информация</p>
+        </a>
+        <div class="tab_active">
+            <p class="main_text uppercase">история заказов</p>
+        </div>
+    </div>
+
+    <div class="orders_history">
+
+        <!-- Строка заказа начало -->
+
+        <div class="orders_history__item  orders_history__item--opened">
+            <div class="item_number main_text uppercase">
+                заказ №35021-0003
+            </div>
+            <div class="order_create main_text_addit_dark">
+                создан 12.06.2023 г.
+            </div>
+            <div class="order_delivery main_text_addit_dark">
+                трек-номер: ABC123456789
+            </div>
+            <div class="order_value main_text">
+                31 400 р.
+            </div>
+            <a href="personal_account_orders.html" class="open_order">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M14.1693 11.667L10.0026 7.50033L5.83594 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+        <!-- Строка заказа конец -->
+
+        <!-- Корзина с товарами начало -->
+
+        <div class="container order_list">
+
+            <!-- Строчка товара в корзине начало -->
+            <div class="order_list__item">
+                <div class="order_item_foto">
+                    <img src="./img/product_cards/women/clothes/product3.jpeg" alt="foto" class="item_foto">
+                </div>
+                <div class="order_item_info">
+                    <p class="main_text_title">кардиган из шерсти</p>
+                    <p class="small_text">Серый</p>
+                    <p class="main_text uppercase">M</p>
+                </div>
+                <div class="order_item_price main_text">
+                    8 000 р.
+                </div>
+                <div class="order_item_count">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13V12H18V13H5Z" fill="#393939"/>
+                    </svg>
+                    <p class="main_text">1</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13V12H11V6H12V12H18V13H12V19H11V13H5Z" fill="#393939"/>
+                    </svg>
+                </div>
+                <div class="order_item_cost main_text">
+                    8 000 р.
+                </div>
+            </div>
+            <!-- Строчка товара в корзине конец -->
+
+            <!-- Строчка товара в корзине начало -->
+            <div class="order_list__item">
+                <div class="order_item_foto">
+                    <img src="./img/product_cards/women/clothes/product5.jpeg" alt="foto" class="item_foto">
+                </div>
+                <div class="order_item_info">
+                    <p class="main_text_title">рубашка</p>
+                    <p class="small_text">Белый</p>
+                    <p class="main_text uppercase">M</p>
+                </div>
+                <div class="order_item_price main_text">
+                    8 000 р.
+                </div>
+                <div class="order_item_count">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13V12H18V13H5Z" fill="#393939"/>
+                    </svg>
+                    <p class="main_text">2</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13V12H11V6H12V12H18V13H12V19H11V13H5Z" fill="#393939"/>
+                    </svg>
+                </div>
+                <div class="order_item_cost main_text">
+                    16 000 р.
+                </div>
+            </div>
+            <!-- Строчка товара в корзине конец -->
+
+            <!-- Строчка товара в корзине начало -->
+            <div class="order_list__item">
+                <div class="order_item_foto">
+                    <img src="./img/product_cards/women/clothes/product8.jpeg" alt="foto" class="item_foto">
+                </div>
+                <div class="order_item_info">
+                    <p class="main_text_title">джинсы</p>
+                    <p class="small_text">Голубой</p>
+                    <p class="main_text uppercase">M</p>
+                </div>
+                <div class="order_item_price main_text">
+                    8 000 р.
+                </div>
+                <div class="order_item_count">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13V12H18V13H5Z" fill="#393939"/>
+                    </svg>
+                    <p class="main_text">1</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 13V12H11V6H12V12H18V13H12V19H11V13H5Z" fill="#393939"/>
+                    </svg>
+                </div>
+                <div class="order_item_cost main_text">
+                    8 000 р.
+                </div>
+            </div>
+            <!-- Строчка товара в корзине конец -->
+
+        </div>
+
+        <div class="container total_cost">
+
+            <div class="total_cost__item">
+                <div class="total_item_name main_text">
+                    4 товара
+                </div>
+                <div class="total_item_value main_text">
+                    32 000 р.
+                </div>
+            </div>
+
+            <div class="total_cost__item">
+                <div class="total_item_name main_text">
+                    Скидка 5%
+                </div>
+                <div class="total_item_value main_text">
+                    1 600 р.
+                </div>
+            </div>
+
+            <div class="total_cost__item">
+                <div class="total_item_name main_text">
+                    Доставка
+                </div>
+                <div class="total_item_value main_text">
+                    1 000 р.
+                </div>
+            </div>
+
+            <div class="total_cost__item">
+                <div class="total_item_name main_text_contrast">
+                    Оплачено
+                </div>
+                <div class="total_item_value main_text_contrast">
+                    31 400 р.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Корзина с товарами конец -->
+
+
+        <!-- Строка заказа начало -->
+        <div class="orders_history__item orders_history__item--after_opened">
+            <div class="item_number main_text uppercase">
+                заказ №35021-0002
+            </div>
+            <div class="order_create main_text_addit_dark">
+                создан 01.02.2024 г.
+            </div>
+            <div class="order_delivery main_text_addit_dark">
+                получен 10.02.2024 г.
+            </div>
+            <div class="order_value main_text">
+                64 000 р.
+            </div>
+            <a href="#" class="open_order">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M5.83464 8.33301L10.0013 12.4997L14.168 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+        <!-- Строка заказа конец -->
+
+        <!-- Строка заказа начало -->
+        <div class="orders_history__item">
+            <div class="item_number main_text uppercase">
+                заказ №35021-0001
+            </div>
+            <div class="order_create main_text_addit_dark">
+                создан 12.06.2023 г.
+            </div>
+            <div class="order_delivery main_text_addit_dark">
+                получен 20.06.2023 г.
+            </div>
+            <div class="order_value main_text">
+                25 000 р.
+            </div>
+            <a href="#" class="open_order">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M5.83464 8.33301L10.0013 12.4997L14.168 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+        <!-- Строка заказа конец -->
+
+        <div class="total_orders_value">
+            <div class="value_text main_text_contrast">
+                Общая сумма покупок
+            </div>
+            <div class="value_amount main_text_contrast">
+                119 400 р.
+            </div>
+        </div>
+
+    </div>
+   
+</div>
+<!-- Личный кабинет заказы конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

@@ -1,0 +1,187 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+}
+
+// Темно-серый
+
+.main_text {
+    color: $main_color_dark;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.main_text_contrast {
+    color: $main_color_dark;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.main_text_title {
+    color: $main_color_dark;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.info_pages_text {
+    color: $main_color_dark;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.title_first {
+    color: $main_color_dark;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 90px;
+    text-transform: uppercase;
+}
+
+.title_second {
+    color: $main_color_dark;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.logo {
+    color: $main_color_dark;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.small_text {
+    color: $main_color_dark;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+// Светло-серый
+
+.main_text_addit_dark {
+    color: $addit_color_dark;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.old_price_text {
+    color: $addit_color_dark;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: line-through;
+}
+
+.addit_text_addit_dark {
+    color: $addit_color_dark;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.small_text_addit_dark {
+    color: $addit_color_dark;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+// Красный
+
+.main_text_addit_first {
+    color: $addit_color_first;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+// Белый
+
+.header_text_light {
+    color: $main_color_light;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.title_first_light {
+    color: $main_color_light;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 90px;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.50);
+}
+
+.logo_light {
+    color: $main_color_light;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.footer_main_text {
+    color: $main_color_light;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.footer_main_text_contrast {
+    color: $main_color_light;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.small_text_light {
+    color: $main_color_light;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+// Оформление
+
+.title_second_large_height {
+    line-height: 90px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.opacity {
+    opacity: 0.7;
+}
+
+.pop-up_title {
+    line-height: 30px;
+    text-align: center;
+}
+
+.red {
+    color: $addit_color_first;
+}
+
+.green {
+    color: $addit_color_second;
+}

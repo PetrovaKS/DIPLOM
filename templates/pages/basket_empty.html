@@ -1,0 +1,25 @@
+{% set page_name = 'Корзина' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+{% include "partials/log_in_stroke.html" %}
+
+<!-- Корзина пустая начало -->
+
+<div class="empty_content">
+
+    <p class="main_text uppercase">в корзине пока ничего нет</p>
+
+    <a href="catalog_main.html" class="btn_main">
+        <p class="main_text uppercase btn_text">перейти в каталог</p>
+    </a>
+
+</div>
+
+<!-- Корзина пустая конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

@@ -1,0 +1,116 @@
+{% set page_name = 'Оформление заказа' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Оформление заказа Данные начало -->
+
+<div class="container making_order_cols">
+
+    <div class="block_tabs">
+
+        <div class="row_tabs">
+
+            <div class="tab_active">
+                <p class="main_text uppercase">данные покупателя</p>
+            </div>
+            <a href="making_order_delivery_courier.html" class="tab_inactive_right">
+                <p class="main_text_addit_dark uppercase">доставка</p>
+            </a>
+            <a href="making_order_payment.html" class="tab_inactive_right">
+                <p class="main_text_addit_dark uppercase">оплата</p>
+            </a>
+
+        </div>
+    
+        <div class="row_info">
+    
+            <div class="row_info_col">
+                <div class="info_cell">
+                    <p class="addit_text_addit_dark">Фамилия</p>
+                    <form method="GET" action="#" >
+                        <input type="text">
+                    </form>
+                </div>
+                <div class="info_cell">
+                    <p class="addit_text_addit_dark">Имя</p>
+                    <form method="GET" action="#" >
+                        <input type="text">
+                    </form>
+                </div>
+            </div>
+    
+            <div class="row_info_col">
+                <div class="info_cell">
+                    <p class="addit_text_addit_dark">Телефон</p>
+                    <form method="GET" action="#" >
+                        <input type="number" placeholder="+7">
+                    </form>
+                </div>
+                <div class="info_cell">
+                    <p class="addit_text_addit_dark">Электронная почта</p>
+                    <form method="GET" action="#" >
+                        <input type="email">
+                    </form>
+                </div>
+            </div>
+    
+        </div>
+
+        <div class="row_btn">
+            <a href="making_order_data+check_phone.html" class="btn_main">
+                <p class="main_text uppercase btn_text">далее</p>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="total_cost">
+
+        <div class="total_cost__item">
+            <div class="total_item_name main_text">
+                4 товара
+            </div>
+            <div class="total_item_value main_text">
+                32 000 р.
+            </div>
+        </div>
+
+        <div class="total_cost__item">
+            <div class="total_item_name main_text">
+                Скидка 5%
+            </div>
+            <div class="total_item_value main_text">
+                1 600 р.
+            </div>
+        </div>
+
+        <div class="total_cost__item">
+            <div class="total_item_name main_text">
+                Доставка
+            </div>
+            <div class="total_item_value main_text">
+                - р.
+            </div>
+        </div>
+
+        <div class="total_cost__item">
+            <div class="total_item_name main_text_contrast">
+                К оплате
+            </div>
+            <div class="total_item_value main_text_contrast">
+                30 400 р.
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Оформление заказа Данные конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

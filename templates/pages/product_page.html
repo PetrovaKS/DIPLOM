@@ -1,0 +1,324 @@
+{% set page_name = 'Женщины' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Страница товара начало -->
+
+<div class="container product_page">
+    <div class="roduct_page__foto">
+        <img src="./img/product_cards/women/clothes/product3.jpeg" class="product_foto" alt="#">
+        <img src="./img/product_cards/women/clothes/product3/product3-1.jpeg" class="product_foto" alt="#">
+        <img src="./img/product_cards/women/clothes/product3/product3-2.jpeg" class="product_foto" alt="#">
+        <img src="./img/product_cards/women/clothes/product3/product3-3.jpeg" class="product_foto" alt="#">
+
+        <!-- Стрелки скролла начало -->
+
+        <a href="#" class="scroll_arrow arrow_left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+                <path d="M7 0.5L0.750001 6.75L7 13" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+
+        <a href="#" class="scroll_arrow arrow_right">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+                <path d="M1 13.5L7.25 7.25L1 1" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+
+        <!-- Стрелки скролла конец -->
+    </div>
+
+    <div class="roduct_page__info">
+
+        <div class="main_info">
+            <p class="main_text_addit_dark article_number">Арт. 1234567</p>
+
+            <div class="info_row">
+                <p class="main_text_title">Кардиган из шерсти</p>
+                <div class="row_icons">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M13.8092 7.14302L10.0206 3.3335L6.19015 7.14302M10.0206 3.3535V14.7621M7.14253 10.0002H5.23777C4.7326 10.0002 4.24811 10.2008 3.8909 10.5581C3.53369 10.9153 3.33301 11.3998 3.33301 11.9049V15.7144C3.33301 16.2196 3.53369 16.7041 3.8909 17.0613C4.24811 17.4185 4.7326 17.6192 5.23777 17.6192H14.7616C15.2668 17.6192 15.7512 17.4185 16.1084 17.0613C16.4657 16.7041 16.6663 16.2196 16.6663 15.7144V11.9049C16.6663 11.3998 16.4657 10.9153 16.1084 10.5581C15.7512 10.2008 15.2668 10.0002 14.7616 10.0002H12.8568" stroke="#393939" stroke-width="0.952381" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="heart">
+                            <path d="M10 18.0166C9.87726 18.0162 9.75809 17.9752 9.66112 17.8999C6.57223 15.4999 4.44445 13.4333 2.95556 11.3944C1.05556 8.78883 0.62223 6.38328 1.66667 4.24439C2.41112 2.71661 4.55001 1.46661 7.05001 2.19439C8.24198 2.53869 9.28195 3.27705 10 4.28883C10.7181 3.27705 11.758 2.53869 12.95 2.19439C15.4445 1.47772 17.5889 2.71661 18.3333 4.24439C19.3778 6.38328 18.9445 8.78883 17.0445 11.3944C15.5556 13.4333 13.4278 15.4999 10.3389 17.8999C10.2419 17.9752 10.1228 18.0162 10 18.0166Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="info_row">
+                <div class="price">
+                    <div class="old_price_text">10 000 р.</div>
+                    <div class="main_text">8 000 р.</div>
+                </div>
+            </div>
+
+            <div class="option">
+                <div class="info_row">
+                    <p class="main_text uppercase">цвет</p>
+                    <a href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M14.1673 11.667L10.0007 7.50033L5.83398 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="color_details">
+                    <a href="product_page+color_selected.html">
+                        <img src="./img/product_cards/women/clothes/product3/grey.png"  class="color_picker" alt="#">
+                    </a>
+                    <div class="small_text">Серый</div>
+                    <a href="#">
+                        <img src="./img/product_cards/women/clothes/product3/beige.png"  class="color_picker" alt="#">
+                    </a>
+                    <div class="small_text">Бежевый</div>
+                </div>
+            </div>
+
+            <div class="option">
+                <div class="info_row">
+                    <p class="main_text uppercase">размер</p>
+                    <a href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M14.1673 11.667L10.0007 7.50033L5.83398 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="size_row">
+
+                    <div class="size_details">
+                        <a href="#" class="main_text_addit_dark uppercase size_choice">XXS</a>
+                        <a href="#" class="main_text_addit_dark uppercase size_choice">XS</a>
+                        <a href="#" class="main_text_addit_dark uppercase size_choice">S</a>
+                        <a href="product_page+size_selected.html" class="main_text_addit_dark uppercase size_choice">M</a>
+                        <a href="#" class="main_text_addit_dark uppercase size_choice">L</a>
+                        <a href="#" class="main_text_addit_dark uppercase size_choice">XL</a>
+                        <a href="#" class="main_text_addit_dark uppercase size_choice">XXL</a>
+                    </div>
+
+                    <a href="#" class="small_text underline size_chart">Таблица размеров</a>
+
+                    <!-- Таблица размеров одежды начало -->
+
+                    <div class="size_chart__table">
+                        <div class="table_row table_row--first">
+                            <div class="table_col small_text uppercase">rus</div>
+                            <div class="table_col small_text uppercase">int</div>
+                            <div class="table_col">
+                                <p class="small_text">Обхват груди</p>
+                                <p class="small_text_addit_dark">см</p>
+                            </div>
+                            <div class="table_col">
+                                <p class="small_text">Обхват талии</p>
+                                <p class="small_text_addit_dark">см</p>
+                            </div>
+                            <div class="table_col">
+                                <p class="small_text">Обхват бедер</p>
+                                <p class="small_text_addit_dark">см</p>
+                            </div>
+                        </div>
+
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">38/40</div>
+                            <div class="table_col small_text uppercase">XXS</div>
+                            <div class="table_col small_text uppercase">78</div>
+                            <div class="table_col small_text uppercase">58</div>
+                            <div class="table_col small_text uppercase">76</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">40/42</div>
+                            <div class="table_col small_text uppercase">XS</div>
+                            <div class="table_col small_text uppercase">82</div>
+                            <div class="table_col small_text uppercase">62</div>
+                            <div class="table_col small_text uppercase">90</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">42/44</div>
+                            <div class="table_col small_text uppercase">S</div>
+                            <div class="table_col small_text uppercase">86</div>
+                            <div class="table_col small_text uppercase">66</div>
+                            <div class="table_col small_text uppercase">94</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">44/46</div>
+                            <div class="table_col small_text uppercase">M</div>
+                            <div class="table_col small_text uppercase">92</div>
+                            <div class="table_col small_text uppercase">72</div>
+                            <div class="table_col small_text uppercase">100</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">48/50</div>
+                            <div class="table_col small_text uppercase">L</div>
+                            <div class="table_col small_text uppercase">98</div>
+                            <div class="table_col small_text uppercase">79</div>
+                            <div class="table_col small_text uppercase">106</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">50/52</div>
+                            <div class="table_col small_text uppercase">XL</div>
+                            <div class="table_col small_text uppercase">104</div>
+                            <div class="table_col small_text uppercase">86</div>
+                            <div class="table_col small_text uppercase">112</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">54/56</div>
+                            <div class="table_col small_text uppercase">XXL</div>
+                            <div class="table_col small_text uppercase">110</div>
+                            <div class="table_col small_text uppercase">92</div>
+                            <div class="table_col small_text uppercase">118</div>
+                        </div>
+                       
+                    </div>
+
+                    <!-- Таблица размеров одежды конец -->
+
+                    <!-- Таблица размеров обуви начало -->
+
+                    <!-- <div class="size_chart__table">
+                        <div class="table_row table_row--first">
+                            <div class="table_col small_text uppercase">rus</div>
+                            <div class="table_col">
+                                <p class="small_text">Длина стопы</p>
+                                <p class="small_text_addit_dark">см</p>
+                            </div>
+                        </div>
+
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">35</div>
+                            <div class="table_col small_text uppercase">22,5</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">36</div>
+                            <div class="table_col small_text uppercase">23</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">37</div>
+                            <div class="table_col small_text uppercase">24</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">38</div>
+                            <div class="table_col small_text uppercase">25</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">39</div>
+                            <div class="table_col small_text uppercase">25,5</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">40</div>
+                            <div class="table_col small_text uppercase">26</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">41</div>
+                            <div class="table_col small_text uppercase">26,5</div>
+                        </div>
+                        <div class="table_row">
+                            <div class="table_col small_text uppercase">42</div>
+                            <div class="table_col small_text uppercase">27</div>
+                        </div>
+                    </div> -->
+
+                    <!-- Таблица размеров обуви конец -->
+
+                </div>
+            </div>
+
+            <div class="option">
+                <div class="info_row">
+                    <p class="main_text uppercase">описание</p>
+                    <a href="product_page+opened_details.html" class="show_details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5.83366 8.33301L10.0003 12.4997L14.167 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <!-- <div class="option_details">
+                    <p class="small_text">
+                        Уютный силуэт характеризует джемпер из кашемира с воротником-воронкой, связанный узором «английская резинка». Пушистая пряжа подчеркивает мягкие и свободные формы изделия с рукавами реглан. Наконец, тонкая вышивка из блестящей цепочки Мониль образует нежную сверкающую полосу на задней части воротника.
+                    </p>
+                </div> -->
+            </div>
+
+
+
+            <div class="option">
+                <div class="info_row">
+                    <p class="main_text uppercase">детали</p>
+                    <a href="product_page+opened_details.html" class="show_details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5.83366 8.33301L10.0003 12.4997L14.167 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <!-- <div class="option_details">
+                    <p class="small_text">Воротник-воронка</p>
+                    <p class="small_text">Рукав-реглан</p>
+                    <p class="small_text">Английская резинка</p>
+                    <p class="small_text">Украшение Мониль без содержания никеля</p>  
+                </div> -->
+            </div>
+
+            <div class="option">
+                <div class="info_row">
+                    <p class="main_text uppercase">материалы</p>
+                    <a href="product_page+opened_details.html" class="show_details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5.83366 8.33301L10.0003 12.4997L14.167 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <!-- <div class="option_details">
+                    <p class="small_text">
+                        100% кашемир
+                    </p>
+                </div> -->
+            </div>
+
+            <div class="option">
+                <div class="info_row">
+                    <p class="main_text uppercase">доставка и возврат</p>
+                    <a href="product_page+opened_details.html" class="show_details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5.83366 8.33301L10.0003 12.4997L14.167 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <!-- <div class="option_details">
+                    <div class="small_text">
+                        Доставка всех наших изделий всегда бесплатна. Экспресс-доставка по всему миру осуществляется с понедельника по пятницу, обычно в течение 5 рабочих дней. Для получения более подробной информации о сроках доставки и условиях возврата ознакомьтесь со страницах
+                         <a href="delivery.html" class="small_text underline">Доставка</a>
+                          и 
+                        <a href="refund.html" class="small_text underline">Возврат.</a>
+                    </div>
+                </div> -->
+            </div>
+ 
+
+        </div>
+
+        <a href="#" class="btn_main">
+            <p class="main_text uppercase btn_text">
+                добавить в корзину
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <path d="M11.6667 5.21684V3.67014C11.6667 3.18817 11.5661 2.71092 11.3706 2.26564C11.1752 1.82036 10.8888 1.41576 10.5276 1.07496C10.1665 0.734155 9.73781 0.463814 9.26599 0.279373C8.79417 0.0949308 8.28847 0 7.77778 0C7.26708 0 6.76139 0.0949308 6.28956 0.279373C5.81774 0.463814 5.38903 0.734155 5.02792 1.07496C4.6668 1.41576 4.38035 1.82036 4.18491 2.26564C3.98948 2.71092 3.88889 3.18817 3.88889 3.67014V7.34028C3.88889 7.47933 3.94742 7.61269 4.05161 7.71102C4.15579 7.80934 4.2971 7.86458 4.44444 7.86458C4.59179 7.86458 4.73309 7.80934 4.83728 7.71102C4.94147 7.61269 5 7.47933 5 7.34028V6.26545H9.44444V5.21684H5V3.67014C5 2.97487 5.29266 2.30807 5.81359 1.81644C6.33453 1.32481 7.04106 1.04861 7.77778 1.04861C8.51449 1.04861 9.22103 1.32481 9.74196 1.81644C10.2629 2.30807 10.5556 2.97487 10.5556 3.67014V7.31406C10.5556 7.45312 10.6141 7.58648 10.7183 7.6848C10.8225 7.78313 10.9638 7.83837 11.1111 7.83837C11.2585 7.83837 11.3998 7.78313 11.5039 7.6848C11.6081 7.58648 11.6667 7.45312 11.6667 7.31406V6.26545H14.4444V15.703H1.11111V6.26545H2.77778V5.21684H0V15.7501C0 16.0157 0.111795 16.2704 0.310792 16.4583C0.509789 16.6461 0.779687 16.7516 1.06111 16.7516H14.4944C14.7759 16.7516 15.0458 16.6461 15.2448 16.4583C15.4438 16.2704 15.5556 16.0157 15.5556 15.7501V5.21684H11.6667Z" class="color_icon" fill="#393939"/>
+                </svg>
+            </p>
+        </a>
+
+    </div>
+</div>
+
+{% include "partials/additional_products.html" %}
+
+{% include "partials/recent_product.html" %}
+
+{% include "partials/subscribe.html" %}
+
+<!-- Страница товара конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

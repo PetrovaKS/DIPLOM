@@ -1,0 +1,27 @@
+{% set page_name = 'Женщины' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Женщины начало -->
+
+{% include "partials/catalog_inner_sections_panel.html" %}
+
+<div class="container catalog">
+
+    <div class="catalog_cards">
+        {% include "partials/women_products_all.html" %}
+    </div>
+
+{% include "partials/view_more_products.html" %}
+
+{% include "partials/pagination.html" %}
+
+</div>
+
+<!-- Женщины конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

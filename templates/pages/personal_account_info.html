@@ -1,0 +1,91 @@
+{% set page_name = 'Личный кабинет' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Личный кабинет инфо начало -->
+<div class="container block_tabs">
+
+    <div class="row_tabs">
+        <div class="tab_active">
+            <p class="main_text uppercase">личная информация</p>
+        </div>
+        <a href="personal_account_orders.html" class="tab_inactive_right">
+            <p class="main_text_addit_dark uppercase">история заказов</p>
+        </a>
+    </div>
+
+    <div class="row_info">
+
+        <div class="row_info_col">
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Фамилия</p>
+                <form method="GET" action="#" >
+                    <input type="text">
+                </form>
+            </div>
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Имя</p>
+                <form method="GET" action="#" >
+                    <input type="text">
+                </form>
+            </div>
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Город доставки</p>
+                <form method="GET" action="#" >
+                    <input type="text">
+                </form>
+            </div>
+            <div class="discount_cell">
+                <p class="main_text uppercase">персональная скидка <span class="red">5%</span></p>
+                <a href="personal_account_info_discount.html" class="small_text underline">подробнее о системе лояльности</a>
+            </div>
+        </div>
+
+        <div class="row_info_col">
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Телефон</p>
+                <form method="GET" action="#" >
+                    <input type="number" placeholder="+7">
+                </form>
+            </div>
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Электронная почта</p>
+                <form method="GET" action="#" >
+                    <input type="email">
+                </form>
+            </div>
+            <div class="adress_row">
+                <div class="street_cell">
+                    <p class="addit_text_addit_dark">Улица</p>
+                    <form method="GET" action="#" >
+                        <input type="text">
+                    </form>
+                </div>
+                <div class="house_cell">
+                    <p class="addit_text_addit_dark">Дом</p>
+                    <form method="GET" action="#" >
+                        <input type="number">
+                    </form>
+                </div>
+                <div class="flat_cell">
+                    <p class="addit_text_addit_dark">Кв.</p>
+                    <form method="GET" action="#" >
+                        <input type="number">
+                    </form>
+                </div>
+            </div>
+            <a href="#" class="btn_main">
+                <p class="main_text uppercase btn_text">сохранить изменения</p>
+            </a>
+        </div>
+
+    </div>
+   
+</div>
+<!-- Личный кабинет инфо конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

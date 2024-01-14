@@ -1,0 +1,111 @@
+{% set page_name = 'Личный кабинет' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Окно геолокации начало -->
+
+<div class="dark_window">
+    <div class="pop-up_form_794 pop_up_discount">
+        <a href="personal_account_info.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="close_icon">
+                <path d="M5.33316 15.2565L4.74316 14.6665L9.40983 9.99983L4.74316 5.33316L5.33316 4.74316L9.99983 9.40983L14.6665 4.74316L15.2565 5.33316L10.5898 9.99983L15.2565 14.6665L14.6665 15.2565L9.99983 10.5898L5.33316 15.2565Z" fill="#393939"/>
+            </svg>
+        </a>
+        <p class="main_text_contrast">Размер скидки зависит от общей суммы покупок:</p>
+        <p class="info_pages_text">сумма выкупа более 50 000 руб. - 5%</p>
+        <p class="info_pages_text">сумма выкупа более 100 000 руб. - 7%</p>
+        <p class="info_pages_text">сумма выкупа более 150 000 руб. - 10%</p>
+        <p class="main_text">Сумма ваших покупок отражена в разделе история заказов.</p>
+        <p class="main_text_contrast">Скидка по системе лояльности суммируется с действующими акциями.</p>
+    </div>
+</div>
+
+<!-- Окно геолокации конец -->
+
+<!-- Личный кабинет инфо начало -->
+<div class="container block_tabs">
+
+    <div class="row_tabs">
+        <div class="tab_active">
+            <p class="main_text uppercase">личная информация</p>
+        </div>
+        <a href="#" class="tab_inactive">
+            <p class="main_text_addit_dark uppercase">история заказов</p>
+        </a>
+    </div>
+
+    <div class="row_info">
+
+        <div class="row_info_col">
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Фамилия</p>
+                <form method="GET" action="#" >
+                    <input type="text">
+                </form>
+            </div>
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Имя</p>
+                <form method="GET" action="#" >
+                    <input type="text">
+                </form>
+            </div>
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Город доставки</p>
+                <form method="GET" action="#" >
+                    <input type="text">
+                </form>
+            </div>
+            <div class="discount_cell">
+                <p class="info_pages_text uppercase">персональная скидка <span class="red">5%</span></p>
+                <a href="#" class="small_text underline">подробнее о системе лояльности</a>
+            </div>
+        </div>
+
+        <div class="row_info_col">
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Телефон</p>
+                <form method="GET" action="#" >
+                    <input type="text">
+                </form>
+            </div>
+            <div class="info_cell">
+                <p class="addit_text_addit_dark">Электронная почта</p>
+                <form method="GET" action="#" >
+                    <input type="text">
+                </form>
+            </div>
+            <div class="adress_row">
+                <div class="street_cell">
+                    <p class="addit_text_addit_dark">Улица</p>
+                    <form method="GET" action="#" >
+                        <input type="text">
+                    </form>
+                </div>
+                <div class="house_cell">
+                    <p class="addit_text_addit_dark">Дом</p>
+                    <form method="GET" action="#" >
+                        <input type="text">
+                    </form>
+                </div>
+                <div class="flat_sell">
+                    <p class="addit_text_addit_dark">Квартира</p>
+                    <form method="GET" action="#" >
+                        <input type="text">
+                    </form>
+                </div>
+            </div>
+            <a href="#" class="btn_main">
+                <p class="main_text uppercase btn_text">сохранить изменения</p>
+            </a>
+        </div>
+
+    </div>
+   
+</div>
+<!-- Личный кабинет инфо конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}

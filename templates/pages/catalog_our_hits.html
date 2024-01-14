@@ -1,0 +1,33 @@
+{% set page_name = 'Распродажа' %}
+
+{% extends "layouts/main.layout.html" %} 
+
+{% block content %}
+
+<!-- Распродажа начало -->
+
+<div class="inner_section_banner our_hits_page_banner">
+    <a href="#" class="container">
+        <p class="title_first">наши хиты</p>
+    </a>
+</div>
+
+{% include "partials/catalog_women-men_panel.html" %}
+
+<div class="container catalog">
+
+    <div class="catalog_cards">
+        {% include "partials/mix_products.html" %}
+    </div>
+
+{% include "partials/view_more_products.html" %}
+
+{% include "partials/pagination.html" %}
+
+</div>
+
+<!-- Распродажа конец -->
+
+{% endblock %}
+
+{% block scripts %} {% endblock %}
