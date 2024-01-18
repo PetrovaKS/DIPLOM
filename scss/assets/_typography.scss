@@ -10,6 +10,10 @@
     font-size: 16px;
     font-weight: 500;
     line-height: normal;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .main_text_contrast {
@@ -17,6 +21,10 @@
     font-size: 16px;
     font-weight: 600;
     line-height: normal;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .main_text_title {
@@ -25,6 +33,10 @@
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .info_pages_text {
@@ -32,6 +44,10 @@
     font-size: 16px;
     font-weight: 400;
     line-height: normal;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 
@@ -41,6 +57,21 @@
     font-weight: 700;
     line-height: 90px;
     text-transform: uppercase;
+
+    @media screen and (max-width: 920px) {
+        font-size: 50px;
+        line-height: 70px;
+    }
+    
+    @media screen and (max-width: 768px) {
+        font-size: 40px;
+        line-height: 60px;
+    }
+
+    @media screen and (max-width: 330px) {
+        font-size: 36px;
+        line-height: 56px;
+    }
 }
 
 .title_second {
@@ -49,6 +80,10 @@
     font-weight: 500;
     line-height: normal;
     text-transform: uppercase;
+
+    @media screen and (max-width: 768px) {
+        font-size: 20px;
+    }
 }
 
 .logo {
@@ -73,6 +108,10 @@
     font-size: 16px;
     font-weight: 500;
     line-height: normal;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .old_price_text {
@@ -81,6 +120,10 @@
     font-weight: 500;
     line-height: normal;
     text-decoration: line-through;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .addit_text_addit_dark {
@@ -88,6 +131,10 @@
     font-size: 16px;
     font-weight: 400;
     line-height: normal;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .small_text_addit_dark {
@@ -105,6 +152,10 @@
     font-size: 16px;
     font-weight: 500;
     line-height: normal;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 // Белый
@@ -124,6 +175,21 @@
     line-height: 90px;
     text-transform: uppercase;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.50);
+
+    @media screen and (max-width: 920px) {
+        font-size: 50px;
+        line-height: 70px;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 40px;
+        line-height: 60px;
+    }
+
+    @media screen and (max-width: 330px) {
+        font-size: 36px;
+        line-height: 56px;
+    }
 }
 
 .logo_light {
@@ -138,6 +204,10 @@
     font-size: 16px;
     font-weight: 400;
     line-height: normal;
+
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .footer_main_text_contrast {
