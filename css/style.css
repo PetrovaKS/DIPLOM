@@ -3308,3 +3308,40 @@ html {
 .inline {
   display: inline;
 }
+
+.panel_height {
+  height: 85px;
+  align-items: center;
+}
+@media screen and (max-width: 920px) {
+  .panel_height {
+    height: 70px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .panel_height {
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .catalog_women {
+    display: none;
+  }
+}
+.catalog_women_mobile {
+  min-height: calc(100vh - 408px);
+  display: none;
+  flex-direction: column;
+}
+@media screen and (max-width: 767px) {
+  .catalog_women_mobile {
+    display: flex;
+  }
+}
+
+.catalog_mobile_foto {
+  width: 100%;
+  aspect-ratio: 430/320;
+  object-fit: cover;
+}
