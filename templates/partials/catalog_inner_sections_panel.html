@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container panel_height ">
     <div class="catalog_inner_sections">
         <a href="catalog_opened_filters+checkbox+active.html" class="main_text_title">одежда</a>
         <a href="#" class="main_text_title">обувь</a>
@@ -6,19 +6,5 @@
         <a href="#" class="main_text_title">аксессуары</a>
     </div>
 
-    <div class="sorting">
-        <a href="#" class="main_text uppercase">сортировать по</a>
-        <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M5.83335 8.3335L10 12.5002L14.1667 8.3335" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </a>
-
-        <div class="sorting_dropdown">
-            <a href="#" class="sorting_item main_text">По популярности</a>
-            <a href="#" class="sorting_item main_text">По возрастанию цены</a>
-            <a href="#" class="sorting_item main_text">По убыванию цены</a>
-            <a href="#" class="sorting_item main_text">По новинкам</a>
-        </div>
-    </div>
+    {% include "partials/sorting.html" %}
 </div>

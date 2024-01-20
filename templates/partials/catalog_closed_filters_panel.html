@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container panel_height">
     <div class="filter_closed">
         <a href="catalog_opened_filters+active.html" class="main_text_title">фильтры</a>
         <a href="catalog_opened_filters+active.html">
@@ -8,19 +8,14 @@
         </a>
     </div>
 
-    <div class="sorting">
-        <a href="#" class="main_text uppercase">сортировать по</a>
-        <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M5.83335 8.3335L10 12.5002L14.1667 8.3335" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </a>
+    <a href="catalog_opened_filters+checkbox+active.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" class="filter_icon">
+            <path d="M5.20898 12.4993V4.16602M19.7923 20.8327V17.7077M5.20898 20.8327V16.666M19.7923 13.541V4.16602M12.5007 7.29102V4.16602M12.5007 20.8327V11.4577" stroke="#393939" stroke-width="0.833333" stroke-linecap="round"/>
+            <path d="M5.20833 16.6667C6.35893 16.6667 7.29167 15.7339 7.29167 14.5833C7.29167 13.4327 6.35893 12.5 5.20833 12.5C4.05774 12.5 3.125 13.4327 3.125 14.5833C3.125 15.7339 4.05774 16.6667 5.20833 16.6667Z" stroke="#393939" stroke-width="0.833333" stroke-linecap="round"/>
+            <path d="M12.4993 11.4577C13.6499 11.4577 14.5827 10.5249 14.5827 9.37435C14.5827 8.22376 13.6499 7.29102 12.4993 7.29102C11.3488 7.29102 10.416 8.22376 10.416 9.37435C10.416 10.5249 11.3488 11.4577 12.4993 11.4577Z" stroke="#393939" stroke-width="0.833333" stroke-linecap="round"/>
+            <path d="M19.7923 17.7077C20.9429 17.7077 21.8757 16.7749 21.8757 15.6243C21.8757 14.4738 20.9429 13.541 19.7923 13.541C18.6417 13.541 17.709 14.4738 17.709 15.6243C17.709 16.7749 18.6417 17.7077 19.7923 17.7077Z" stroke="#393939" stroke-width="0.833333" stroke-linecap="round"/>
+        </svg>
+    </a>
 
-        <div class="sorting_dropdown">
-            <a href="#" class="sorting_item main_text">По популярности</a>
-            <a href="#" class="sorting_item main_text">По возрастанию цены</a>
-            <a href="#" class="sorting_item main_text">По убыванию цены</a>
-            <a href="#" class="sorting_item main_text">По новинкам</a>
-        </div>
-    </div>
+    {% include "partials/sorting.html" %}
 </div>

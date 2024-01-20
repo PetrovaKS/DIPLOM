@@ -1,13 +1,55 @@
 {% set page_name = 'Главная' %}
 
-{% extends "layouts/index.layout.html" %} 
+{% extends "layouts/without_header.layout.html" %} 
 
 {% block content %}
+
+<!-- Шапка мобильной версии начало -->
+
+<div class="header_mobile">
+    <div class="container">
+        <a href="index.html" class="icon_menu">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="none" class="icon_menu__burger">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.375 5.72982C3.375 5.59168 3.43426 5.45921 3.53975 5.36153C3.64524 5.26386 3.78832 5.20898 3.9375 5.20898H23.0625C23.2117 5.20898 23.3548 5.26386 23.4602 5.36153C23.5657 5.45921 23.625 5.59168 23.625 5.72982C23.625 5.86795 23.5657 6.00043 23.4602 6.0981C23.3548 6.19578 23.2117 6.25065 23.0625 6.25065H3.9375C3.78832 6.25065 3.64524 6.19578 3.53975 6.0981C3.43426 6.00043 3.375 5.86795 3.375 5.72982ZM3.375 12.5007C3.375 12.3625 3.43426 12.23 3.53975 12.1324C3.64524 12.0347 3.78832 11.9798 3.9375 11.9798H23.0625C23.2117 11.9798 23.3548 12.0347 23.4602 12.1324C23.5657 12.23 23.625 12.3625 23.625 12.5007C23.625 12.6388 23.5657 12.7713 23.4602 12.8689C23.3548 12.9666 23.2117 13.0215 23.0625 13.0215H3.9375C3.78832 13.0215 3.64524 12.9666 3.53975 12.8689C3.43426 12.7713 3.375 12.6388 3.375 12.5007ZM3.375 19.2715C3.375 19.1334 3.43426 19.0009 3.53975 18.9032C3.64524 18.8055 3.78832 18.7507 3.9375 18.7507H23.0625C23.2117 18.7507 23.3548 18.8055 23.4602 18.9032C23.5657 19.0009 23.625 19.1334 23.625 19.2715C23.625 19.4096 23.5657 19.5421 23.4602 19.6398C23.3548 19.7374 23.2117 19.7923 23.0625 19.7923H3.9375C3.78832 19.7923 3.64524 19.7374 3.53975 19.6398C3.43426 19.5421 3.375 19.4096 3.375 19.2715Z" fill="#393939"/>
+            </svg> -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none" class="icon_menu__close">
+                <path d="M6.01015 23L5 21.9899L12.9899 14L5 6.01015L6.01015 5L14 12.9899L21.9899 5L23 6.01015L15.0101 14L23 21.9899L21.9899 23L14 15.0101L6.01015 23Z" fill="#393939"/>
+            </svg>   
+        </a>
+        
+        <a href="index.html" class="logo">Logo</a>
+
+        <div class="nav_section_right">
+            <a href="whatsapp:+78000000000">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="whatsapp_icon">
+                    <path d="M17.4366 5.3003C14.8241 1.2503 9.47409 0.050297 5.33659 2.5628C1.29909 5.0753 -0.000914246 10.5503 2.61159 14.5878L2.82409 14.9128L1.94909 18.1878L5.22409 17.3128L5.54909 17.5253C6.96159 18.2878 8.49909 18.7253 10.0241 18.7253C11.6616 18.7253 13.2991 18.2878 14.7116 17.4128C18.7491 14.7878 19.9491 9.4253 17.4366 5.2753V5.3003ZM15.1491 13.7253C14.7116 14.3753 14.1616 14.8128 13.3991 14.9253C12.9616 14.9253 12.4116 15.1378 10.2366 14.2753C8.38659 13.4003 6.84909 11.9753 5.76159 10.3378C5.11159 9.5753 4.77409 8.5878 4.67409 7.6003C4.67409 6.7253 4.99909 5.9628 5.54909 5.4128C5.76159 5.2003 5.98659 5.0878 6.19909 5.0878H6.74909C6.96159 5.0878 7.18659 5.0878 7.29909 5.5253C7.51159 6.0753 8.06159 7.3878 8.06159 7.5003C8.17409 7.6128 8.12409 8.4503 7.62409 8.9253C7.34909 9.2378 7.29909 9.2503 7.41159 9.4753C7.84909 10.1253 8.39909 10.7878 8.93659 11.3378C9.58659 11.8878 10.2491 12.3253 11.0116 12.6503C11.2241 12.7628 11.4491 12.7628 11.5616 12.5378C11.6741 12.3253 12.2116 11.7753 12.4366 11.5503C12.6491 11.3378 12.7616 11.3378 12.9866 11.4378L14.7366 12.3128C14.9491 12.4253 15.1741 12.5253 15.2866 12.6378C15.3991 12.9628 15.3991 13.4003 15.1741 13.7253H15.1491Z" fill="#03CEA4"/>
+                </svg>
+            </a>
+            <!-- <form method="GET" action="#" class="search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="loupe">
+                    <path d="M9.0722 2.80539C10.2756 2.80429 11.4523 3.16014 12.4534 3.82792C13.4546 4.49569 14.2351 5.4454 14.6964 6.55688C15.1577 7.66837 15.279 8.8917 15.0449 10.0721C14.8108 11.2525 14.2318 12.337 13.3813 13.1883C12.5307 14.0396 11.4468 14.6196 10.2666 14.8548C9.0864 15.0899 7.86296 14.9698 6.75105 14.5095C5.63914 14.0493 4.68873 13.2695 4.02004 12.269C3.35135 11.2685 2.99442 10.0921 2.99442 8.88873C3.00172 7.27853 3.64422 5.73629 4.78229 4.59718C5.92036 3.45807 7.46202 2.81416 9.0722 2.80539ZM9.0722 1.6665C7.64378 1.6665 6.24744 2.09008 5.05975 2.88367C3.87206 3.67726 2.94637 4.80521 2.39974 6.1249C1.8531 7.44459 1.71008 8.89674 1.98875 10.2977C2.26742 11.6987 2.95527 12.9856 3.96532 13.9956C4.97536 15.0057 6.26224 15.6935 7.66322 15.9722C9.06419 16.2508 10.5163 16.1078 11.836 15.5612C13.1557 15.0146 14.2837 14.0889 15.0773 12.9012C15.8708 11.7135 16.2944 10.3171 16.2944 8.88873C16.2944 6.97327 15.5335 5.13627 14.1791 3.78184C12.8247 2.42741 10.9877 1.6665 9.0722 1.6665Z" fill="#393939"/>
+                    <path d="M19.4445 18.4943L15.35 14.3721L14.5612 15.1554L18.6556 19.2776C18.707 19.3294 18.7682 19.3706 18.8355 19.3988C18.9029 19.4269 18.9751 19.4416 19.0481 19.4418C19.1211 19.4421 19.1934 19.428 19.2609 19.4003C19.3285 19.3726 19.3899 19.3318 19.4417 19.2804C19.4935 19.229 19.5347 19.1678 19.5628 19.1005C19.591 19.0331 19.6057 18.9609 19.6059 18.8879C19.6062 18.8149 19.592 18.7426 19.5643 18.6751C19.5367 18.6075 19.4959 18.5461 19.4445 18.4943Z" fill="#393939"/>
+                </svg>
+            </form> -->
+            <div class="basket">
+                <a href="basket_full.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M13.8888 6.66645V5.02756C13.8888 4.51686 13.7882 4.01117 13.5928 3.53935C13.3974 3.06753 13.1109 2.63882 12.7498 2.2777C12.3887 1.91658 11.96 1.63013 11.4882 1.4347C11.0163 1.23926 10.5106 1.13867 9.99995 1.13867C9.48925 1.13867 8.98355 1.23926 8.51173 1.4347C8.03991 1.63013 7.6112 1.91658 7.25009 2.2777C6.88897 2.63882 6.60252 3.06753 6.40708 3.53935C6.21165 4.01117 6.11106 4.51686 6.11106 5.02756V8.91645C6.11106 9.06379 6.16959 9.2051 6.27378 9.30929C6.37796 9.41347 6.51927 9.472 6.66661 9.472C6.81395 9.472 6.95526 9.41347 7.05945 9.30929C7.16364 9.2051 7.22217 9.06379 7.22217 8.91645V7.77756H11.6666V6.66645H7.22217V5.02756C7.22217 4.29085 7.51483 3.58431 8.03576 3.06338C8.55669 2.54244 9.26323 2.24978 9.99995 2.24978C10.7367 2.24978 11.4432 2.54244 11.9641 3.06338C12.4851 3.58431 12.7777 4.29085 12.7777 5.02756V8.88867C12.7777 9.03601 12.8363 9.17732 12.9404 9.28151C13.0446 9.3857 13.1859 9.44423 13.3333 9.44423C13.4806 9.44423 13.6219 9.3857 13.7261 9.28151C13.8303 9.17732 13.8888 9.03601 13.8888 8.88867V7.77756H16.6666V17.7776H3.33328V7.77756H4.99995V6.66645H2.22217V17.8276C2.22217 18.109 2.33396 18.3789 2.53296 18.5779C2.73196 18.7769 3.00185 18.8887 3.28328 18.8887H16.7166C16.998 18.8887 17.2679 18.7769 17.4669 18.5779C17.6659 18.3789 17.7777 18.109 17.7777 17.8276V6.66645H13.8888Z" fill="#393939"/>
+                    </svg>
+                </a>
+                <div class="basket__amount">1</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Шапка мобильной версии конец -->
 
 <!-- Меню мобильной версии начало -->
 
 <div class="menu_mobile menu_mobile--fixed">
-        
+                
     <div class="menu_mobile__category_part">
         <form method="GET" action="#" class="search">
             <a href="#">
@@ -53,390 +95,30 @@
             </svg>
             Избранное
         </a>
-        <a href="#" class="info_part__item header_text_light">
+        <a href="main+geolocation.html" class="info_part__item header_text_light">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M10.0025 9.775C10.3736 9.775 10.6903 9.64306 10.9525 9.37917C11.2147 9.11528 11.3458 8.79778 11.3458 8.42667C11.3458 8.05556 11.2139 7.73889 10.95 7.47667C10.6856 7.21444 10.3681 7.08333 9.9975 7.08333C9.62695 7.08333 9.31028 7.21556 9.0475 7.48C8.78528 7.74389 8.65417 8.06139 8.65417 8.4325C8.65417 8.80361 8.78611 9.12028 9.05 9.3825C9.31445 9.64472 9.63195 9.77583 10.0025 9.77583V9.775ZM10 16.3983C11.5667 15.035 12.805 13.6486 13.715 12.2392C14.625 10.8292 15.08 9.60972 15.08 8.58083C15.08 7.05639 14.5975 5.79806 13.6325 4.80583C12.6675 3.81361 11.4567 3.3175 10 3.3175C8.54389 3.3175 7.33306 3.81333 6.3675 4.805C5.40195 5.79667 4.91945 7.055 4.92 8.58C4.92 9.60889 5.375 10.8283 6.285 12.2383C7.19556 13.6478 8.43389 15.0339 10 16.3967V16.3983ZM10 17.5167C8.04167 15.785 6.56667 14.17 5.575 12.6717C4.58278 11.1733 4.08667 9.80972 4.08667 8.58083C4.08667 6.81806 4.66056 5.36417 5.80834 4.21917C6.95667 3.07306 8.35389 2.5 10 2.5C11.6461 2.5 13.0433 3.07278 14.1917 4.21833C15.3394 5.36333 15.9133 6.81722 15.9133 8.58C15.9133 9.80889 15.4175 11.1725 14.4258 12.6708C13.4336 14.1692 11.9583 15.7842 10 17.5158V17.5167Z" fill="white"/>
             </svg>
             Екатеринбург
         </a>
         <div class="info_part__item header_text_light">
-            <a href="tel:+78000000000" class="header_text_light">8-800-000-00-00</a>
             <a href="whatsapp:+78000000000">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="whatsapp_icon">
                     <path d="M17.4366 5.3003C14.8241 1.2503 9.47409 0.050297 5.33659 2.5628C1.29909 5.0753 -0.000914246 10.5503 2.61159 14.5878L2.82409 14.9128L1.94909 18.1878L5.22409 17.3128L5.54909 17.5253C6.96159 18.2878 8.49909 18.7253 10.0241 18.7253C11.6616 18.7253 13.2991 18.2878 14.7116 17.4128C18.7491 14.7878 19.9491 9.4253 17.4366 5.2753V5.3003ZM15.1491 13.7253C14.7116 14.3753 14.1616 14.8128 13.3991 14.9253C12.9616 14.9253 12.4116 15.1378 10.2366 14.2753C8.38659 13.4003 6.84909 11.9753 5.76159 10.3378C5.11159 9.5753 4.77409 8.5878 4.67409 7.6003C4.67409 6.7253 4.99909 5.9628 5.54909 5.4128C5.76159 5.2003 5.98659 5.0878 6.19909 5.0878H6.74909C6.96159 5.0878 7.18659 5.0878 7.29909 5.5253C7.51159 6.0753 8.06159 7.3878 8.06159 7.5003C8.17409 7.6128 8.12409 8.4503 7.62409 8.9253C7.34909 9.2378 7.29909 9.2503 7.41159 9.4753C7.84909 10.1253 8.39909 10.7878 8.93659 11.3378C9.58659 11.8878 10.2491 12.3253 11.0116 12.6503C11.2241 12.7628 11.4491 12.7628 11.5616 12.5378C11.6741 12.3253 12.2116 11.7753 12.4366 11.5503C12.6491 11.3378 12.7616 11.3378 12.9866 11.4378L14.7366 12.3128C14.9491 12.4253 15.1741 12.5253 15.2866 12.6378C15.3991 12.9628 15.3991 13.4003 15.1741 13.7253H15.1491Z" fill="#03CEA4"/>
                 </svg>
             </a>
+            <a href="tel:+78000000000" class="header_text_light">8-800-000-00-00</a>
         </div>
         <a href="delivery.html" class="info_part__item header_text_light">Доставка</a>
         <a href="payment.html" class="info_part__item header_text_light">Оплата</a>
         <a href="refund.html" class="info_part__item header_text_light">Возврат</a>
         <a href="contacts.html" class="info_part__item header_text_light">Контакты</a>
+        <a href="about_us.html" class="info_part__item header_text_light">О нас</a>
         <a href="privacy_policy.html" class="info_part__item header_text_light">Политика конфиденциальности</a>
     </div>
 </div>
 <!-- Меню мобильной версии конец -->
 
-<!-- Главный баннер начало-->
-
-<div class="first_page">
-    <div class="container first_page__title">
-        <p class="title_second">Новая коллекция одежды</p>
-        <div class="link_new_collection">
-            <a href="catalog_new_collection.html" class="title_first">осень/зима <nobr>2024
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none" class="new_collection_arrow">
-                    <path d="M25 42.5L37.5 30L25 17.5" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                </nobr>
-            </a>
-        </div>
-        <div class="link_catalog">
-            <a href="catalog_main.html" class="title_second">весь каталог</a>
-            <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" class="catalog_arrow">
-                    <path d="M12.5 21.162L18.75 14.9379L12.5 8.71387"  stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- Главный баннер конец-->
-
-<!-- Наши хиты начало-->
-
-<div class="container our_hits">
-    <div class="title_second">наши хиты</div>
-    <div class="our_hits__scroll">
-
-        <!-- Карточка товара начало -->
-
-        <div class="product_card">
-
-            <a href="#">
-                <img src="./img/product_cards/women/clothes/product1.jpeg" alt="foto" class="product_card__foto">
-            </a>
-
-            <div class="product_card__info">
-
-                <div class="info_row">
-                    <a href="#" class="main_text_contrast">Джемпер с пайетками</a>
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="heart">
-                            <path d="M10 18.0166C9.87726 18.0162 9.75809 17.9752 9.66112 17.8999C6.57223 15.4999 4.44445 13.4333 2.95556 11.3944C1.05556 8.78883 0.62223 6.38328 1.66667 4.24439C2.41112 2.71661 4.55001 1.46661 7.05001 2.19439C8.24198 2.53869 9.28195 3.27705 10 4.28883C10.7181 3.27705 11.758 2.53869 12.95 2.19439C15.4445 1.47772 17.5889 2.71661 18.3333 4.24439C19.3778 6.38328 18.9445 8.78883 17.0445 11.3944C15.5556 13.4333 13.4278 15.4999 10.3389 17.8999C10.2419 17.9752 10.1228 18.0162 10 18.0166Z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="info_row">
-                    <div class="price">
-                        <div class="old_price_text">10 000 р.</div>
-                        <div class="main_text">8 000 р.</div>
-                    </div>
-                </div>
-
-                <div class="info_row_hidden">
-                        <a href="#" class="main_text_addit_dark uppercase">XXS</a>
-                        <a href="#" class="main_text_addit_dark uppercase">XS</a>
-                        <a href="#" class="main_text_addit_dark uppercase">S</a>
-                        <a href="#" class="main_text_addit_dark uppercase">M</a>
-                        <a href="#" class="main_text_addit_dark uppercase">L</a>
-                        <a href="#" class="main_text_addit_dark uppercase">XL</a>
-                        <a href="#" class="main_text_addit_dark uppercase">XXL</a>
-                </div>
-
-                <a href="#" class="card_basket">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M13.8888 6.66645V5.02756C13.8888 4.51686 13.7882 4.01117 13.5928 3.53935C13.3974 3.06753 13.1109 2.63882 12.7498 2.2777C12.3887 1.91658 11.96 1.63013 11.4882 1.4347C11.0163 1.23926 10.5106 1.13867 9.99995 1.13867C9.48925 1.13867 8.98355 1.23926 8.51173 1.4347C8.03991 1.63013 7.6112 1.91658 7.25009 2.2777C6.88897 2.63882 6.60252 3.06753 6.40708 3.53935C6.21165 4.01117 6.11106 4.51686 6.11106 5.02756V8.91645C6.11106 9.06379 6.16959 9.2051 6.27378 9.30929C6.37796 9.41347 6.51927 9.472 6.66661 9.472C6.81395 9.472 6.95526 9.41347 7.05945 9.30929C7.16364 9.2051 7.22217 9.06379 7.22217 8.91645V7.77756H11.6666V6.66645H7.22217V5.02756C7.22217 4.29085 7.51483 3.58431 8.03576 3.06338C8.55669 2.54244 9.26323 2.24978 9.99995 2.24978C10.7367 2.24978 11.4432 2.54244 11.9641 3.06338C12.4851 3.58431 12.7777 4.29085 12.7777 5.02756V8.88867C12.7777 9.03601 12.8363 9.17732 12.9404 9.28151C13.0446 9.3857 13.1859 9.44423 13.3333 9.44423C13.4806 9.44423 13.6219 9.3857 13.7261 9.28151C13.8303 9.17732 13.8888 9.03601 13.8888 8.88867V7.77756H16.6666V17.7776H3.33328V7.77756H4.99995V6.66645H2.22217V17.8276C2.22217 18.109 2.33396 18.3789 2.53296 18.5779C2.73196 18.7769 3.00185 18.8887 3.28328 18.8887H16.7166C16.998 18.8887 17.2679 18.7769 17.4669 18.5779C17.6659 18.3789 17.7777 18.109 17.7777 17.8276V6.66645H13.8888Z" fill="#393939"/>
-                    </svg>
-                </a>
-
-            </div>
-        </div>
-
-        <!-- Карточка товара конец -->
-
-        <!-- Карточка товара в избранном начало -->
-
-        <div class="product_card">
-
-            <a href="#">
-                <img src="./img/product_cards/women/clothes/product2.jpeg" alt="foto" class="product_card__foto">
-            </a>
-
-            <div class="product_card__info">
-
-                <div class="info_row">
-                    <a href="#" class="main_text_contrast">Жилет с вышивкой</a>
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="heart_selected">
-                            <path d="M10 18.0166C9.87726 18.0162 9.75809 17.9752 9.66112 17.8999C6.57223 15.4999 4.44445 13.4333 2.95556 11.3944C1.05556 8.78883 0.62223 6.38328 1.66667 4.24439C2.41112 2.71661 4.55001 1.46661 7.05001 2.19439C8.24198 2.53869 9.28195 3.27705 10 4.28883C10.7181 3.27705 11.758 2.53869 12.95 2.19439C15.4445 1.47772 17.5889 2.71661 18.3333 4.24439C19.3778 6.38328 18.9445 8.78883 17.0445 11.3944C15.5556 13.4333 13.4278 15.4999 10.3389 17.8999C10.2419 17.9752 10.1228 18.0162 10 18.0166Z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="info_row">
-                    <div class="price">
-                        <div class="old_price_text">10 000 р.</div>
-                        <div class="main_text">8 000 р.</div>
-                    </div>
-                </div>
-
-                <div class="info_row_hidden">
-                        <a href="#" class="main_text_addit_dark uppercase">XXS</a>
-                        <a href="#" class="main_text_addit_dark uppercase">XS</a>
-                        <a href="#" class="main_text_addit_dark uppercase">S</a>
-                        <a href="#" class="main_text_addit_dark uppercase">M</a>
-                        <a href="#" class="main_text_addit_dark uppercase">L</a>
-                        <a href="#" class="main_text_addit_dark uppercase">XL</a>
-                        <a href="#" class="main_text_addit_dark uppercase">XXL</a>
-                </div>
-
-                <a href="#" class="card_basket">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M13.8888 6.66645V5.02756C13.8888 4.51686 13.7882 4.01117 13.5928 3.53935C13.3974 3.06753 13.1109 2.63882 12.7498 2.2777C12.3887 1.91658 11.96 1.63013 11.4882 1.4347C11.0163 1.23926 10.5106 1.13867 9.99995 1.13867C9.48925 1.13867 8.98355 1.23926 8.51173 1.4347C8.03991 1.63013 7.6112 1.91658 7.25009 2.2777C6.88897 2.63882 6.60252 3.06753 6.40708 3.53935C6.21165 4.01117 6.11106 4.51686 6.11106 5.02756V8.91645C6.11106 9.06379 6.16959 9.2051 6.27378 9.30929C6.37796 9.41347 6.51927 9.472 6.66661 9.472C6.81395 9.472 6.95526 9.41347 7.05945 9.30929C7.16364 9.2051 7.22217 9.06379 7.22217 8.91645V7.77756H11.6666V6.66645H7.22217V5.02756C7.22217 4.29085 7.51483 3.58431 8.03576 3.06338C8.55669 2.54244 9.26323 2.24978 9.99995 2.24978C10.7367 2.24978 11.4432 2.54244 11.9641 3.06338C12.4851 3.58431 12.7777 4.29085 12.7777 5.02756V8.88867C12.7777 9.03601 12.8363 9.17732 12.9404 9.28151C13.0446 9.3857 13.1859 9.44423 13.3333 9.44423C13.4806 9.44423 13.6219 9.3857 13.7261 9.28151C13.8303 9.17732 13.8888 9.03601 13.8888 8.88867V7.77756H16.6666V17.7776H3.33328V7.77756H4.99995V6.66645H2.22217V17.8276C2.22217 18.109 2.33396 18.3789 2.53296 18.5779C2.73196 18.7769 3.00185 18.8887 3.28328 18.8887H16.7166C16.998 18.8887 17.2679 18.7769 17.4669 18.5779C17.6659 18.3789 17.7777 18.109 17.7777 17.8276V6.66645H13.8888Z" fill="#393939"/>
-                    </svg>
-                </a>
-
-            </div>
-        </div>
-
-        <!-- Карточка товара в избранном конец -->
-
-       <!-- Карточка товара в корзине начало -->
-
-       <div class="product_card">
-
-        <a href="product_page.html">
-            <img src="./img/product_cards/women/clothes/product3.jpeg" alt="foto" class="product_card__foto">
-        </a>
-
-        <div class="product_card__info">
-
-            <div class="info_row">
-                <a href="product_page.html" class="main_text_contrast">Кардиган из шерсти</a>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="heart">
-                        <path d="M10 18.0166C9.87726 18.0162 9.75809 17.9752 9.66112 17.8999C6.57223 15.4999 4.44445 13.4333 2.95556 11.3944C1.05556 8.78883 0.62223 6.38328 1.66667 4.24439C2.41112 2.71661 4.55001 1.46661 7.05001 2.19439C8.24198 2.53869 9.28195 3.27705 10 4.28883C10.7181 3.27705 11.758 2.53869 12.95 2.19439C15.4445 1.47772 17.5889 2.71661 18.3333 4.24439C19.3778 6.38328 18.9445 8.78883 17.0445 11.3944C15.5556 13.4333 13.4278 15.4999 10.3389 17.8999C10.2419 17.9752 10.1228 18.0162 10 18.0166Z"/>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="info_row">
-                <div class="price">
-                    <div class="old_price_text">10 000 р.</div>
-                    <div class="main_text">8 000 р.</div>
-                </div>
-            </div>
-
-            <div class="info_row_hidden">
-                    <a href="#" class="main_text_addit_dark uppercase">XXS</a>
-                    <a href="#" class="main_text_addit_dark uppercase">XS</a>
-                    <a href="#" class="main_text_addit_dark uppercase">S</a>
-                    <a href="#" class="main_text_title uppercase">M</a>
-                    <a href="#" class="main_text_addit_dark uppercase">L</a>
-                    <a href="#" class="main_text_addit_dark uppercase">XL</a>
-                    <a href="#" class="main_text_addit_dark uppercase">XXL</a>
-            </div>
-
-            <div class="card_basket">
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M13.8888 6.66645V5.02756C13.8888 4.51686 13.7882 4.01117 13.5928 3.53935C13.3974 3.06753 13.1109 2.63882 12.7498 2.2777C12.3887 1.91658 11.96 1.63013 11.4882 1.4347C11.0163 1.23926 10.5106 1.13867 9.99995 1.13867C9.48925 1.13867 8.98355 1.23926 8.51173 1.4347C8.03991 1.63013 7.6112 1.91658 7.25009 2.2777C6.88897 2.63882 6.60252 3.06753 6.40708 3.53935C6.21165 4.01117 6.11106 4.51686 6.11106 5.02756V8.91645C6.11106 9.06379 6.16959 9.2051 6.27378 9.30929C6.37796 9.41347 6.51927 9.472 6.66661 9.472C6.81395 9.472 6.95526 9.41347 7.05945 9.30929C7.16364 9.2051 7.22217 9.06379 7.22217 8.91645V7.77756H11.6666V6.66645H7.22217V5.02756C7.22217 4.29085 7.51483 3.58431 8.03576 3.06338C8.55669 2.54244 9.26323 2.24978 9.99995 2.24978C10.7367 2.24978 11.4432 2.54244 11.9641 3.06338C12.4851 3.58431 12.7777 4.29085 12.7777 5.02756V8.88867C12.7777 9.03601 12.8363 9.17732 12.9404 9.28151C13.0446 9.3857 13.1859 9.44423 13.3333 9.44423C13.4806 9.44423 13.6219 9.3857 13.7261 9.28151C13.8303 9.17732 13.8888 9.03601 13.8888 8.88867V7.77756H16.6666V17.7776H3.33328V7.77756H4.99995V6.66645H2.22217V17.8276C2.22217 18.109 2.33396 18.3789 2.53296 18.5779C2.73196 18.7769 3.00185 18.8887 3.28328 18.8887H16.7166C16.998 18.8887 17.2679 18.7769 17.4669 18.5779C17.6659 18.3789 17.7777 18.109 17.7777 17.8276V6.66645H13.8888Z" fill="#393939"/>
-                    </svg>
-                </a>
-                <div class="basket__amount">1</div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Карточка товара в корзине конец -->
-
-    <!-- Карточка товара начало -->
-
-    <div class="product_card">
-
-        <a href="#">
-            <img src="./img/product_cards/women/clothes/product4.jpeg" alt="foto" class="product_card__foto">
-        </a>
-
-        <div class="product_card__info">
-
-            <div class="info_row">
-                <a href="#" class="main_text_contrast">Джемпер из мохера</a>
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="heart">
-                        <path d="M10 18.0166C9.87726 18.0162 9.75809 17.9752 9.66112 17.8999C6.57223 15.4999 4.44445 13.4333 2.95556 11.3944C1.05556 8.78883 0.62223 6.38328 1.66667 4.24439C2.41112 2.71661 4.55001 1.46661 7.05001 2.19439C8.24198 2.53869 9.28195 3.27705 10 4.28883C10.7181 3.27705 11.758 2.53869 12.95 2.19439C15.4445 1.47772 17.5889 2.71661 18.3333 4.24439C19.3778 6.38328 18.9445 8.78883 17.0445 11.3944C15.5556 13.4333 13.4278 15.4999 10.3389 17.8999C10.2419 17.9752 10.1228 18.0162 10 18.0166Z"/>
-                    </svg>
-                </a>
-            </div>
-
-            <div class="info_row">
-                <div class="price">
-                    <div class="old_price_text">10 000 р.</div>
-                    <div class="main_text">8 000 р.</div>
-                </div>
-            </div>
-
-            <div class="info_row_hidden">
-                    <a href="#" class="main_text_addit_dark uppercase">XXS</a>
-                    <a href="#" class="main_text_addit_dark uppercase">XS</a>
-                    <a href="#" class="main_text_addit_dark uppercase">S</a>
-                    <a href="#" class="main_text_addit_dark uppercase">M</a>
-                    <a href="#" class="main_text_addit_dark uppercase">L</a>
-                    <a href="#" class="main_text_addit_dark uppercase">XL</a>
-                    <a href="#" class="main_text_addit_dark uppercase">XXL</a>
-            </div>
-
-            <a href="#" class="card_basket">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M13.8888 6.66645V5.02756C13.8888 4.51686 13.7882 4.01117 13.5928 3.53935C13.3974 3.06753 13.1109 2.63882 12.7498 2.2777C12.3887 1.91658 11.96 1.63013 11.4882 1.4347C11.0163 1.23926 10.5106 1.13867 9.99995 1.13867C9.48925 1.13867 8.98355 1.23926 8.51173 1.4347C8.03991 1.63013 7.6112 1.91658 7.25009 2.2777C6.88897 2.63882 6.60252 3.06753 6.40708 3.53935C6.21165 4.01117 6.11106 4.51686 6.11106 5.02756V8.91645C6.11106 9.06379 6.16959 9.2051 6.27378 9.30929C6.37796 9.41347 6.51927 9.472 6.66661 9.472C6.81395 9.472 6.95526 9.41347 7.05945 9.30929C7.16364 9.2051 7.22217 9.06379 7.22217 8.91645V7.77756H11.6666V6.66645H7.22217V5.02756C7.22217 4.29085 7.51483 3.58431 8.03576 3.06338C8.55669 2.54244 9.26323 2.24978 9.99995 2.24978C10.7367 2.24978 11.4432 2.54244 11.9641 3.06338C12.4851 3.58431 12.7777 4.29085 12.7777 5.02756V8.88867C12.7777 9.03601 12.8363 9.17732 12.9404 9.28151C13.0446 9.3857 13.1859 9.44423 13.3333 9.44423C13.4806 9.44423 13.6219 9.3857 13.7261 9.28151C13.8303 9.17732 13.8888 9.03601 13.8888 8.88867V7.77756H16.6666V17.7776H3.33328V7.77756H4.99995V6.66645H2.22217V17.8276C2.22217 18.109 2.33396 18.3789 2.53296 18.5779C2.73196 18.7769 3.00185 18.8887 3.28328 18.8887H16.7166C16.998 18.8887 17.2679 18.7769 17.4669 18.5779C17.6659 18.3789 17.7777 18.109 17.7777 17.8276V6.66645H13.8888Z" fill="#393939"/>
-                </svg>
-            </a>
-
-        </div>
-    </div>
-
-    <!-- Карточка товара конец -->
-
-    <div class="learn_more_mobile">
-        <p class="main_text_addit_dark">Выбор наших<br>опокупателей</p>
-        <a href="blog.html" class="main_text_contrast underline">Смотреть все хиты</a>
-    </div>
-
-    </div>
-
-    <a href="catalog_our_hits.html" class="main_text_contrast link_all_hits">Смотреть все хиты</a>
-
-    <!-- Стрелки скролла начало -->
-
-    <a href="#" class="scroll_arrow hits_arrow_left">
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
-            <path d="M7 0.5L0.750001 6.75L7 13" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
-
-    <a href="#" class="scroll_arrow hits_arrow_right">
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
-            <path d="M1 13.5L7.25 7.25L1 1" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
-
-    <!-- Стрелки скролла конец -->
-</div>
-
-<!-- Наши хиты конец-->
-
-<!-- Блок подписки начало -->
-{% include "partials/subscribe.html" %}
-<!-- Блок подписки конец -->
-
-<!-- Блок с баннерами начало -->
-
-<div class="container main_page_banners">
-
-    <div class="main_page_banners__row">
-        <a href="total_looks.html" class="main_page_small_banner total_looks">
-            <p class="title_first_light total_looks_title">готовые образы</p>
-        </a>
-        <a href="catalog_new_collection.html" class="main_page_large_banner new">
-            <p class="title_second title_second_large_height new_title">Новая коллекция</p>
-            <p class="title_first new_title">осень/<br>зима<br>2024</p>
-        </a>
-    </div>
-
-    <div class="main_page_banners__row">
-        <a href="catalog_sales.html" class="main_page_large_banner sale">
-            <p class="title_second title_second_large_height sale_title">распродажа</p>
-            <p class="title_first sale_title">скидки<br>до 70%</p>
-        </a>
-        <a href="#" class="main_page_small_banner outerwear">
-            <p class="title_first_light outerwear_title">верхняя одежда</p>
-        </a>
-    </div>
-
-    <div class="main_page_banners__row sale">
-        <a href="catalog_evening_clothes.html" class="main_page_small_banner evening_wear">
-            <p class="title_first_light evening_wear_title">вечерняя одежда</p>
-        </a>
-        <a href="#" class="main_page_large_banner shoes_access">
-            <p class="title_first shoes_access_title">обувь и<br>аксессуары</p>
-        </a>
-    </div>
-
-    <!-- Баннеры мобильной версии начало -->
-
-    <a href="total_looks.html" class="main_page_banner__mobile total_looks_mobile">
-        <p class="title_first_light total_looks_title">готовые образы</p>
-    </a>
-
-    <a href="catalog_evening_clothes.html" class="main_page_banner__mobile sale_mobile">
-        <p class="title_first sale_title">скидки до 70%</p>
-    </a>
-
-
-    <!-- Баннеры мобильной версии конец -->
-
-</div>
-
-<!-- Блок с баннерами конец -->
-
-<!-- Блог начало -->
-
-<div class="container main_page_blog">
-    <div class="title_second">наш блог</div>
-
-    <div class="main_page_blog__posts">
-
-        <div class="post">
-            <div class="post__foto post-1"></div>
-            <div class="post__text">
-                <div class="main_text_title post_title">Новогодняя капсула</div>
-                <div class="main_text post_desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est incidunt debitis facilis! Facere nam dolorum itaque, numquam distinctio ducimus ea et rerum odit repudiandae quidem minima quo mollitia est voluptates reprehenderit aut repellendus officiis at provident consectetur voluptatum cupiditate consequatur incidunt. Delectus placeat, in autem necessitatibus blanditiis facilis ratione quas! </div>
-                <a href="blog.html#article-1" class="main_text link_post">Читать статью</a>
-            </div>
-        </div>
-
-        <div class="post">
-            <div class="post__foto post-2"></div>
-            <div class="post__text">
-                <div class="main_text_title post_title">Как ухаживать за кашемировым свитером</div>
-                <div class="main_text post_desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est incidunt debitis facilis! Facere nam dolorum itaque, numquam distinctio ducimus ea et rerum odit repudiandae quidem minima quo mollitia est voluptates reprehenderit aut repellendus officiis at provident consectetur voluptatum cupiditate consequatur incidunt. Delectus placeat, in autem necessitatibus blanditiis facilis ratione quas! </div>
-                <a href="blog.html#article-3" class="main_text link_post">Читать статью</a>
-            </div>
-        </div>
-
-        <div class="post">
-            <div class="post__foto post-3"></div>
-            <div class="post__text">
-                <div class="main_text_title post_title">6 многослойных решений на каждый день</div>
-                <div class="main_text post_desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est incidunt debitis facilis! Facere nam dolorum itaque, numquam distinctio ducimus ea et rerum odit repudiandae quidem minima quo mollitia est voluptates reprehenderit aut repellendus officiis at provident consectetur voluptatum cupiditate consequatur incidunt. Delectus placeat, in autem necessitatibus blanditiis facilis ratione quas! </div>
-                <a href="blog.html#article-2" class="main_text link_post">Читать статью</a>
-            </div>
-        </div>
-
-        <div class="post">
-            <div class="post__foto post-4"></div>
-            <div class="post__text">
-                <div class="main_text_title post_title">Мода по-мужски: собираем стильный гардероб</div>
-                <div class="main_text post_desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est incidunt debitis facilis! Facere nam dolorum itaque, numquam distinctio ducimus ea et rerum odit repudiandae quidem minima quo mollitia est voluptates reprehenderit aut repellendus officiis at provident consectetur voluptatum cupiditate consequatur incidunt. Delectus placeat, in autem necessitatibus blanditiis facilis ratione quas! </div>
-                <a href="blog.html#article-4" class="main_text link_post">Читать статью</a>
-            </div>
-        </div>
-
-        <div class="learn_more_mobile">
-            <p class="main_text_addit_dark">Интересные статьи<br>от экспертов моды</p>
-            <a href="blog.html" class="main_text_contrast underline">Читать все статьи</a>
-        </div>
-
-    </div>
-
-    <a href="blog.html" class="main_text_contrast read_more">Читать все статьи</a>
-</div>
-
-<!-- Блог конец -->
-</body>
-</html>
 {% endblock %}
 
 {% block scripts %} {% endblock %}

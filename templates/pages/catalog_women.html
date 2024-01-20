@@ -5,22 +5,78 @@
 {% block content %}
 
 <!-- Женщины начало -->
+<div class="catalog_women">
+    {% include "partials/catalog_inner_sections_panel.html" %}
 
-{% include "partials/catalog_inner_sections_panel.html" %}
-
-<div class="container catalog">
-
-    <div class="catalog_cards">
-        {% include "partials/women_products_all.html" %}
+    <div class="container catalog">
+    
+        <div class="catalog_cards">
+            {% include "partials/women_products_all.html" %}
+        </div>
+    
+    {% include "partials/view_more_products.html" %}
+    
+    {% include "partials/pagination.html" %}
+    
     </div>
-
-{% include "partials/view_more_products.html" %}
-
-{% include "partials/pagination.html" %}
 
 </div>
 
 <!-- Женщины конец -->
+
+<!-- Каталог женщины мобильный начало -->
+
+<div class="catalog_women_mobile">
+
+    <a href="catalog_closed_filters.html">
+        <img src="./img/catalog_main/catalog_women/clothes.png" class="catalog_mobile_foto" alt="">
+    </a>
+    <a href="catalog_closed_filters.html" class="category_part__item">
+        <p class="small_text uppercase">Одежда</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8.33203 14.1673L12.4987 10.0007L8.33203 5.83398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+    <a href="#">
+        <img src="./img/catalog_main/catalog_women/shoes.png" class="catalog_mobile_foto" alt="">
+    </a>
+    <a href="#" class="category_part__item">
+        <p class="small_text uppercase">Обувь</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8.33203 14.1673L12.4987 10.0007L8.33203 5.83398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+    <a href="#">
+        <img src="./img/catalog_main/catalog_women/bags.jpg" class="catalog_mobile_foto" alt="">
+    </a>
+    <a href="main_mobile+fixed_menu_2_level.html" class="category_part__item">
+        <p class="small_text uppercase">Сумки</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8.33203 14.1673L12.4987 10.0007L8.33203 5.83398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+    <a href="#">
+        <img src="./img/catalog_main/catalog_women/acssessorises.jpg" class="catalog_mobile_foto" alt="">
+    </a>
+    <a href="#" class="category_part__item">
+        <p class="small_text uppercase">Аксессуары</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8.33203 14.1673L12.4987 10.0007L8.33203 5.83398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+    <a href="#">
+        <img src="./img/catalog_main/catalog_women/total_look.jpg" class="catalog_mobile_foto" alt="">
+    </a>
+    <a href="total_looks.html" class="category_part__item">
+        <p class="small_text uppercase">Готовые образы</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8.33203 14.1673L12.4987 10.0007L8.33203 5.83398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+
+</div>
+
+<!-- Каталог женщины мобильный начало -->
 
 {% endblock %}
 
