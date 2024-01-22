@@ -2046,13 +2046,30 @@ html {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.10);
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 920px) {
+        width: calc(100% - 20px);
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 70px;
     }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 35px;
+        margin-top: 20px;
+    }
+}
     
 .row_info {
     padding: 55px 20px 20px 20px;
     display: flex;
     justify-content: space-between;
     column-gap: 20px;
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        padding-top: 35px;
+    }
 
     .row_info_col {
         display: flex;
@@ -2061,8 +2078,17 @@ html {
         row-gap: 20px;
         flex-grow: 1;
         max-width: calc((100% - 20px) / 2);
+
+        @media screen and (max-width: 767px) {
+            row-gap: 5px;
+            max-width: calc(100% - 20px);
+        }
+
+        .btn_main {
+            width: 100%;
         }
     }
+}
 
 .info_cell {
     height: 60px;
@@ -2082,7 +2108,33 @@ html {
     align-items: flex-end;
     border-bottom: 1px solid $addit_color_dark;
     padding-bottom: 10px;
+
+    a {
+        text-align: end;
+    }
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
+
+.discount_cell--hidden {
+    height: 70px;
+    display: none;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid $addit_color_dark;
+    padding-bottom: 10px;
+
+    a {
+        text-align: end;
+    }
+
+    @media screen and (max-width: 767px) {
+        display: flex;
+    }
+}
+
 
 .adress_row {
     display: flex;
@@ -2134,6 +2186,13 @@ html {
         height: 70px;
         max-width: 50%;
         flex-grow: 1;
+        text-align: center;
+
+        @media screen and (max-width: 767px) {
+            .main_text {
+                font-size: 12px;
+            }
+        }
     }
     
     .tab_inactive_right {
@@ -2145,6 +2204,13 @@ html {
         height: 70px;
         max-width: 50%;
         flex-grow: 1;
+        text-align: center;
+
+        @media screen and (max-width: 767px) {
+            .main_text_addit_dark {
+                font-size: 12px;
+            }
+        }
     }
 
     .tab_inactive_left {
@@ -2156,6 +2222,13 @@ html {
         height: 70px;
         max-width: 50%;
         flex-grow: 1;
+        text-align: center;
+
+        @media screen and (max-width: 767px) {
+            .main_text_addit_dark {
+                font-size: 12px;
+            }
+        }
     }
 }
 
@@ -2170,12 +2243,16 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    @media screen and (max-width: 767px) {
+        width: calc(100% - 60px);
+    }
 }
 
 .pop_up_discount {
     height: 360px;
-    padding-top: 60px;
-    padding-bottom: 85px;
+    padding: 60px 20px 85px 20px;
+    text-align: center;
 }
 
 .log_in_stroke {
@@ -2188,6 +2265,12 @@ html {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+
+        @media screen and (max-width: 920px) {
+            .small_text {
+                display: none;
+            }
+        }
     }
     
     .log_in_text {
@@ -2195,6 +2278,12 @@ html {
         justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
+
+        @media screen and (max-width: 767px) {
+            .main_text {
+                font-size: 12px;
+            }
+        }
     }
 }
 
@@ -2210,29 +2299,44 @@ html {
         width: 100%;
         height: 85px;
         border-bottom: 1px solid $addit_color_dark;
+        position: relative;
 
         .order_item_foto {
-            width: calc(100% / 12);
+            width: calc((100% / 12) + 15px);
             height: 100%;
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            flex-shrink: 0;
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+                margin-right: 18px;
+            }
 
             .item_foto {
                 width: 65px;
                 height: 80px;
-                margin-right: 18px;
+                flex-shrink: 0;
             }
         }
     
         .order_item_info {
-            width: calc(100% / 12 * 4);
+            width: calc((100% / 12 * 4) - 15px);
             flex-grow: 1;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
+
+            @media screen and (max-width: 767px) {
+                width: 25%;
+
+                .main_text_title {
+                    font-size: 12px;
+                }
+            }
         }
     
         .order_item_price {
@@ -2242,6 +2346,11 @@ html {
             display: flex;
             justify-content: flex-start;
             align-items: center;
+
+            @media screen and (max-width: 767px) {
+                font-size: 12px;
+                display: none;
+            }
         }
     
         .order_item_count {
@@ -2252,6 +2361,15 @@ html {
             justify-content: flex-start;
             align-items: center;
             column-gap: 5px;
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+                justify-content: flex-start;
+
+                .main_text {
+                    font-size: 12px;
+                }
+            }
         }
     
         .order_item_cost {
@@ -2261,24 +2379,59 @@ html {
             display: flex;
             justify-content: flex-start;
             align-items: center;
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+                font-size: 12px;
+            }
         }
 
         .order_item_favourite {
             width: calc(100% / 12);
             flex-grow: 1;
-            height: 100%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
+
+            @media screen and (max-width: 920px) {
+                justify-content: flex-end;
+            }
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+                max-width: 30px;
+            }
+
+            @media screen and (max-width: 500px) {
+                position: absolute;
+                right: 0;
+                top: 15px;
+            }
         }
     
         .order_item_delete {
             width: calc(100% / 12);
             flex-grow: 1;
-            height: 100%;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+
+            @media screen and (max-width: 920px) {
+                .uppercase {
+                    display: none;
+                }
+            }
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+                max-width: 30px;
+            }
+
+            @media screen and (max-width: 500px) {
+                position: absolute;
+                right: 0;
+                bottom: 15px;
+            }
         }
     }
 }
@@ -2297,12 +2450,24 @@ html {
         height: 85px;
         border-bottom: 1px solid $addit_color_dark;
 
+        @media screen and (max-width: 920px) {
+            height: 55px;
+        }
+
+        @media screen and (max-width: 767px) {
+            width: calc(100% - 83px);
+        }
+
         .total_item_name {
             width: calc(100% / 5 * 2);
             flex-grow: 1;
             display: flex;
             justify-content: flex-start;
             align-items: center;
+
+            @media screen and (max-width: 767px) {
+                font-size: 12px;
+            }
         }
 
         .total_item_value {
@@ -2311,6 +2476,11 @@ html {
             display: flex;
             justify-content: flex-start;
             align-items: center;
+
+            @media screen and (max-width: 767px) {
+                font-size: 12px;
+                justify-content: flex-end;
+            }
         }
     }
 }
@@ -2318,8 +2488,31 @@ html {
 .order_btn {
     margin-bottom: 85px;
 
+    @media screen and (max-width: 920px) {
+        margin-bottom: 70px;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 35px;
+        flex-direction: column;
+        row-gap: 10px;
+        align-items: flex-end;
+
+        .make_order {
+            order: 1;
+        }
+
+        .turn_catalog {
+            order: 2;
+        }
+    }
+
     .btn_main {
         width: calc(100% / 12 * 5);
+
+        @media screen and (max-width: 767px) {
+            width: calc(100% - 83px)
+        }
     }
 }
 
@@ -2331,6 +2524,10 @@ html {
     padding-top: 55px;
     padding-bottom: 20px;
 
+    @media screen and (max-width: 767px) {
+        padding-top: 35px;
+    }
+
     .orders_history__item {
         display: flex;
         align-items: center;
@@ -2338,12 +2535,33 @@ html {
         width: 100%;
         min-height: 70px;
 
+        @media screen and (max-width: 767px) {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .order_group {
+            display: flex;
+            justify-content: flex-start;
+            width: calc(100% / 12 * 9);
+
+            @media screen and (max-width: 767px) {
+                flex-direction: column;
+                width: calc(100% / 12 * 8);
+            }
+        }
+
         .item_number {
             padding-left: 20px;
             width: calc(100% / 12 * 3);
             flex-grow: 1;
             display: flex;
             justify-content: flex-start;
+
+            @media screen and (max-width: 767px) {
+                width: 100%;
+                margin-bottom: 15px;
+            }
         }
 
         .order_create {
@@ -2351,6 +2569,12 @@ html {
             flex-grow: 1;
             display: flex;
             justify-content: flex-start;
+
+            @media screen and (max-width: 767px) {
+                font-size: 12px;
+                width: 100%;
+                padding-left: 20px;
+            }
         }
 
         .order_delivery {
@@ -2358,6 +2582,12 @@ html {
             flex-grow: 1;
             display: flex;
             justify-content: flex-start;
+
+            @media screen and (max-width: 767px) {
+                font-size: 12px;
+                width: 100%;
+                padding-left: 20px;
+            }
         }
 
         .order_value {
@@ -2365,6 +2595,10 @@ html {
             flex-grow: 1;
             display: flex;
             justify-content: flex-end;
+
+            @media screen and (max-width: 767px) {
+                width: calc(100% / 12 * 3);
+            }
         }
 
         .open_order {
@@ -2373,6 +2607,11 @@ html {
             display: flex;
             justify-content: flex-end;
             padding-right: 20px;
+
+            @media screen and (max-width: 500px) {
+                padding-right: 0;
+                justify-content: flex-start;
+            }
         }
     }
 
@@ -2389,19 +2628,32 @@ html {
         align-items: center;
         justify-content: flex-start;
         border-bottom: 1px solid $addit_color_dark;
-        width: calc(100% / 12 * 5);
+        width: calc(100% / 12 * 6);
         height: 70px;
 
+        @media screen and (max-width: 767px) {
+            width: calc(100% / 12 * 12);
+        }
+
         .value_text {
-            width: calc(100% / 5 * 2.5);
+            width: calc(100% / 6 * 3);
             display: flex;
             justify-content: flex-start;
+
+            @media screen and (max-width: 767px) {
+                width: calc(100% / 12 * 8);
+                padding-left: 20px;
+            }
         }
 
         .value_amount {
-            width: calc(100% / 5 * 1.5);
+            width: calc(100% / 6 * 2);
             display: flex;
             justify-content: flex-end;
+
+            @media screen and (max-width: 767px) {
+                width: calc(100% / 12 * 3);
+            }
         }
     }
 
@@ -2411,27 +2663,52 @@ html {
         margin-right: 40px;
         padding-top: 20px;
 
+        @media screen and (max-width: 920px) {
+            width: calc(100% - 60px);
+            margin: 0 auto;
+
+            .order_list__item {
+                justify-content: space-between;
+            }
+        }
+
         .order_item_foto {
             width: calc(100% / 10);
         }
     
         .order_item_info {
-            width: calc(100% / 10 * 4);
+            width: calc(100% / 10 * 3.5);
         }
     
         .order_item_price {
-            width: calc(100% / 10 * 2);
+            width: calc(100% / 10 * 2.5);
         }
     
         .order_item_count {
             width: calc(100% / 10 * 2);
+
+            @media screen and (max-width: 767px) {
+                justify-content: center;
+            }
         }
     
         .order_item_cost {
             width: calc(100% / 10);
+            justify-content: flex-end;
         }
     }
 
+    .total_cost {
+        @media screen and (max-width: 920px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            width: calc(100% - 60px);
+            padding-left: 83px;
+        }
+    }
 
 
     .total_cost__item {
@@ -2440,16 +2717,37 @@ html {
         width: calc(100% / 12 * 3);
         border-bottom: none;
 
+        @media screen and (max-width: 920px) {
+            width: calc((100% - 60px) / 10 * 3);
+            margin-right: 30px;
+        }
+
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            margin-right: 0;
+            justify-content: space-between;
+            height: 35px;
+        }
+
         &:nth-child(3) {
             border-bottom: 1px solid $addit_color_dark;
         }
 
         .total_item_name {
-            width: calc(100% / 3 * 2);
+            width: calc(100% / 3 * 1.5);
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+            }
         }
 
         .total_item_value {
-            width: calc(100% / 3);
+            width: calc(100% / 3 * 1.5);
+            justify-content: flex-end;
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+            }
         }
     }
 }
