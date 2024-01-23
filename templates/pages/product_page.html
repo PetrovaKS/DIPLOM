@@ -1,4 +1,29 @@
-{% set page_name = 'Женщины' %}
+{% set page_name = 'Карточка товара' %}
+
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'catalog_main.html',
+            text: 'Каталог'
+        },
+        {
+            link: 'catalog_women.html',
+            text: 'Женщины'
+        },
+        {
+            link: 'catalog_closed_filters.html',
+            text: 'Одежда'
+        },
+        {
+            link: 'product_page.html',
+            text: 'Карточка товара'
+        }
+    ]
+%}
 
 {% extends "layouts/main.layout.html" %} 
 

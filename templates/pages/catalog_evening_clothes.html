@@ -1,5 +1,18 @@
 {% set page_name = 'Вечерняя одежда' %}
 
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'catalog_evening_clothes.html',
+            text: 'Вечерняя одежда'
+        }
+    ]
+%}
+
 {% extends "layouts/main.layout.html" %} 
 
 {% block content %}

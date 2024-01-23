@@ -1,4 +1,17 @@
-{% set page_name = 'Распродажа' %}
+{% set page_name = 'Хиты' %}
+
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'catalog_our_hits.html',
+            text: 'Хиты'
+        }
+    ]
+%}
 
 {% extends "layouts/main.layout.html" %} 
 

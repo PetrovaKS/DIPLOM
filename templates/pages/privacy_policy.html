@@ -1,5 +1,18 @@
 {% set page_name = 'Политика конфиденциальности' %}
 
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'privacy_policy.html',
+            text: 'Политика конфиденциальности'
+        }
+    ]
+%}
+
 {% extends "layouts/main.layout.html" %} 
 
 {% block content %}

@@ -1,5 +1,18 @@
 {% set page_name = 'Оплата' %}
 
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'payment.html',
+            text: 'Оплата'
+        }
+    ]
+%}
+
 {% extends "layouts/main.layout.html" %} 
 
 {% block content %}

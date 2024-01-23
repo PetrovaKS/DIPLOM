@@ -1,5 +1,18 @@
 {% set page_name = 'Регистрация' %}
 
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'basket_empty.html',
+            text: 'Корзина'
+        }
+    ]
+%}
+
 {% extends "layouts/main.layout.html" %} 
 
 {% block content %}

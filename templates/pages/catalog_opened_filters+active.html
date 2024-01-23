@@ -1,4 +1,25 @@
-{% set page_name = 'Одежда женская' %}
+{% set page_name = 'Женская одежда' %}
+
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'catalog_main.html',
+            text: 'Каталог'
+        },
+        {
+            link: 'catalog_women.html',
+            text: 'Женщины'
+        },
+        {
+            link: 'catalog_closed_filters.html',
+            text: 'Одежда'
+        }
+    ]
+%}
 
 {% extends "layouts/main.layout.html" %} 
 

@@ -1,5 +1,22 @@
 {% set page_name = 'Оформление заказа' %}
 
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'basket_full.html',
+            text: 'Корзина'
+        },
+        {
+            link: 'making_order_data.html',
+            text: 'Оформление заказа'
+        }
+    ]
+%}
+
 {% extends "layouts/main.layout.html" %} 
 
 {% block content %}

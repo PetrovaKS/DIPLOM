@@ -1,5 +1,18 @@
 {% set page_name = 'Новая коллекция' %}
 
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'catalog_new_collection.html',
+            text: 'Новая коллекция'
+        }
+    ]
+%}
+
 {% extends "layouts/main.layout.html" %} 
 
 {% block content %}

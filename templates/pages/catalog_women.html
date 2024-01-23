@@ -1,5 +1,22 @@
 {% set page_name = 'Женщины' %}
 
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'catalog_main.html',
+            text: 'Каталог'
+        },
+        {
+            link: 'catalog_women.html',
+            text: 'Женщины'
+        }
+    ]
+%}
+
 {% extends "layouts/main.layout.html" %} 
 
 {% block content %}

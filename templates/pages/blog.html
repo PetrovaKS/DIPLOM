@@ -1,5 +1,18 @@
 {% set page_name = 'Наш блог' %}
 
+{% set breadcrumbs = 
+    [ 
+        {
+            link: 'index.html',
+            text: 'Главная'
+        },
+        {
+            link: 'blog.html',
+            text: 'Наш блог'
+        }
+    ]
+%}
+
 {% extends "layouts/main.layout.html" %} 
 
 {% block content %}

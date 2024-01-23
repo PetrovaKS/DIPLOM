@@ -1,7 +1,11 @@
   
+     
     <div class="container breadcrumbs">
-        <a href="index.html" class="main_text">Главная</a>
-        <a href="catalog_main.html" class="main_text">Каталог</a>
+        {% for link in breadcrumbs %}
+            <a href="{{ link.link }}" class="main_text">{{ link.text }}</a>
+        {% endfor %}
     </div>
+
+
 
 
