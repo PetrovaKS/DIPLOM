@@ -497,7 +497,7 @@ html {
     width: calc((100% - 45px) / 4);
     max-width: 100%;
     min-width: 238px;
-    border-radius: 2px;
+    border-radius: 3px;
     transition: .3s;
     flex-grow: 1;
 
@@ -2046,6 +2046,8 @@ html {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.10);
     display: flex;
     flex-direction: column;
+    border-radius: 3px;
+    overflow: hidden;
 
     @media screen and (max-width: 920px) {
         width: calc(100% - 20px);
@@ -2081,7 +2083,7 @@ html {
 
         @media screen and (max-width: 767px) {
             row-gap: 5px;
-            max-width: calc(100% - 20px);
+            max-width: 100%;
         }
 
         .btn_main {
@@ -2095,10 +2097,9 @@ html {
     max-height: 60px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     border-bottom: 1px solid $addit_color_dark;
     flex-grow: 1;
-    padding-bottom: 5px;
 }
 
 .discount_cell {
@@ -2114,27 +2115,9 @@ html {
     }
 
     @media screen and (max-width: 767px) {
-        display: none;
+        order: -1;
     }
 }
-
-.discount_cell--hidden {
-    height: 70px;
-    display: none;
-    justify-content: space-between;
-    align-items: flex-end;
-    border-bottom: 1px solid $addit_color_dark;
-    padding-bottom: 10px;
-
-    a {
-        text-align: end;
-    }
-
-    @media screen and (max-width: 767px) {
-        display: flex;
-    }
-}
-
 
 .adress_row {
     display: flex;
@@ -2149,9 +2132,8 @@ html {
         width: 55%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         border-bottom: 1px solid $addit_color_dark;
-        padding-bottom: 5px;
     }
 
     .house_cell {
@@ -2159,9 +2141,8 @@ html {
         width: 22%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         border-bottom: 1px solid $addit_color_dark;
-        padding-bottom: 5px;
     }
 
     .flat_cell {
@@ -2169,9 +2150,8 @@ html {
         width: 22%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         border-bottom: 1px solid $addit_color_dark;
-        padding-bottom: 5px;
     }
 }
 
@@ -2302,17 +2282,13 @@ html {
         position: relative;
 
         .order_item_foto {
-            width: calc((100% / 12) + 15px);
+            width: auto;
+            margin-right: 15px;
             height: 100%;
             display: flex;
             justify-content: flex-start;
             align-items: center;
             flex-shrink: 0;
-
-            @media screen and (max-width: 767px) {
-                width: auto;
-                margin-right: 18px;
-            }
 
             .item_foto {
                 width: 65px;
@@ -2327,7 +2303,7 @@ html {
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: flex-start;
 
             @media screen and (max-width: 767px) {
@@ -2442,6 +2418,10 @@ html {
     align-items: flex-end;
     padding-bottom: 20px;
 
+    // @media screen and (max-width: 767px) {
+    //     padding-top: 35px;
+    // }
+
     .total_cost__item {
         display: flex;
         align-items: center;
@@ -2450,12 +2430,17 @@ html {
         height: 85px;
         border-bottom: 1px solid $addit_color_dark;
 
+        &:first-child {
+            border-bottom: none;
+        }
+
         @media screen and (max-width: 920px) {
             height: 55px;
         }
 
         @media screen and (max-width: 767px) {
-            width: calc(100% - 83px);
+            width: 100%;
+            height: 35px;
         }
 
         .total_item_name {
@@ -2511,7 +2496,7 @@ html {
         width: calc(100% / 12 * 5);
 
         @media screen and (max-width: 767px) {
-            width: calc(100% - 83px)
+            width: 100%;
         }
     }
 }
@@ -2671,17 +2656,21 @@ html {
                 justify-content: space-between;
             }
         }
-
-        .order_item_foto {
-            width: calc(100% / 10);
-        }
     
         .order_item_info {
             width: calc(100% / 10 * 3.5);
+
+            @media screen and (max-width: 767px) {
+                width: 25%;
+            }
         }
     
         .order_item_price {
             width: calc(100% / 10 * 2.5);
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+            }
         }
     
         .order_item_count {
@@ -2689,12 +2678,17 @@ html {
 
             @media screen and (max-width: 767px) {
                 justify-content: center;
+                width: auto;
             }
         }
     
         .order_item_cost {
             width: calc(100% / 10);
             justify-content: flex-end;
+
+            @media screen and (max-width: 767px) {
+                width: auto;
+            }
         }
     }
 
@@ -2758,12 +2752,25 @@ html {
     justify-content: space-between;
     column-gap: 20px;
 
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
     .block_tabs {
         width: calc(100% / 12 * 9);
         flex-grow: 1;
+
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
         
         .tab_active {
             width: calc(100% / 3);
+
+            @media screen and (max-width: 767px) {
+                width: 100%;
+            }
         }
         
         .tab_inactive_right {
@@ -2775,15 +2782,22 @@ html {
         }
     }
 
-
     .row_btn {
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
         margin-top: 55px;
 
+        @media screen and (max-width: 767px) {
+            margin-top: 0;
+        }
+
         .btn_main {
             width: 417px;
+
+            @media screen and (max-width: 767px) {
+                width: calc(100% - 40px);
+            }
         }
     }
 
@@ -2791,11 +2805,23 @@ html {
         width: calc((100% / 12 * 3) - 20px);
         margin-top: 35px;
 
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 0;
+            margin-bottom: 35px;
+        }
+
         .total_cost__item {
             justify-content: space-between;
             width: 100%;
             height: 55px;
             border-bottom: 1px solid $addit_color_dark;
+
+            @media screen and (max-width: 767px) {
+                height: 35px;
+            }
 
             &:nth-child(-n+2) {
                 border-bottom: none;
@@ -2816,11 +2842,20 @@ html {
         padding-top: 55px;
         padding-left: 20px;
         padding-bottom: 20px;
+
+        @media screen and (max-width: 767px) {
+            padding-top: 35px;
+        }
     }
 
     .delivery_checkbox {
         display: flex;
         padding-left: 20px;
+
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+            row-gap: 5px;
+        }
 
         .сustom_сheckbox:checked + .main_text_addit_dark {
             color: $main_color_dark;
@@ -2832,6 +2867,10 @@ html {
 
         .сustom_сheckbox {
             margin-left: 115px;
+
+            @media screen and (max-width: 767px) {
+                margin-left: 0px;
+            }
 
             &:first-child {
                 margin-left: 0;
@@ -2861,6 +2900,10 @@ html {
         flex-grow: 1;
         margin-left: 20px;
         margin-bottom: 20px;
+
+        @media screen and (max-width: 767px) {
+            width: calc(100% - 40px);
+        }
     }
 
     .hint {
@@ -2875,6 +2918,16 @@ html {
         left: 122px;
         width: 200px;
         transition: 0.3s;
+
+        @media screen and (max-width: 920px) {
+            left: 110px;
+        }
+
+        @media screen and (max-width: 767px) {
+            left: 70px;
+            top: 22px;
+            width: 100px;
+        }
     }
 
     .hint_icon {
@@ -3208,6 +3261,10 @@ html {
 
 .btn_main--margin {
     margin-bottom: 40px;
+}
+
+.margin_top-15 {
+    margin-top: 15px;
 }
 
 .btn_in_basket {
