@@ -1272,6 +1272,12 @@ html {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: sticky;
+    top: 130px;
+    left: 0;
+    right: 0;
+    background-color: $main_color_light;
+    z-index: 1000;
 
     a::after {
         content: '|';
@@ -1285,6 +1291,7 @@ html {
 
     @media screen and (max-width: 920px) {
         height: 70px;
+        top: 85px;
     }
 
     @media screen and (max-width: 767px) {
@@ -3454,6 +3461,23 @@ html {
 
     @media screen and (max-width: 767px) {
         height: 50px;
+    }
+}
+
+.fixed_panel {
+    position: sticky;
+    top: 215px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: $main_color_light;
+
+    @media screen and (max-width: 920px) {
+        top: 155px;
+    }
+
+    @media screen and (max-width: 767px) {
+        top: 135px;
     }
 }
 
