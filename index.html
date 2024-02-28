@@ -37,8 +37,8 @@
                     </a>
                 </div>
                 <div class="location">
-                    <a href="main+geolocation.html" class="header_text_light">Екатеринбург</a>
-                    <a href="main+geolocation.html">
+                    <a href="#" class="header_text_light">Екатеринбург</a>
+                    <a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M10.0025 9.775C10.3736 9.775 10.6903 9.64306 10.9525 9.37917C11.2147 9.11528 11.3458 8.79778 11.3458 8.42667C11.3458 8.05556 11.2139 7.73889 10.95 7.47667C10.6856 7.21444 10.3681 7.08333 9.9975 7.08333C9.62695 7.08333 9.31028 7.21556 9.0475 7.48C8.78528 7.74389 8.65417 8.06139 8.65417 8.4325C8.65417 8.80361 8.78611 9.12028 9.05 9.3825C9.31445 9.64472 9.63195 9.77583 10.0025 9.77583V9.775ZM10 16.3983C11.5667 15.035 12.805 13.6486 13.715 12.2392C14.625 10.8292 15.08 9.60972 15.08 8.58083C15.08 7.05639 14.5975 5.79806 13.6325 4.80583C12.6675 3.81361 11.4567 3.3175 10 3.3175C8.54389 3.3175 7.33306 3.81333 6.3675 4.805C5.40195 5.79667 4.91945 7.055 4.92 8.58C4.92 9.60889 5.375 10.8283 6.285 12.2383C7.19556 13.6478 8.43389 15.0339 10 16.3967V16.3983ZM10 17.5167C8.04167 15.785 6.56667 14.17 5.575 12.6717C4.58278 11.1733 4.08667 9.80972 4.08667 8.58083C4.08667 6.81806 4.66056 5.36417 5.80834 4.21917C6.95667 3.07306 8.35389 2.5 10 2.5C11.6461 2.5 13.0433 3.07278 14.1917 4.21833C15.3394 5.36333 15.9133 6.81722 15.9133 8.58C15.9133 9.80889 15.4175 11.1725 14.4258 12.6708C13.4336 14.1692 11.9583 15.7842 10 17.5158V17.5167Z" fill="white" />
                         </svg>
@@ -48,14 +48,28 @@
         </div>
     </div>
     <!-- Шапка серая конец -->
+    <!-- Окно геолокации начало -->
+    <div class="dark_window_location">
+        <div class="pop-up_form_500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="close_icon">
+                <path d="M5.33316 15.2565L4.74316 14.6665L9.40983 9.99983L4.74316 5.33316L5.33316 4.74316L9.99983 9.40983L14.6665 4.74316L15.2565 5.33316L10.5898 9.99983L15.2565 14.6665L14.6665 15.2565L9.99983 10.5898L5.33316 15.2565Z" fill="#393939" />
+            </svg>
+            <p class="main_text_contrast uppercase pop-up_title">введите название города</p>
+            <form method="GET" action="#" class="choose_city">
+                <input type="text" placeholder="Название города" class="input_city">
+                <a href="#" class="main_text">Ok</a>
+            </form>
+        </div>
+    </div>
+    <!-- Окно геолокации конец -->
     <!-- Шапка светлая начало -->
     <div class="header_light">
         <div class="container">
             <div class="nav_section_left">
                 <a href="index.html" class="logo">Logo</a>
                 <div class="nav_menu">
-                    <a href="main+dropdown_women.html" class="main_text nav_menu__women">Женщины</a>
-                    <a href="main+dropdown_men.html" class="main_text nav_menu__men">Мужчины</a>
+                    <div class="main_text nav_menu__women">Женщины</div>
+                    <div class="main_text nav_menu__men">Мужчины</div>
                     <a href="catalog_sales.html" class="main_text_addit_first">Sale</a>
                 </div>
             </div>
@@ -89,6 +103,115 @@
         </div>
     </div>
     <!-- Шапка светлая конец -->
+    <!-- Выпадающее меню Женщины начало -->
+    <div id="dropdown_menu_women" class="dropdown_menu">
+        <div class="container container_menu">
+            <div class="dropdown_menu__row">
+                <div class="dropdown_menu__column">
+                    <a href="catalog_opened_filters+checkbox+active.html" class="main_text_title">одежда</a>
+                    <div class="dropdown_menu_category">
+                        <a href="#" class="main_text">Верхняя одежда</a>
+                        <a href="#" class="main_text">Трикотаж</a>
+                        <a href="#" class="main_text">Пиджаки</a>
+                        <a href="#" class="main_text">Платья и комбинезоны</a>
+                        <a href="#" class="main_text">Футболки и топы</a>
+                        <a href="#" class="main_text">Рубашки</a>
+                        <a href="#" class="main_text">Юбки</a>
+                        <a href="#" class="main_text">Брюки</a>
+                        <a href="#" class="main_text">Джинсы</a>
+                        <a href="#" class="main_text">Вся одежда</a>
+                    </div>
+                </div>
+                <div class="dropdown_menu__column">
+                    <a href="#" class="main_text_title">обувь</a>
+                    <div class="dropdown_menu_category">
+                        <a href="#" class="main_text">Обувь на каблуке</a>
+                        <a href="#" class="main_text">Сникеры</a>
+                        <a href="#" class="main_text">Сапоги</a>
+                        <a href="#" class="main_text">Туфли без каблука</a>
+                        <a href="#" class="main_text">Сандалии и босоножки</a>
+                        <a href="#" class="main_text">Вся обувь</a>
+                    </div>
+                </div>
+                <div class="dropdown_menu__column">
+                    <a href="#" class="main_text_title">сумки</a>
+                    <div class="dropdown_menu_category">
+                        <a href="#" class="main_text">Мини-сумки</a>
+                        <a href="#" class="main_text">Сумки на плечо</a>
+                        <a href="#" class="main_text">Сумки с короткими ручками</a>
+                        <a href="#" class="main_text">Рюкзаки</a>
+                        <a href="#" class="main_text">Шоперы</a>
+                        <a href="#" class="main_text">Все сумки</a>
+                    </div>
+                </div>
+                <div class="dropdown_menu__column">
+                    <a href="#" class="main_text_title">аксессуары</a>
+                    <div class="dropdown_menu_category">
+                        <a href="#" class="main_text">Головные уборы</a>
+                        <a href="#" class="main_text">Шарфы</a>
+                        <a href="#" class="main_text">Ремни</a>
+                        <a href="#" class="main_text">Все аксессуары</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown_menu__row">
+                <a href="total_looks.html" class="main_text_title">готовые образы</a>
+            </div>
+        </div>
+    </div>
+    <!-- Выпадающее меню Женщины конец -->
+    <!-- Выпадающее меню Мужчины начало -->
+    <div id="dropdown_menu_men" class="dropdown_menu">
+        <div class="container container_menu">
+            <div class="dropdown_menu__row">
+                <div class="dropdown_menu__column">
+                    <a href="#" class="main_text_title">одежда</a>
+                    <div class="dropdown_menu_category">
+                        <a href="#" class="main_text">Верхняя одежда</a>
+                        <a href="#" class="main_text">Трикотаж</a>
+                        <a href="#" class="main_text">Пиджаки</a>
+                        <a href="#" class="main_text">Футболки и топы</a>
+                        <a href="#" class="main_text">Рубашки</a>
+                        <a href="#" class="main_text">Брюки</a>
+                        <a href="#" class="main_text">Джинсы</a>
+                        <a href="#" class="main_text">Вся одежда</a>
+                    </div>
+                </div>
+                <div class="dropdown_menu__column">
+                    <a href="#" class="main_text_title">обувь</a>
+                    <div class="dropdown_menu_category">
+                        <a href="#" class="main_text">Сникеры</a>
+                        <a href="#" class="main_text">Мокасины</a>
+                        <a href="#" class="main_text">Ботинки</a>
+                        <a href="#" class="main_text">Туфли на шнуровке</a>
+                        <a href="#" class="main_text">Вся обувь</a>
+                    </div>
+                </div>
+                <div class="dropdown_menu__column">
+                    <a href="#" class="main_text_title">сумки</a>
+                    <div class="dropdown_menu_category">
+                        <a href="#" class="main_text">Дорожные</a>
+                        <a href="#" class="main_text">Рюкзаки</a>
+                        <a href="#" class="main_text">Портфели</a>
+                        <a href="#" class="main_text">Все сумки</a>
+                    </div>
+                </div>
+                <div class="dropdown_menu__column">
+                    <a href="#" class="main_text_title">аксессуары</a>
+                    <div class="dropdown_menu_category">
+                        <a href="#" class="main_text">Головные уборы</a>
+                        <a href="#" class="main_text">Шарфы</a>
+                        <a href="#" class="main_text">Ремни</a>
+                        <a href="#" class="main_text">Все аксессуары</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown_menu__row">
+                <a href="#" class="main_text_title">готовые образы</a>
+            </div>
+        </div>
+    </div>
+    <!-- Выпадающее меню Мужчины конец -->
     <!-- Шапка мобильной версии начало -->
     <div class="header_mobile">
         <div class="container">
@@ -186,6 +309,30 @@
         </div>
     </div>
     <!-- Шапка мобильной версии конец -->
+    <!-- Всплывающее окно подписки начало -->
+    <div class="dark_window_subscribe">
+        <div class="pop-up_form_500 pop_up_subscribe">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="close_icon">
+                <path d="M5.33316 15.2565L4.74316 14.6665L9.40983 9.99983L4.74316 5.33316L5.33316 4.74316L9.99983 9.40983L14.6665 4.74316L15.2565 5.33316L10.5898 9.99983L15.2565 14.6665L14.6665 15.2565L9.99983 10.5898L5.33316 15.2565Z" fill="#393939" />
+            </svg>
+            <div class="subscribe__section_text">
+                <p class="main_text_contrast uppercase pop-up_title">Подпишись на нашу рассылку<br> и получи скидку на первый заказ</p>
+            </div>
+            <div class="subscribe__section_form">
+                <form method="GET" action="#" class="subscribe_form">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="letter">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 4H3C2.86739 4 2.74021 4.05268 2.64645 4.14645C2.55268 4.24021 2.5 4.36739 2.5 4.5V15.5C2.5 15.6326 2.55268 15.7598 2.64645 15.8536C2.74021 15.9473 2.86739 16 3 16H17C17.1326 16 17.2598 15.9473 17.3536 15.8536C17.4473 15.7598 17.5 15.6326 17.5 15.5V4.5C17.5 4.36739 17.4473 4.24021 17.3536 4.14645C17.2598 4.05268 17.1326 4 17 4ZM3.5 15V5H16.5V15H3.5Z" fill="#393939" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.324 4.88L10.279 10.88C10.1883 10.9573 10.073 10.9997 9.95383 10.9995C9.83466 10.9994 9.71947 10.9566 9.62902 10.879L2.67302 4.879C2.59559 4.81237 2.54042 4.72362 2.51494 4.62469C2.48947 4.52577 2.4949 4.42141 2.53052 4.32567C2.56614 4.22992 2.63023 4.14739 2.71417 4.08916C2.79811 4.03094 2.89786 3.99982 3.00002 4H17C17.1021 4.0002 17.2018 4.03166 17.2855 4.09017C17.3692 4.14867 17.433 4.23141 17.4683 4.32725C17.5036 4.42309 17.5086 4.52743 17.4829 4.62625C17.4571 4.72507 17.4016 4.81362 17.324 4.88ZM15.642 5H4.34502L9.95702 9.841L15.642 5Z" fill="#393939" />
+                    </svg>
+                    <input type="text" placeholder="Введите e-mail" name="e-mail" class="input_e-mail">
+                    <a href="#" class="main_text">Ok</a>
+                </form>
+                <div class="small_text"> подписываясь на новости, вы соглашаетесь с <a href="privacy_policy.html" class="underline small_text">политикой конфиденциальности и условиями обработки персональных данных</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Всплывающее окно подписки конец -->
     <!-- Главный баннер начало-->
     <div class="first_page">
         <div class="container first_page__title">
@@ -403,32 +550,6 @@
         </div>
     </div>
     <!-- Блок подписки конец-->
-    <!-- Всплывающее окно подписки начало -->
-    <div class="dark_window_subscribe">
-        <div class="pop-up_form_500 pop_up_subscribe">
-            <a href="index.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="close_icon">
-                    <path d="M5.33316 15.2565L4.74316 14.6665L9.40983 9.99983L4.74316 5.33316L5.33316 4.74316L9.99983 9.40983L14.6665 4.74316L15.2565 5.33316L10.5898 9.99983L15.2565 14.6665L14.6665 15.2565L9.99983 10.5898L5.33316 15.2565Z" fill="#393939" />
-                </svg>
-            </a>
-            <div class="subscribe__section_text">
-                <p class="main_text_contrast uppercase pop-up_title">Подпишись на нашу рассылку<br> и получи скидку на первый заказ</p>
-            </div>
-            <div class="subscribe__section_form">
-                <form method="GET" action="#" class="subscribe_form">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="letter">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 4H3C2.86739 4 2.74021 4.05268 2.64645 4.14645C2.55268 4.24021 2.5 4.36739 2.5 4.5V15.5C2.5 15.6326 2.55268 15.7598 2.64645 15.8536C2.74021 15.9473 2.86739 16 3 16H17C17.1326 16 17.2598 15.9473 17.3536 15.8536C17.4473 15.7598 17.5 15.6326 17.5 15.5V4.5C17.5 4.36739 17.4473 4.24021 17.3536 4.14645C17.2598 4.05268 17.1326 4 17 4ZM3.5 15V5H16.5V15H3.5Z" fill="#393939" />
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.324 4.88L10.279 10.88C10.1883 10.9573 10.073 10.9997 9.95383 10.9995C9.83466 10.9994 9.71947 10.9566 9.62902 10.879L2.67302 4.879C2.59559 4.81237 2.54042 4.72362 2.51494 4.62469C2.48947 4.52577 2.4949 4.42141 2.53052 4.32567C2.56614 4.22992 2.63023 4.14739 2.71417 4.08916C2.79811 4.03094 2.89786 3.99982 3.00002 4H17C17.1021 4.0002 17.2018 4.03166 17.2855 4.09017C17.3692 4.14867 17.433 4.23141 17.4683 4.32725C17.5036 4.42309 17.5086 4.52743 17.4829 4.62625C17.4571 4.72507 17.4016 4.81362 17.324 4.88ZM15.642 5H4.34502L9.95702 9.841L15.642 5Z" fill="#393939" />
-                    </svg>
-                    <input type="text" placeholder="Введите e-mail" name="e-mail" class="input_e-mail">
-                    <a href="#" class="main_text">Ok</a>
-                </form>
-                <div class="small_text"> подписываясь на новости, вы соглашаетесь с <a href="privacy_policy.html" class="underline small_text">политикой конфиденциальности и условиями обработки персональных данных</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Всплывающее окно подписки конец -->
     <!-- Блок подписки конец -->
     <!-- Блок с баннерами начало -->
     <div class="container main_page_banners">
@@ -726,6 +847,7 @@
     <img src="./img/icons/btn_up.png" alt="up">
 </a>
 <!-- Кнопка НАВЕРХ конец -->
+<script src="main.js"></script>
 </body>
 
 </html>

@@ -15,7 +15,7 @@
             text: 'Женщины'
         },
         {
-            link: 'catalog_closed_filters.html',
+            link: 'catalog_opened_filters+checkbox+active.html',
             text: 'Одежда'
         }
     ]
@@ -34,130 +34,142 @@
     <div class="side_panel_filters">
 
         <div class="filter_section">
+
             <div class="filter_section__name">
                 <p class="main_text uppercase">категория</p>
-                <a href="catalog_opened_filters+active.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow_opened">
                     <path d="M14.1668 11.667L10.0002 7.50033L5.8335 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow_closed">
+                    <path d="M5.83366 8.33398L10.0003 12.5007L14.167 8.33398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
+
             <form method="GET" action="#" class="filter_section_items">
-                <input type="checkbox" id="outerwear" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="outerwear" name="category" class="сustom_сheckbox" value="Верхняя одежда">
                 <label for="outerwear" class="main_text">Верхняя одежда</label>
-                <input type="checkbox" id="knitwear" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="knitwear" name="category" class="сustom_сheckbox" value="Трикотаж">
                 <label for="knitwear" class="main_text">Трикотаж</label>
-                <input type="checkbox" id="jackets" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="jackets" name="category" class="сustom_сheckbox" value="Пиджаки">
                 <label for="jackets" class="main_text">Пиджаки</label>
-                <input type="checkbox" id="dresses" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="dresses" name="category" class="сustom_сheckbox" value="Платья и комбинезоны">
                 <label for="dresses" class="main_text">Платья и комбинезоны</label>
-                <input type="checkbox" id="t-shirts" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="t-shirts" name="category" class="сustom_сheckbox" value="Футболки и топы">
                 <label for="t-shirts" class="main_text">Футболки и топы</label>
-                <input type="checkbox" id="shirts" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="shirts" name="category" class="сustom_сheckbox" value="Рубашки">
                 <label for="shirts" class="main_text">Рубашки</label>
-                <input type="checkbox" id="skirts" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="skirts" name="category" class="сustom_сheckbox" value="Юбки">
                 <label for="skirts" class="main_text">Юбки</label>
-                <input type="checkbox" id="trousers" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="trousers" name="category" class="сustom_сheckbox" value="Брюки">
                 <label for="trousers" class="main_text">Брюки</label>
-                <input type="checkbox" id="jeans" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="jeans" name="category" class="сustom_сheckbox" value="Джинсы">
                 <label for="jeans" class="main_text">Джинсы</label>
-                <input type="checkbox" id="all_clothes" name="category" class="сustom_сheckbox">
+                <input type="checkbox" id="all_clothes" name="category" class="сustom_сheckbox" value="Вся одежда">
                 <label for="all_clothes" class="main_text">Вся одежда</label>
             </form>
         </div>
 
         <div class="filter_section">
+
             <div class="filter_section__name">
                 <p class="main_text uppercase">цвет</p>
-                <a href="catalog_opened_filters+active.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow">
-                    <path d="M14.1668 11.667L10.0002 7.50033L5.8335 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow_opened">
+                <path d="M14.1668 11.667L10.0002 7.50033L5.8335 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow_closed">
+                    <path d="M5.83366 8.33398L10.0003 12.5007L14.167 8.33398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
+
             <form method="GET" action="#" class="filter_section_items">
-                <input type="checkbox" id="white" name="color" class="сustom_сheckbox">
+                <input type="checkbox" id="white" name="color" class="сustom_сheckbox" value="Белый">
                 <label for="white" class="main_text">Белый</label>
-                <input type="checkbox" id="beige" name="color" class="сustom_сheckbox">
+                <input type="checkbox" id="beige" name="color" class="сustom_сheckbox" value="Бежевый">
                 <label for="beige" class="main_text">Бежевый</label>
-                <input type="checkbox" id="green" name="color" class="сustom_сheckbox">
+                <input type="checkbox" id="green" name="color" class="сustom_сheckbox" value="Зеленый">
                 <label for="green" class="main_text">Зеленый</label>
-                <input type="checkbox" id="brown" name="color" class="сustom_сheckbox">
+                <input type="checkbox" id="brown" name="color" class="сustom_сheckbox" value="Коричневый">
                 <label for="brown" class="main_text">Коричневый</label>
-                <input type="checkbox" id="grey" name="color" class="сustom_сheckbox">
+                <input type="checkbox" id="grey" name="color" class="сustom_сheckbox" value="Серый">
                 <label for="grey" class="main_text">Серый</label>
-                <input type="checkbox" id="blue" name="color" class="сustom_сheckbox">
+                <input type="checkbox" id="blue" name="color" class="сustom_сheckbox" value="Синий">
                 <label for="sblue" class="main_text">Синий</label>
             </form>
         </div>
 
         <div class="filter_section">
+
             <div class="filter_section__name">
                 <p class="main_text uppercase">размер</p>
-                <a href="catalog_opened_filters+active.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow_opened">
                     <path d="M14.1668 11.667L10.0002 7.50033L5.8335 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow_closed">
+                    <path d="M5.83366 8.33398L10.0003 12.5007L14.167 8.33398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
+
             <form method="GET" action="#" class="filter_section_items">
-                <input type="checkbox" id="XXS" name="size" class="сustom_сheckbox">
+                <input type="checkbox" id="XXS" name="size" class="сustom_сheckbox" value="размер XXS">
                 <label for="XXS" class="main_text">XXS</label>
-                <input type="checkbox" id="XS" name="size" class="сustom_сheckbox">
+                <input type="checkbox" id="XS" name="size" class="сustom_сheckbox" value="размер XS">
                 <label for="XS" class="main_text">XS</label>
-                <input type="checkbox" id="S" name="size" class="сustom_сheckbox">
+                <input type="checkbox" id="S" name="size" class="сustom_сheckbox" value="размер S">
                 <label for="S" class="main_text">S</label>
-                <input type="checkbox" id="M" name="size" class="сustom_сheckbox">
+                <input type="checkbox" id="M" name="size" class="сustom_сheckbox" value="размер M">
                 <label for="M" class="main_text">M</label>
-                <input type="checkbox" id="L" name="size" class="сustom_сheckbox">
+                <input type="checkbox" id="L" name="size" class="сustom_сheckbox" value="размер L">
                 <label for="L" class="main_text">L</label>
-                <input type="checkbox" id="XL" name="size" class="сustom_сheckbox">
+                <input type="checkbox" id="XL" name="size" class="сustom_сheckbox" value="размер XL">
                 <label for="XL" class="main_text">XL</label>
-                <input type="checkbox" id="XXL" name="size" class="сustom_сheckbox">
+                <input type="checkbox" id="XXL" name="size" class="сustom_сheckbox" value="размер XXL">
                 <label for="XXL" class="main_text">XXL</label>
             </form>
         </div>
 
         <div class="filter_section">
+
             <div class="filter_section__name">
                 <p class="main_text uppercase">материал</p>
-                <a href="catalog_opened_filters+active.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow_opened">
                     <path d="M14.1668 11.667L10.0002 7.50033L5.8335 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="filter_arrow_closed">
+                    <path d="M5.83366 8.33398L10.0003 12.5007L14.167 8.33398" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
+
             <form method="GET" action="#" class="filter_section_items">
-                <input type="checkbox" id="angora" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="angora" name="material" class="сustom_сheckbox" value="Ангора">
                 <label for="angora" class="main_text">Ангора</label>
-                <input type="checkbox" id="viscose" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="viscose" name="material" class="сustom_сheckbox" value="Вискоза">
                 <label for="viscose" class="main_text">Вискоза</label>
-                <input type="checkbox" id="artificial_leather" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="artificial_leather" name="material" class="сustom_сheckbox" value="Искусственная кожа">
                 <label for="artificial_leather" class="main_text">Искусственная кожа</label>
-                <input type="checkbox" id="cashmere" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="cashmere" name="material" class="сustom_сheckbox" value="Кашемир">
                 <label for="cashmere" class="main_text">Кашемир</label>
-                <input type="checkbox" id="flax" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="flax" name="material" class="сustom_сheckbox" value="Лён">
                 <label for="flax" class="main_text">Лён</label>
-                <input type="checkbox" id="genuine_leather" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="genuine_leather" name="material" class="сustom_сheckbox" value="Натуральная кожа">
                 <label for="genuine_leather" class="main_text">Натуральная кожа</label>
-                <input type="checkbox" id="polyester" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="polyester" name="material" class="сustom_сheckbox" value="Полиэстер">
                 <label for="polyester" class="main_text">Полиэстер</label>
-                <input type="checkbox" id="cotton" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="cotton" name="material" class="сustom_сheckbox" value="Хлопок">
                 <label for="cotton" class="main_text">Хлопок</label>
-                <input type="checkbox" id="silk" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="silk" name="material" class="сustom_сheckbox" value="Шелк">
                 <label for="silk" class="main_text">Шелк</label>
-                <input type="checkbox" id="wool" name="material" class="сustom_сheckbox">
+                <input type="checkbox" id="wool" name="material" class="сustom_сheckbox" value="Шерсть">
                 <label for="wool" class="main_text">Шерсть</label>
             </form>
         </div>
 
-        <a href="catalog_main.html" class="btn_main">
+        <div class="btn_main apply_filters">
             <p class="main_text uppercase btn_text">применить</p>
-        </a>
+        </div>
 
-        <a href="catalog_main.html" class="btn_main">
+        <div class="btn_main clear_filters_all">
             <p class="main_text uppercase btn_text">очистить фильтры</p>
-        </a>
+        </div>
 
     </div>
 

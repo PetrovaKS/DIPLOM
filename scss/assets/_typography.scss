@@ -103,6 +103,18 @@
 
 // Светло-серый
 
+.main_text_addit_title {
+    color: $addit_color_dark;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 920px) {
+        font-size: 14px;
+    }
+}
+
 .main_text_addit_dark {
     color: $addit_color_dark;
     font-size: 16px;
