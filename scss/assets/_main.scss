@@ -89,7 +89,7 @@ html {
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1001;
+    z-index: 1500;
 
     @media screen and (max-width: 920px) {
         & {
@@ -167,7 +167,7 @@ html {
     position: sticky;
     top: 45px;
     background-color: $main_color_light;
-    z-index: 1001;
+    z-index: 1500;
 
     @media screen and (max-width: 920px) {
         & {
@@ -277,7 +277,7 @@ html {
     position: sticky;
     top: 0;
     background-color: $main_color_light;
-    z-index: 1001;
+    z-index: 1500;
 
     @media screen and (max-width: 920px) {
         display: flex;
@@ -904,10 +904,12 @@ html {
 }
 
 .btn_up {
+    display: none;
     position: fixed;
     right: 30px;
     bottom: 20px;
     z-index: 999;
+    cursor: pointer;
 
     @media screen and (max-width: 920px) {
         right: 10px;
@@ -1272,12 +1274,6 @@ html {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    position: sticky;
-    top: 130px;
-    left: 0;
-    right: 0;
-    background-color: $main_color_light;
-    z-index: 1000;
 
     a::after {
         content: '|';
@@ -1334,7 +1330,7 @@ html {
     padding-bottom: 85px;
     position: fixed;
     top: -475px;
-    z-index: 1000;
+    z-index: 1001;
 
     @media screen and (max-width: 920px) {
         display: none;
@@ -1379,55 +1375,67 @@ html {
 }
 
 .dropdown--active {
-    animation: dropdown_slide_show 1s forwards;
+    animation: dropdown_slide_show 0.5s forwards;
 }
 
 .dropdown--inactive {
-    animation: dropdown_slide_show_reverse 1s forwards;
+    animation: dropdown_slide_show_reverse 0.5s forwards;
 }
 
 .dark_window {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     background-color: rgba($addit_color_dark, .7);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 9980;
+    padding: 30px 10px;
 }
 
 .dark_window_add_to_basket {
     display: none;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     min-height: 100vh;
     background-color: rgba($addit_color_dark, .7);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 9980;
+    padding: 30px 10px;
 }
 
 .dark_window_location {
     display: none;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     min-height: 100vh;
     background-color: rgba($addit_color_dark, .7);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 9980;
+    padding: 30px 10px;
 }
 
 .dark_window_subscribe {
     display: none;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     min-height: 100vh;
     background-color: rgba($addit_color_dark, .7);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 9980;
+    padding: 30px 10px;
 }
 
 .pop-up_title {
@@ -1436,20 +1444,20 @@ html {
 
 .close_icon {
     position: absolute;
-    top: -20px;
-    right: -20px;
+    top: 5px;
+    right: 5px;
     cursor: pointer;
+    z-index: 10000;
 }
 
 .pop-up_form_500 {
-    width: 500px;
-    height: 230px;
+    width: 100%;
+    max-width: 500px;
     background-color: $main_color_light;
-    margin: 0 auto;
-    margin-top: 157px;
     position: relative;
     padding: 60px 35px;
     padding-bottom: 85px;
+    overflow: auto;
     
     display: flex;
     flex-direction: column;
@@ -1457,7 +1465,7 @@ html {
     justify-content: flex-start;
 
     @media screen and (max-width: 767px) {
-        width: calc(100% - 60px);
+        width: calc(100% - 20px);
     }
 
     .btn_main {
@@ -1474,10 +1482,6 @@ html {
             width: 100%;
         }
     }
-}
-
-.pop_up_subscribe {
-    height: 308px;
 }
 
 .add_to_basket {
@@ -1749,10 +1753,10 @@ html {
     .sort_title {
         display: flex;
         align-items: center;
+        gap: 10px;
 
         .sorting_property {
             cursor: pointer;
-            padding-right: 10px;
         }
 
         .selected_sort{
@@ -1762,6 +1766,14 @@ html {
         .sorting_icon {
             display: flex;
             cursor: pointer;
+        }
+
+        @media screen and (max-width: 767px) {
+            height: 50px;
+    
+            .main_text {
+                font-size: 12px;
+            }
         }
 
     }
@@ -2362,26 +2374,28 @@ html {
 }
 
 .pop-up_form_794 {
-    width: 794px;
+    width: 100%;
+    max-width: 794px;
     background-color: $main_color_light;
-    margin: 0 auto;
-    margin-top: 130px;
+    width: 100%;
+    overflow: auto;
+
     position: relative;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
     @media screen and (max-width: 767px) {
-        width: calc(100% - 60px);
+        width: calc(100% - 20px);
     }
 }
 
 .pop_up_discount {
-    height: 360px;
     padding: 60px 20px 85px 20px;
     text-align: center;
+    justify-content: flex-start;
+    row-gap: 10px;
 }
 
 .log_in_stroke {
@@ -3102,7 +3116,7 @@ html {
     flex-grow: 1;
     margin: 0 auto;
     padding-top: 60px;
-    padding-bottom: 85px;
+    padding-bottom: 60px;
 
     @media screen and (max-width: 767px) {
         width: calc(100% - 40px);
@@ -3157,16 +3171,22 @@ html {
 }
 
 .pop_up_block_tabs {
-    width: 794px;
+    max-width: 794px;
+    max-height: calc(100vh - 60px);
+    width: 100%;
+    height: 100%;
     background-color: $main_color_light;
-    margin: 0 auto;
-    margin-top: 45px;
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 
     @media screen and (max-width: 920px) {
         width: calc(100% - 80px);
+    }
+
+    @media screen and (max-width: 767px) {
+        width: calc(100% - 20px);
     }
 }
 
@@ -3464,23 +3484,6 @@ html {
     }
 }
 
-.fixed_panel {
-    position: sticky;
-    top: 215px;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: $main_color_light;
-
-    @media screen and (max-width: 920px) {
-        top: 155px;
-    }
-
-    @media screen and (max-width: 767px) {
-        top: 135px;
-    }
-}
-
 
 @media screen and (max-width: 767px) {
     .catalog_women {
@@ -3502,4 +3505,42 @@ html {
     width: 100%;
     aspect-ratio: 430/320;
     object-fit: cover;
+}
+
+.full_width_breadcrumbs {
+    position: sticky;
+    top: 130px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: $main_color_light;
+
+    @media screen and (max-width: 920px) {
+        top: 85px;
+    }
+}
+
+.full_width {
+    position: sticky;
+    top: 215px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: $main_color_light;
+
+    @media screen and (max-width: 920px) {
+        top: 155px;
+    }
+
+    @media screen and (max-width: 767px) {
+        top: 135px;
+    }
+}
+
+.choose_city_btn {
+    cursor: pointer;
+}
+
+.inactive {
+    display: none;
 }

@@ -3,19 +3,21 @@
 
 let modalWindowSubscribeEl = document.querySelector('.dark_window_subscribe');
 
-if (!localStorage.getItem('counterOpenWindow')) {
+if (!sessionStorage.getItem('counterOpenWindow')) {
     setTimeout (() => {
         modalWindowSubscribeEl.style.display='flex';
-        window.localStorage.setItem('counterOpenWindow', '1');
+        window.sessionStorage.setItem('counterOpenWindow', '1');
     }, 5000);
 }
 
-if (localStorage.getItem('counterOpenWindow') == '1') {
+if (sessionStorage.getItem('counterOpenWindow') == '1') {
     setTimeout (() => {
         modalWindowSubscribeEl.style.display='flex';
-        window.localStorage.setItem('counterOpenWindow', '2');
+        window.sessionStorage.setItem('counterOpenWindow', '2');
     }, 15000);
 }
+
+  
 
 // закрытие модальных окон всех
 
@@ -24,7 +26,11 @@ for (let i = 0; i < closeIconEl.length; i++) {
     closeIconEl[i].addEventListener('click', function () {
         modalWindowSubscribeEl.style.display = 'none';
         modalWindowLocationEl.style.display = 'none';
-        modalWindowAddToBasketEl.style.display = 'none';
+        if (modalWindowAddToBasketEl) {
+            modalWindowAddToBasketEl.style.display = 'none';
+        }
+        // При закрытии модального окна разрешаем прокрутку
+        document.body.style.overflow = '';
     })
 }
 
@@ -36,6 +42,79 @@ let locationEl = document.querySelector('.location');
 
 locationEl.addEventListener('click', () => {
     modalWindowLocationEl.style.display = 'flex';
+    // Блокируем прокрутку body
+    document.body.style.overflow = 'hidden';
+})
+
+
+// выбор города в геолокации
+
+let chooseCityEl = document.querySelector('.input_city');
+let chooseCityBtnEl = document.querySelector('.choose_city_btn');
+let choosedLocationEl = document.querySelector('.choosed_location');
+
+let footerEkatEl = document.querySelector('.footer_ekat');
+let footerRegionEl = document.querySelector('.footer_region');
+
+let deliveryEkbEl = document.querySelector('.delivery_ekb');
+let deliveryRegionEl = document.querySelector('.delivery_region');
+
+let contactsEkbEl = document.querySelector('.contacts_ekb');
+let contactsRegionEl = document.querySelector('.contacts_region');
+
+choosedLocationEl.textContent = window.localStorage.getItem('city');
+
+checkCity();
+
+function checkCity() {
+    // изменение футера, контактов и раздела доставки в зависимости от города
+    if (choosedLocationEl.textContent == 'ЕКАТЕРИНБУРГ') {
+        footerRegionEl.classList.add('inactive');
+        footerEkatEl.classList.remove('inactive');
+
+        if (deliveryRegionEl || deliveryEkbEl) {
+        deliveryRegionEl.classList.add('inactive');
+        deliveryEkbEl.classList.remove('inactive');
+        }
+
+        if (contactsRegionEl || contactsEkbEl) {
+        contactsRegionEl.classList.add('inactive');
+        contactsEkbEl.classList.remove('inactive');
+        }
+    }
+    else {
+        footerRegionEl.classList.remove('inactive');
+        footerEkatEl.classList.add('inactive');
+
+        if (deliveryRegionEl || deliveryEkbEl) {
+            deliveryRegionEl.classList.remove('inactive');
+            deliveryEkbEl.classList.add('inactive');
+        }
+
+        if (contactsRegionEl || contactsEkbEl) {
+            contactsRegionEl.classList.remove('inactive');
+            contactsEkbEl.classList.add('inactive');
+        }
+    }
+}
+
+chooseCityEl.addEventListener("input", () => {
+    chooseCityEl.value = chooseCityEl.value.replace(/[0-9a-zA-Z]/g, "");
+});
+
+chooseCityBtnEl.addEventListener('click', () => {
+    if (chooseCityEl.value) {
+        choosedLocationEl.textContent = '';
+        choosedLocationEl.textContent = chooseCityEl.value.toUpperCase();
+
+        modalWindowLocationEl.style.display = 'none';
+
+        window.localStorage.setItem('city', choosedLocationEl.textContent);
+
+        chooseCityEl.value = '';
+    };
+
+    checkCity();
 })
 
 
@@ -136,35 +215,38 @@ if (document.querySelector('.sort_title')) {  //проверяем, есть л�
             sortingDropdownEl.style.display = 'flex';
         }
     });
+
+    // назначается значение выбранного из списка сортировки
+
+    let sortingItemsEl = document.querySelectorAll('.sorting_item');
+    let sortingPropertyEl = document.querySelector('.sorting_property');
+    let selectedSortEl = document.querySelector('.selected_sort');
+
+    let selectedSortingElement = window.sessionStorage.getItem('selectedSortingElement') || 'СОРТИРОВКА';
+    sortingPropertyEl.style.display = 'none';
+    selectedSortEl.textContent = selectedSortingElement;
+
+    for (let i = 0; i < sortingItemsEl.length; i++) {
+        sortingItemsEl[i].addEventListener('click', () => {
+            sortingPropertyEl.style.display = 'none';
+            selectedSortEl.textContent = '';
+            selectedSortEl.textContent = sortingItemsEl[i].textContent;
+
+            sortingItemsEl[i].closest('.sorting_dropdown').classList.remove('sorting_dropdown_show');
+            sortingItemsEl[i].closest('.sorting_dropdown').style.display = '';
+
+            window.sessionStorage.setItem('selectedSortingElement', selectedSortEl.textContent);
+        })
+    }
 }
-
-// назначается значение выбранного из списка сортировки
-
-let sortingItemsEl = document.querySelectorAll('.sorting_item');
-let sortingPropertyEl = document.querySelector('.sorting_property');
-let selectedSortEl = document.querySelector('.selected_sort');
-
-for (let i = 0; i < sortingItemsEl.length; i++) {
-    sortingItemsEl[i].addEventListener('click', () => {
-        sortingPropertyEl.style.display = 'none';
-        selectedSortEl.textContent = '';
-
-        let selectedSortItem = sortingItemsEl[i].cloneNode(true);
-        selectedSortEl.append(selectedSortItem);
-
-        sortingDropdownEl.classList.remove('sorting_dropdown_show');
-        sortingDropdownEl.style.display = '';
-    })
-}
-
 
 // фильтр каталога одежды: скрытие и открытие разделов и всего фильтра
 
-if (document.querySelector('.hide_filters') || document.querySelector('.show_filters')) {  //проверяем, есть ли фильтры на странице
-    let hideFiltersEl = document.querySelector('.hide_filters');
-    let showFiltersEl = document.querySelector('.show_filters');
-    let sidePanelFiltersEl = document.querySelector('.side_panel_filters');
+let hideFiltersEl = document.querySelector('.hide_filters');
+let showFiltersEl = document.querySelector('.show_filters');
+let sidePanelFiltersEl = document.querySelector('.side_panel_filters');
 
+if (document.querySelector('.hide_filters') || document.querySelector('.show_filters')) {  //проверяем, есть ли фильтры на странице
 
     hideFiltersEl.addEventListener('click', () => {
         sidePanelFiltersEl.style.display = 'none';
@@ -207,7 +289,22 @@ if (document.querySelector('.hide_filters') || document.querySelector('.show_fil
     let activeFiltersPanelEl = document.querySelector('.active_filters');
     let clearFiltersAllButtonEl = document.querySelector('.clear_filters_all');
     let checkedFilters = [];
-    let checkedFiltersValue = [];
+
+    // выгрузили из local storage сохраненный массив активных фильтров
+    let checkedFiltersValue = window.sessionStorage.getItem('checkedFiltersValue') || '[]';
+    checkedFiltersValue = JSON.parse(checkedFiltersValue);
+    console.log(checkedFiltersValue)
+
+    //отметили чекбоксы после перезагрузки
+    for (let i = 0; i < checkboxFiltresGroupEl.length; i++) {
+        for (let j = 0; j < checkedFiltersValue.length; j++) {
+            if (checkboxFiltresGroupEl[i].value == checkedFiltersValue[j]) {
+                checkboxFiltresGroupEl[i].checked = true;
+            }
+        }
+    }
+
+    filterProducts();
 
     function filterProducts() {
         checkedFiltersValue = [];
@@ -220,8 +317,6 @@ if (document.querySelector('.hide_filters') || document.querySelector('.show_fil
                 checkedFiltersValue.push(checkboxFiltresGroupEl[i].value);
             };
         };
-        // console.log(checkedFilters);
-        // console.log(checkedFiltersValue);
 
         checkedFiltersValue.forEach((item) => {
             activeFiltersPanelEl.insertAdjacentHTML('beforeend', 
@@ -233,12 +328,12 @@ if (document.querySelector('.hide_filters') || document.querySelector('.show_fil
                     </svg>
                 </div>
             </div>`)
-        })
+        });
+
+        window.sessionStorage.setItem('checkedFiltersValue', JSON.stringify(checkedFiltersValue));
 
         // удаление категории при нажатии крестика
-
         let deleteFilterItemGroupEl = document.querySelectorAll('.delete_filter_item');
-        console.log(deleteFilterItemGroupEl);
 
         for (let i = 0; i < deleteFilterItemGroupEl.length; i++) {
             deleteFilterItemGroupEl[i].addEventListener('click', () => {
@@ -248,16 +343,17 @@ if (document.querySelector('.hide_filters') || document.querySelector('.show_fil
         }
     }
 
+    // нажатие кнопки применить
     applyFiltersButtonEl.addEventListener('click', filterProducts);
 
+    // нажатие кнопки очистить все
     clearFiltersAllButtonEl.addEventListener('click', () => {
         checkboxFiltresGroupEl.forEach((item) => {
             item.checked = false;
         });
-
         activeFiltersPanelEl.textContent = '';
         checkedFiltersValue = [];
-        checkedFilters = [];
+        window.sessionStorage.setItem('checkedFiltersValue', JSON.stringify(checkedFiltersValue));
     })
 }
 
@@ -293,9 +389,11 @@ for (let i = 0; i < refundConditionVisibleGroupEl.length; i++) {
 let sizeChartEl = document.querySelector('.size_chart');
 let sizeChartTableEl = document.querySelector('.size_chart__table');
 
-sizeChartEl.addEventListener('click', () => {
-    sizeChartTableEl.classList.toggle('size_chart--active')
-})
+if (document.querySelector('.size_chart')) {
+    sizeChartEl.addEventListener('click', () => {
+        sizeChartTableEl.classList.toggle('size_chart--active')
+    })
+}
 
 // карточка товара - раскрытие опций
 
@@ -384,30 +482,56 @@ for (let i = 0; i < sizeChoiceGroupEl.length; i++) {
 let addToBasketBtnEl = document.querySelector('.add_to_basket_btn');
 let modalWindowAddToBasketEl = document.querySelector('.dark_window_add_to_basket');
 
-addToBasketBtnEl.addEventListener('click', () => {
+if (document.querySelector('.add_to_basket_btn')) {
+    addToBasketBtnEl.addEventListener('click', () => {
 
-    let noChoosedColor = `<div class="red">не выбран цвет товара</div>`;
-    let noChoosedSize = `<div class="red">не выбран размер</div>`;
-
-    if ((colorChoosedNameEl.textContent == '') && (sizeChoosedEl.textContent == '')) {
-        colorChoosedNameEl.insertAdjacentHTML('afterbegin', noChoosedColor);
-        sizeChoosedEl.insertAdjacentHTML('afterbegin', noChoosedSize);
-    }
-    else if ((sizeChoosedEl.textContent == '') || (sizeChoosedEl.textContent == 'не выбран размер')) {
-        sizeChoosedEl.textContent = '';
-        sizeChoosedEl.insertAdjacentHTML('afterbegin', noChoosedSize);
-    }
-    else if ((colorChoosedNameEl.textContent == '') || (colorChoosedNameEl.textContent == 'не выбран цвет товара')) {
-        colorChoosedNameEl.textContent = '';
-        colorChoosedNameEl.insertAdjacentHTML('afterbegin', noChoosedColor);
-    }
-    else {
-        modalWindowAddToBasketEl.style.display = 'flex';
-    }
-})
+        let noChoosedColor = `<div class="red">не выбран цвет товара</div>`;
+        let noChoosedSize = `<div class="red">не выбран размер</div>`;
+    
+        if ((colorChoosedNameEl.textContent == '') && (sizeChoosedEl.textContent == '')) {
+            colorChoosedNameEl.insertAdjacentHTML('afterbegin', noChoosedColor);
+            sizeChoosedEl.insertAdjacentHTML('afterbegin', noChoosedSize);
+        }
+        else if ((sizeChoosedEl.textContent == '') || (sizeChoosedEl.textContent == 'не выбран размер')) {
+            sizeChoosedEl.textContent = '';
+            sizeChoosedEl.insertAdjacentHTML('afterbegin', noChoosedSize);
+        }
+        else if ((colorChoosedNameEl.textContent == '') || (colorChoosedNameEl.textContent == 'не выбран цвет товара')) {
+            colorChoosedNameEl.textContent = '';
+            colorChoosedNameEl.insertAdjacentHTML('afterbegin', noChoosedColor);
+        }
+        else {
+            modalWindowAddToBasketEl.style.display = 'flex';
+            // Блокируем прокрутку body
+            document.body.style.overflow = 'hidden';
+        }
+    })
+    
+}
 
 let turnToShopBtnEl = document.querySelector('.turn_to_shop');
 
-turnToShopBtnEl.addEventListener('click', () => {
-    modalWindowAddToBasketEl.style.display = 'none';
+if (turnToShopBtnEl) {
+    turnToShopBtnEl.addEventListener('click', () => {
+        modalWindowAddToBasketEl.style.display = 'none';
+    })
+}
+
+
+// появление кнопки наверх
+
+let btnUpEl = document.querySelector('.btn_up');
+
+window.addEventListener('scroll', () => {
+    window.scrollY > 1500 ? btnUpEl.style.display = 'block' : btnUpEl.style.display = '';
 })
+
+if (document.querySelector('.btn_up')) {
+    document.querySelector('.btn_up').addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        })
+    });
+}
