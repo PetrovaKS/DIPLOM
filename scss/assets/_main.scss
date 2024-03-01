@@ -127,7 +127,7 @@ html {
             }
         }
     
-        .location {
+        .location_menu {
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -286,12 +286,15 @@ html {
     .icon_menu {
         display: flex;
         align-items: center;
+        cursor: pointer;
 
-
-        &:hover + .menu_mobile {
-            transform: translateX(100%);
+        .icon_menu__burger {
+            display: flex;
         }
 
+        .icon_menu__close {
+            display: none;
+        }
     }
 
     .nav_section_right {
@@ -307,13 +310,14 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: fixed;
+    position: absolute;
     top: 85px;
     left: -100%;
     z-index: 999;
     width: 100%;
     min-height: calc(100vh - 85px);
-    transition: 1s;
+    height: 100%;
+    transition: 0.5s;
     background-color: $main_color_light;
     overflow-y: auto;
 
@@ -359,6 +363,7 @@ html {
             column-gap: 10px;
             padding-left: 10px;
             height: 45px;
+            cursor: pointer;
         }
     }
 }
@@ -371,6 +376,7 @@ html {
     height: 55px;
     border-bottom: 1px solid $addit_color_dark;
     background-color: $main_color_light;
+    cursor: pointer;
 
     &:last-child {
         border-bottom: none;
@@ -3462,9 +3468,10 @@ html {
     flex-shrink: 0;
     border: 2px solid $addit_color_dark;
     background-color: $addit_color_dark;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .inline {

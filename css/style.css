@@ -734,7 +734,7 @@ html {
 #header_dark .customer_info .personal_account a:hover {
   transform: scale(1.05);
 }
-#header_dark .customer_info .location {
+#header_dark .customer_info .location_menu {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -742,7 +742,7 @@ html {
   transition: 1s;
   cursor: pointer;
 }
-#header_dark .customer_info .location a:hover {
+#header_dark .customer_info .location_menu a:hover {
   transform: scale(1.05);
 }
 
@@ -872,9 +872,13 @@ html {
 .header_mobile .icon_menu {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
-.header_mobile .icon_menu:hover + .menu_mobile {
-  transform: translateX(100%);
+.header_mobile .icon_menu .icon_menu__burger {
+  display: flex;
+}
+.header_mobile .icon_menu .icon_menu__close {
+  display: none;
 }
 .header_mobile .nav_section_right {
   gap: 15px;
@@ -887,13 +891,14 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: fixed;
+  position: absolute;
   top: 85px;
   left: -100%;
   z-index: 999;
   width: 100%;
   min-height: calc(100vh - 85px);
-  transition: 1s;
+  height: 100%;
+  transition: 0.5s;
   background-color: #FFF;
   overflow-y: auto;
 }
@@ -934,6 +939,7 @@ html {
   column-gap: 10px;
   padding-left: 10px;
   height: 45px;
+  cursor: pointer;
 }
 
 .category_part__item {
@@ -944,6 +950,7 @@ html {
   height: 55px;
   border-bottom: 1px solid #8A8A8A;
   background-color: #FFF;
+  cursor: pointer;
 }
 .category_part__item:last-child {
   border-bottom: none;
@@ -3864,9 +3871,10 @@ html {
   flex-shrink: 0;
   border: 2px solid #8A8A8A;
   background-color: #8A8A8A;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .inline {

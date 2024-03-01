@@ -38,20 +38,23 @@ for (let i = 0; i < closeIconEl.length; i++) {
 // открытие модального окна геолокации
 
 let modalWindowLocationEl = document.querySelector('.dark_window_location')
-let locationEl = document.querySelector('.location');
+let locationEl = document.querySelectorAll('.location');
 
-locationEl.addEventListener('click', () => {
-    modalWindowLocationEl.style.display = 'flex';
-    // Блокируем прокрутку body
-    document.body.style.overflow = 'hidden';
+locationEl.forEach((item) => {
+    item.addEventListener('click', () => {
+        modalWindowLocationEl.style.display = 'flex';
+        // Блокируем прокрутку body
+        document.body.style.overflow = 'hidden';
+    })
 })
+
 
 
 // выбор города в геолокации
 
 let chooseCityEl = document.querySelector('.input_city');
 let chooseCityBtnEl = document.querySelector('.choose_city_btn');
-let choosedLocationEl = document.querySelector('.choosed_location');
+let choosedLocationEl = document.querySelectorAll('.choosed_location');
 
 let footerEkatEl = document.querySelector('.footer_ekat');
 let footerRegionEl = document.querySelector('.footer_region');
@@ -62,13 +65,14 @@ let deliveryRegionEl = document.querySelector('.delivery_region');
 let contactsEkbEl = document.querySelector('.contacts_ekb');
 let contactsRegionEl = document.querySelector('.contacts_region');
 
-choosedLocationEl.textContent = window.localStorage.getItem('city');
+choosedLocationEl.forEach((item) => item.textContent = window.localStorage.getItem('city'));
+
 
 checkCity();
 
 function checkCity() {
     // изменение футера, контактов и раздела доставки в зависимости от города
-    if (choosedLocationEl.textContent == 'ЕКАТЕРИНБУРГ') {
+    if (window.localStorage.getItem('city') == 'ЕКАТЕРИНБУРГ') {
         footerRegionEl.classList.add('inactive');
         footerEkatEl.classList.remove('inactive');
 
@@ -98,25 +102,33 @@ function checkCity() {
     }
 }
 
-chooseCityEl.addEventListener("input", () => {
-    chooseCityEl.value = chooseCityEl.value.replace(/[0-9a-zA-Z]/g, "");
-});
-
-chooseCityBtnEl.addEventListener('click', () => {
+function getCityName() {
     if (chooseCityEl.value) {
-        choosedLocationEl.textContent = '';
-        choosedLocationEl.textContent = chooseCityEl.value.toUpperCase();
-
+        choosedLocationEl.forEach((item) => item.textContent = '');
+        choosedLocationEl.forEach((item) => item.textContent = chooseCityEl.value.toUpperCase());
         modalWindowLocationEl.style.display = 'none';
-
-        window.localStorage.setItem('city', choosedLocationEl.textContent);
-
+        document.body.style.overflow = '';
+        window.localStorage.setItem('city', chooseCityEl.value.toUpperCase());
         chooseCityEl.value = '';
     };
+}
 
-    checkCity();
-})
+if (chooseCityEl) {
+    chooseCityEl.addEventListener("input", () => {
+        chooseCityEl.value = chooseCityEl.value.replace(/[0-9a-zA-Z]/g, "");
+    });
+    
+    chooseCityBtnEl.addEventListener('click', () => {
+        getCityName();
+        checkCity();
+    })
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key == 'Enter') {
+            getCityName();
+        }
+    })
+}
 
 // открытие главного всплывающего меню женщины / мужчины
 
@@ -420,101 +432,166 @@ for (let i = 0; i < optionInfoRowGroupEl.length; i++) {
     })
 }
 
-// карточка товара - выбор цвета
+// карточка товара
 
-let colorPickerGroupEl = document.querySelectorAll('.color_picker');
-let colorNameGroupEl = document.querySelectorAll('.color_name');
-let colorChoosedImgEl = document.querySelector('.color_choosed_img');
-let colorChoosedNameEl = document.querySelector('.color_choosed_name');
-let colorDetailsEl = document.querySelector('.color_details');
-let colorOpenedArrowEl = document.querySelector('.color_opened_arrow');
-let colorClosedArrowEl = document.querySelector('.color_closed_arrow');
+    let colorPickerGroupEl = document.querySelectorAll('.color_picker');
+    let colorNameGroupEl = document.querySelectorAll('.color_name');
+    let colorChoosedImgEl = document.querySelector('.color_choosed_img');
+    let colorChoosedNameEl = document.querySelector('.color_choosed_name');
+    let colorDetailsEl = document.querySelector('.color_details');
+    let colorOpenedArrowEl = document.querySelector('.color_opened_arrow');
+    let colorClosedArrowEl = document.querySelector('.color_closed_arrow');
 
+    let sizeChoiceGroupEl = document.querySelectorAll('.option .size_choice');
+    let sizeChoosedEl = document.querySelector('.size_choosed');
+    let sizeRowEl = document.querySelector('.size_row');
+    let sizeOpenedArrowEl = document.querySelector('.size_opened_arrow');
+    let sizeClosedArrowEl = document.querySelector('.size_closed_arrow');
 
-for (let i = 0; i < colorPickerGroupEl.length; i++) {
-    colorPickerGroupEl[i].addEventListener('click', () => {
-        colorChoosedImgEl.textContent = '';
-        colorChoosedNameEl.textContent = '';
+    let choosedColorImg; // понять, как извлечь картинку из LS
+    let choosedColorName = window.localStorage.getItem('choosedColorName');
+    let choosedSizeName = window.localStorage.getItem('choosedSizeName');
 
-        let choosedColorImg = colorPickerGroupEl[i].cloneNode(true);
-        let choosedColorName = colorNameGroupEl[i].cloneNode(true);
-        colorChoosedImgEl.append(choosedColorImg);
-        colorChoosedNameEl.append(choosedColorName);
+    let addToBasketBtnEl = document.querySelector('.add_to_basket_btn');
+    let inBasketEl = document.querySelector('.btn_in_basket');
 
+    let pushedBtnInBasket = window.localStorage.getItem('pushedBtnInBasket') || 'false';
+
+if (colorChoosedNameEl) {
+
+    function changeBtnOnProductPage(flag) {  // нажата или нет кнопка Добавить в корзину
+        if (flag == 'true') {
+            addToBasketBtnEl.style.display = 'none';
+            inBasketEl.style.display = 'flex';
+        }
+        else {
+            addToBasketBtnEl.style.display = 'flex';
+            inBasketEl.style.display = 'none';
+        }
+    }
+
+    if (choosedColorName != '' && choosedSizeName != '') {  // выгружаем данные при перезагрузке страницы
+        // colorChoosedImgEl.append(choosedColorImg);
+        colorChoosedNameEl.textContent = choosedColorName;
+        
         colorDetailsEl.classList.add('option--inactive');
         colorDetailsEl.classList.remove('option--active');
         colorOpenedArrowEl.classList.add('option--inactive');
         colorClosedArrowEl.classList.remove('option--inactive');
-    })
-}
 
-// карточка товара - выбор размера
-
-let sizeChoiceGroupEl = document.querySelectorAll('.option .size_choice');
-let sizeChoosedEl = document.querySelector('.size_choosed');
-let sizeRowEl = document.querySelector('.size_row');
-let sizeOpenedArrowEl = document.querySelector('.size_opened_arrow');
-let sizeClosedArrowEl = document.querySelector('.size_closed_arrow');
-let j = 0;
-
-for (let i = 0; i < sizeChoiceGroupEl.length; i++) {
-    sizeChoiceGroupEl[i].addEventListener('click', () => {
-        sizeChoosedEl.textContent = '';
-
-        let sizeChoosedName = sizeChoiceGroupEl[i].cloneNode(true);
-        sizeChoosedEl.append(sizeChoosedName);
+        sizeChoosedEl.textContent = choosedSizeName;
 
         sizeRowEl.classList.add('option--inactive');
         sizeRowEl.classList.remove('option--active');
         sizeOpenedArrowEl.classList.add('option--inactive');
         sizeClosedArrowEl.classList.remove('option--inactive');
 
-        sizeChoiceGroupEl[i].classList.add('main_text_title');
-        sizeChoiceGroupEl[i].classList.remove('main_text_addit_dark');
-        sizeChoiceGroupEl[j].classList.remove('main_text_title');
-        sizeChoiceGroupEl[j].classList.add('main_text_addit_dark');
-        j = i;
-    })
-}
+        changeBtnOnProductPage(pushedBtnInBasket);
+    }
 
-// нажатие кнопки Добавить товар в корзину  и проверка, что цвет и размер выбраны
 
-let addToBasketBtnEl = document.querySelector('.add_to_basket_btn');
-let modalWindowAddToBasketEl = document.querySelector('.dark_window_add_to_basket');
+    // карточка товара - выбор цвета
 
-if (document.querySelector('.add_to_basket_btn')) {
-    addToBasketBtnEl.addEventListener('click', () => {
-
-        let noChoosedColor = `<div class="red">не выбран цвет товара</div>`;
-        let noChoosedSize = `<div class="red">не выбран размер</div>`;
-    
-        if ((colorChoosedNameEl.textContent == '') && (sizeChoosedEl.textContent == '')) {
-            colorChoosedNameEl.insertAdjacentHTML('afterbegin', noChoosedColor);
-            sizeChoosedEl.insertAdjacentHTML('afterbegin', noChoosedSize);
-        }
-        else if ((sizeChoosedEl.textContent == '') || (sizeChoosedEl.textContent == 'не выбран размер')) {
-            sizeChoosedEl.textContent = '';
-            sizeChoosedEl.insertAdjacentHTML('afterbegin', noChoosedSize);
-        }
-        else if ((colorChoosedNameEl.textContent == '') || (colorChoosedNameEl.textContent == 'не выбран цвет товара')) {
+    for (let i = 0; i < colorPickerGroupEl.length; i++) {
+        colorPickerGroupEl[i].addEventListener('click', () => {
+            colorChoosedImgEl.textContent = '';
             colorChoosedNameEl.textContent = '';
-            colorChoosedNameEl.insertAdjacentHTML('afterbegin', noChoosedColor);
-        }
-        else {
-            modalWindowAddToBasketEl.style.display = 'flex';
-            // Блокируем прокрутку body
-            document.body.style.overflow = 'hidden';
-        }
-    })
-    
-}
 
-let turnToShopBtnEl = document.querySelector('.turn_to_shop');
+            pushedBtnInBasket = 'false';
+            window.localStorage.setItem('pushedBtnInBasket', pushedBtnInBasket);
+            changeBtnOnProductPage(pushedBtnInBasket);
 
-if (turnToShopBtnEl) {
-    turnToShopBtnEl.addEventListener('click', () => {
-        modalWindowAddToBasketEl.style.display = 'none';
-    })
+            choosedColorName = colorNameGroupEl[i].textContent;
+            colorChoosedNameEl.textContent = choosedColorName;
+
+            choosedColorImg = colorPickerGroupEl[i].cloneNode(true);
+            colorChoosedImgEl.append(choosedColorImg);
+
+            colorDetailsEl.classList.add('option--inactive');
+            colorDetailsEl.classList.remove('option--active');
+            colorOpenedArrowEl.classList.add('option--inactive');
+            colorClosedArrowEl.classList.remove('option--inactive');
+        })
+    }
+
+    // карточка товара - выбор размера
+
+    let j = 0;
+    for (let i = 0; i < sizeChoiceGroupEl.length; i++) {
+        sizeChoiceGroupEl[i].addEventListener('click', () => {
+            sizeChoosedEl.textContent = '';
+
+            pushedBtnInBasket = 'false';
+            window.localStorage.setItem('pushedBtnInBasket', pushedBtnInBasket);
+            changeBtnOnProductPage(pushedBtnInBasket);
+
+            choosedSizeName = sizeChoiceGroupEl[i].textContent;
+            sizeChoosedEl.textContent = choosedSizeName;
+
+            sizeRowEl.classList.add('option--inactive');
+            sizeRowEl.classList.remove('option--active');
+            sizeOpenedArrowEl.classList.add('option--inactive');
+            sizeClosedArrowEl.classList.remove('option--inactive');
+
+            sizeChoiceGroupEl[i].classList.add('main_text_title');
+            sizeChoiceGroupEl[i].classList.remove('main_text_addit_dark');
+            sizeChoiceGroupEl[j].classList.remove('main_text_title');
+            sizeChoiceGroupEl[j].classList.add('main_text_addit_dark');
+            j = i;
+        })
+    }
+
+    // нажатие кнопки Добавить товар в корзину  и проверка, что цвет и размер выбраны
+
+    let modalWindowAddToBasketEl = document.querySelector('.dark_window_add_to_basket');
+
+    if (document.querySelector('.add_to_basket_btn')) {
+        addToBasketBtnEl.addEventListener('click', () => {
+
+            let noChoosedColor = `<div class="red">не выбран цвет товара</div>`;
+            let noChoosedSize = `<div class="red">не выбран размер</div>`;
+        
+            if ((colorChoosedNameEl.textContent == '') && (sizeChoosedEl.textContent == '')) {
+                colorChoosedNameEl.insertAdjacentHTML('afterbegin', noChoosedColor);
+                sizeChoosedEl.insertAdjacentHTML('afterbegin', noChoosedSize);
+            }
+            else if ((sizeChoosedEl.textContent == '') || (sizeChoosedEl.textContent == 'не выбран размер')) {
+                sizeChoosedEl.textContent = '';
+                sizeChoosedEl.insertAdjacentHTML('afterbegin', noChoosedSize);
+            }
+            else if ((colorChoosedNameEl.textContent == '') || (colorChoosedNameEl.textContent == 'не выбран цвет товара')) {
+                colorChoosedNameEl.textContent = '';
+                colorChoosedNameEl.insertAdjacentHTML('afterbegin', noChoosedColor);
+            }
+            else {
+                // открываем модальное окно
+                modalWindowAddToBasketEl.style.display = 'flex';
+
+                // Блокируем прокрутку body
+                document.body.style.overflow = 'hidden';
+
+                // Меняем кнопку
+                pushedBtnInBasket = 'true';
+                window.localStorage.setItem('pushedBtnInBasket', pushedBtnInBasket);
+                changeBtnOnProductPage(pushedBtnInBasket);
+
+                //добавляем выбранные значения в LS
+                // window.localStorage.setItem('choosedColorImg', choosedColorImg); // разобраться, как сохранить картинку в LS
+                window.localStorage.setItem('choosedColorName', choosedColorName);
+                window.localStorage.setItem('choosedSizeName', choosedSizeName);
+            }
+        })
+        
+    }
+
+    let turnToShopBtnEl = document.querySelector('.turn_to_shop');
+
+    if (turnToShopBtnEl) {
+        turnToShopBtnEl.addEventListener('click', () => {
+            modalWindowAddToBasketEl.style.display = 'none';
+            document.body.style.overflow = '';
+        })
+    }
 }
 
 
@@ -535,3 +612,24 @@ if (document.querySelector('.btn_up')) {
         })
     });
 }
+
+
+// открытие меню мобильной версии
+
+let iconMenuBurgerEl = document.querySelector('.icon_menu__burger');
+let iconMenuCloseEl = document.querySelector('.icon_menu__close');
+let menuMobileEl = document.querySelector('.menu_mobile ');
+
+iconMenuBurgerEl.addEventListener('click', () => {
+    iconMenuBurgerEl.style.display = 'none';
+    iconMenuCloseEl.style.display = 'flex';
+    menuMobileEl.style.transform = 'translateX(100%)';
+    document.body.style.overflow = 'hidden';
+})
+
+iconMenuCloseEl.addEventListener('click', () => {
+    iconMenuBurgerEl.style.display = 'flex';
+    iconMenuCloseEl.style.display = 'none';
+    menuMobileEl.style.transform = 'translateX(-100%)';
+    document.body.style.overflow = '';
+})
