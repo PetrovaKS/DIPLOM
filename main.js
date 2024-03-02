@@ -1,3 +1,5 @@
+let catalogEl = document.querySelector('.catalog_opened_filters .catalog');
+
 // Модальное окно подписки, всплывает 2 раза: через 5 сек и через 2 минуты
 // второй раз отсчет времени ведется с момента загрузки страницы, как сделать так, чтобы время шло не зависимо от того, сколько страниц загружаем
 
@@ -17,18 +19,15 @@ if (sessionStorage.getItem('counterOpenWindow') == '1') {
     }, 15000);
 }
 
-  
 
 // закрытие модальных окон всех
 
 let closeIconEl = document.querySelectorAll('.close_icon');  
+
 for (let i = 0; i < closeIconEl.length; i++) {
     closeIconEl[i].addEventListener('click', function () {
         modalWindowSubscribeEl.style.display = 'none';
         modalWindowLocationEl.style.display = 'none';
-        if (modalWindowAddToBasketEl) {
-            modalWindowAddToBasketEl.style.display = 'none';
-        }
         // При закрытии модального окна разрешаем прокрутку
         document.body.style.overflow = '';
     })
@@ -256,20 +255,19 @@ if (document.querySelector('.sort_title')) {  //проверяем, есть л�
 
 let hideFiltersEl = document.querySelector('.hide_filters');
 let showFiltersEl = document.querySelector('.show_filters');
+let hideFiltresDivEl = document.querySelector('.hide_filtres')
 let sidePanelFiltersEl = document.querySelector('.side_panel_filters');
 
 if (document.querySelector('.hide_filters') || document.querySelector('.show_filters')) {  //проверяем, есть ли фильтры на странице
 
-    hideFiltersEl.addEventListener('click', () => {
-        sidePanelFiltersEl.style.display = 'none';
-        hideFiltersEl.style.display = 'none';
-        showFiltersEl.style.display = 'flex';
-    })
+    hideFiltresDivEl.addEventListener('click', () => {
+        sidePanelFiltersEl.classList.toggle('inactive');
 
-    showFiltersEl.addEventListener('click', () => {
-        sidePanelFiltersEl.style.display = 'flex';
-        hideFiltersEl.style.display = 'flex';
-        showFiltersEl.style.display = 'none';
+        hideFiltersEl.classList.toggle('inactive');
+        hideFiltersEl.classList.toggle('active');
+        showFiltersEl.classList.toggle('inactive');
+        showFiltersEl.classList.toggle('active');
+
     })
 
 
@@ -353,6 +351,11 @@ if (document.querySelector('.hide_filters') || document.querySelector('.show_fil
             filterProducts();
             });
         }
+
+        if (window.screen.width < 767) {
+            sidePanelFiltersEl.classList.remove('active');
+            catalogEl.classList.remove('inactive');
+        }
     }
 
     // нажатие кнопки применить
@@ -366,6 +369,11 @@ if (document.querySelector('.hide_filters') || document.querySelector('.show_fil
         activeFiltersPanelEl.textContent = '';
         checkedFiltersValue = [];
         window.sessionStorage.setItem('checkedFiltersValue', JSON.stringify(checkedFiltersValue));
+
+        if (window.screen.width < 767) {
+            sidePanelFiltersEl.classList.remove('active');
+            catalogEl.classList.remove('inactive');
+        }
     })
 }
 
@@ -580,8 +588,18 @@ if (colorChoosedNameEl) {
                 window.localStorage.setItem('choosedColorName', choosedColorName);
                 window.localStorage.setItem('choosedSizeName', choosedSizeName);
             }
+        }) 
+    }
+
+    // закрытие модальных окон всех
+ 
+    console.log(closeIconEl)
+
+    for (let i = 0; i < closeIconEl.length; i++) {
+        closeIconEl[i].addEventListener('click', function () {
+            modalWindowAddToBasketEl.style.display = 'none';
+            document.body.style.overflow = '';
         })
-        
     }
 
     let turnToShopBtnEl = document.querySelector('.turn_to_shop');
@@ -633,3 +651,34 @@ iconMenuCloseEl.addEventListener('click', () => {
     menuMobileEl.style.transform = 'translateX(-100%)';
     document.body.style.overflow = '';
 })
+
+
+// открытие 2 уровня мобильного меню
+
+let menuMobileItemGroupEl = document.querySelectorAll('.menu_mobile__women-men .category_part__item');
+let menuMobileWomenMenEl = document.querySelector('.menu_mobile__women-men');
+let menuMobileCategories = document.querySelector('.menu_mobile__categories');
+
+// if (iconMenuCloseEl) {
+    for (let i = 0; i < 2; i++) {
+        menuMobileItemGroupEl[i].addEventListener('click', () => {
+            menuMobileWomenMenEl.classList.add('inactive');
+            menuMobileWomenMenEl.classList.remove('active');
+            menuMobileCategories.classList.remove('inactive');  // здесь одно меню для мужчин и женщин, подумать, как сделать в нем ссылки на разные разделы(возможно, сделать разные меню на каждый элемент)
+        })
+    }
+// }
+
+
+// мобильная версия - раскрытие фильтров
+
+let filterIconEl = document.querySelector('.filter_icon');
+
+if (filterIconEl) {
+
+    filterIconEl.addEventListener('click', () => {
+        sidePanelFiltersEl.classList.toggle('active');
+        catalogEl.classList.toggle('inactive');
+    })
+
+}

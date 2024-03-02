@@ -323,7 +323,6 @@ html {
 
 
     .menu_mobile__category_part {
-        display: flex;
         flex-direction: column;
 
         .search {
@@ -1502,6 +1501,7 @@ html {
 
 .filter_icon {
     display: none;
+    cursor: pointer;
 
     @media screen and (max-width: 767px) {
         display: flex;
@@ -1745,6 +1745,10 @@ html {
     a {
         flex-grow: 1;
     }
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
 }
 
 .sorting {
@@ -1763,6 +1767,10 @@ html {
 
         .sorting_property {
             cursor: pointer;
+
+            @media screen and (max-width: 767px) {
+                display: none;
+            }
         }
 
         .selected_sort{
@@ -1841,6 +1849,10 @@ html {
         gap: 15px;
         flex-wrap: wrap;
     }
+
+    .category_part__item {
+        border-bottom: none;
+    }
 }
 
 .hide_filtres {
@@ -1862,7 +1874,7 @@ html {
     }
 
     .hide_filters {
-        display: flex;
+        // display: flex;
         cursor: pointer;
 
         .main_text_title {
@@ -1871,7 +1883,7 @@ html {
     }
 
     .show_filters {
-        display: none;
+        // display: none;
         cursor: pointer;
 
         .main_text_title {
@@ -1938,9 +1950,11 @@ html {
     }
 
     @media screen and (max-width: 767px) {
-        position: absolute;
-        width: calc(100% - 20px);
-        margin-right: 0;
+        // position: absolute;
+        width: 100%;
+        // margin-right: 0;
+
+        display: none;
     }
 
     .filter_section {
@@ -2086,7 +2100,8 @@ html {
     column-gap: 100px;
 
     @media screen and (max-width: 767px) {
-        display: none;
+        justify-content: space-around;
+        column-gap: normal;
     }
 }
 
@@ -3506,6 +3521,10 @@ html {
     @media screen and (max-width: 767px) {
             display: flex;
     }
+
+    .category_part__item {
+        border-bottom: none;
+    }
 }
 
 .catalog_mobile_foto {
@@ -3551,3 +3570,17 @@ html {
 .inactive {
     display: none;
 }
+
+.active {
+    display: flex;
+}
+
+.overflow_hidden {
+    overflow: hidden;
+}
+
+// .mobile_choice_women_men {
+//     position: absolute;
+//     top: 50px;
+//     width: 100%;
+// }
