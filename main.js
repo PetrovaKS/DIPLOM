@@ -636,7 +636,7 @@ if (document.querySelector('.btn_up')) {
 
 let iconMenuBurgerEl = document.querySelector('.icon_menu__burger');
 let iconMenuCloseEl = document.querySelector('.icon_menu__close');
-let menuMobileEl = document.querySelector('.menu_mobile ');
+let menuMobileEl = document.querySelector('.menu_mobile');
 
 iconMenuBurgerEl.addEventListener('click', () => {
     iconMenuBurgerEl.style.display = 'none';
