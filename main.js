@@ -650,6 +650,11 @@ iconMenuCloseEl.addEventListener('click', () => {
     iconMenuCloseEl.style.display = 'none';
     menuMobileEl.style.transform = 'translateX(-100%)';
     document.body.style.overflow = '';
+    menuMobileCategories.classList.remove('active'); 
+    menuMobileCategories.classList.add('inactive'); 
+    menuMobileWomenMenEl.classList.add('active');
+    menuMobileWomenMenEl.classList.remove('inactive');
+
 })
 
 

@@ -897,7 +897,7 @@ html {
   z-index: 999;
   width: 100%;
   min-height: calc(100vh - 85px);
-  height: 100%;
+  height: calc(100vh - 85px);
   transition: 0.5s;
   background-color: #FFF;
   overflow-y: auto;
