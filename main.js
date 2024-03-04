@@ -643,6 +643,8 @@ iconMenuBurgerEl.addEventListener('click', () => {
     iconMenuCloseEl.style.display = 'flex';
     menuMobileEl.style.transform = 'translateX(100%)';
     document.body.style.overflow = 'hidden';
+    let height = window.innerHeight - 85;
+    menuMobileEl.style.height = height + 'px';
 })
 
 iconMenuCloseEl.addEventListener('click', () => {
