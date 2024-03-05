@@ -214,7 +214,7 @@ for (let i = 0; i < shareCatalogEl.length; i++) {
 
 if (document.querySelector('.sort_title')) {  //проверяем, есть ли сортировка на странице
     let sortingEl = document.querySelector('.sort_title');
-    let sortingDropdownEl = document.querySelector('.sorting_dropdown');
+    let sortingDropdownEl = document.querySelector('.sortingDropdown');
 
     sortingEl.addEventListener('click', () => {
         if (sortingDropdownEl.classList.contains('sorting_dropdown_show')) {
@@ -456,7 +456,7 @@ for (let i = 0; i < optionInfoRowGroupEl.length; i++) {
     let sizeOpenedArrowEl = document.querySelector('.size_opened_arrow');
     let sizeClosedArrowEl = document.querySelector('.size_closed_arrow');
 
-    let choosedColorImg; // понять, как извлечь картинку из LS
+    let choosedColorImgSrc = window.localStorage.getItem('choosedColorImgSrc');; // понять, как извлечь картинку из LS
     let choosedColorName = window.localStorage.getItem('choosedColorName');
     let choosedSizeName = window.localStorage.getItem('choosedSizeName');
 
@@ -464,6 +464,16 @@ for (let i = 0; i < optionInfoRowGroupEl.length; i++) {
     let inBasketEl = document.querySelector('.btn_in_basket');
 
     let pushedBtnInBasket = window.localStorage.getItem('pushedBtnInBasket') || 'false';
+
+    let artEl = document.querySelector('.art');
+    let nameEl = document.querySelector('.name');
+    let priceInBasketEl = document.querySelector('.price_in_basket');
+    let q;
+    let mainFotoEl = document.querySelector('.main_foto');
+
+    let basketList = JSON.parse(window.localStorage.getItem('basketList')) || [];
+    console.log(basketList)
+
 
 if (colorChoosedNameEl) {
 
@@ -478,8 +488,10 @@ if (colorChoosedNameEl) {
         }
     }
 
-    if (choosedColorName != '' && choosedSizeName != '') {  // выгружаем данные при перезагрузке страницы
-        // colorChoosedImgEl.append(choosedColorImg);
+    if (choosedColorName != '' && choosedSizeName != '' && choosedColorImgSrc != '') {  // выгружаем данные при перезагрузке страницы
+        let choosedColorImg = document.createElement('IMG');
+        choosedColorImg.setAttribute('src', choosedColorImgSrc);
+        colorChoosedImgEl.append(choosedColorImg);
         colorChoosedNameEl.textContent = choosedColorName;
         
         colorDetailsEl.classList.add('option--inactive');
@@ -512,8 +524,8 @@ if (colorChoosedNameEl) {
             choosedColorName = colorNameGroupEl[i].textContent;
             colorChoosedNameEl.textContent = choosedColorName;
 
-            choosedColorImg = colorPickerGroupEl[i].cloneNode(true);
-            colorChoosedImgEl.append(choosedColorImg);
+            colorChoosedImgEl.append(colorPickerGroupEl[i].cloneNode(true));
+            choosedColorImgSrc = colorPickerGroupEl[i].src;
 
             colorDetailsEl.classList.add('option--inactive');
             colorDetailsEl.classList.remove('option--active');
@@ -584,16 +596,17 @@ if (colorChoosedNameEl) {
                 changeBtnOnProductPage(pushedBtnInBasket);
 
                 //добавляем выбранные значения в LS
-                // window.localStorage.setItem('choosedColorImg', choosedColorImg); // разобраться, как сохранить картинку в LS
                 window.localStorage.setItem('choosedColorName', choosedColorName);
                 window.localStorage.setItem('choosedSizeName', choosedSizeName);
+                window.localStorage.setItem('choosedColorImgSrc', choosedColorImgSrc);
+
+                //добавляем товар в массив товаров в корзине
+                addProductInBusket ();
             }
         }) 
     }
 
     // закрытие модальных окон всех
- 
-    console.log(closeIconEl)
 
     for (let i = 0; i < closeIconEl.length; i++) {
         closeIconEl[i].addEventListener('click', function () {
@@ -643,9 +656,6 @@ iconMenuBurgerEl.addEventListener('click', () => {
     iconMenuCloseEl.style.display = 'flex';
     menuMobileEl.style.transform = 'translateX(100%)';
     document.body.style.overflow = 'hidden';
-    // let height = window.screen.availHeight - 85;
-    // menuMobileEl.style.height = height + 'px';
-    // menuMobileEl.style.minHeight = height + 'px';
 
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -691,5 +701,188 @@ if (filterIconEl) {
         sidePanelFiltersEl.classList.toggle('active');
         catalogEl.classList.toggle('inactive');
     })
+}
+
+
+// КОРЗИНА
+
+let clearBasketEl = document.querySelector('.clear');
+let emptyBasketEl = document.querySelector('.empty_basket');
+let orderListBasketEl = document.querySelector('.order_list_basket');
+let totalCostBasketEl = document.querySelector('.total_cost_basket');
+let orderBtnBasketEl = document.querySelector('.order_btn_basket');
+let basketAmountInHeaderEl = document.querySelector('.basket__amount'); // такой класс есть и в товарах, но в хэдере всегда первый, он и нужен
+
+
+function drawTotalQuantityInBasket (list) {
+    let quantityTotal = list
+        .map(obj => obj.quantity)
+        .reduce((accumulator, current) => accumulator + current, 0);
+    console.log(quantityTotal);
+
+    basketAmountInHeaderEl.textContent = '';
+    basketAmountInHeaderEl.textContent = quantityTotal;
+}
+
+drawTotalQuantityInBasket (basketList);
+
+
+if (clearBasketEl) {
+
+    clearBasketEl.addEventListener('click', () => {
+        clearBasket();
+        basketList = [];
+        window.localStorage.setItem('basketList', JSON.stringify(basketList));
+        drawTotalQuantityInBasket (basketList);
+    })
+
+    if (basketList.length == 0) {
+        clearBasket();
+    }
+    else {
+        drawListToBasket (basketList); // выводим список товаров в корзину при загрузке, если список пуст, то выводим пустую корзину
+    }
 
 }
+
+function clearBasket() { 
+    emptyBasketEl.classList.remove('inactive');
+    
+    orderListBasketEl.classList.add('inactive'); 
+    totalCostBasketEl.classList.add('inactive');  // здесь нужно будет добавить очистку данных ?
+    orderBtnBasketEl.classList.add('inactive');
+    
+    clearBasketEl.classList.add('inactive');
+    clearBasketEl.classList.remove('active');
+
+    drawTotalQuantityInBasket (basketList);
+}
+
+// функция создания массива товаров, добавленных в корзину ДОБАВИТЬ ПРОВЕРКУ, ЕСЛИ АРТИКУЛ ЕСТЬ, ТО ТОВАР НЕ ДОБАВЛЯЕМ, А МЕНЯЕТ КОЛИЧЕСТВО
+
+function addProductInBusket () {
+    let productInBasket = {
+        art: artEl.textContent,
+        name: nameEl.textContent,
+        color: colorChoosedNameEl.textContent,
+        size: sizeChoosedEl.textContent,
+        imgSrc: mainFotoEl.src,
+        price: priceInBasketEl.textContent,
+        quantity: 1,
+    };
+
+    if (basketList.length == 0) {
+        basketList.push(productInBasket);
+    }
+    else {
+        basketList.forEach((item) => {
+            if (productInBasket.art == item.art) {
+                item.quantity = item.quantity + 1;
+            }
+            else {
+                basketList.push(productInBasket);
+            }
+        })
+    }
+
+    window.localStorage.setItem('basketList', JSON.stringify(basketList));
+
+    drawTotalQuantityInBasket (basketList);
+
+    if(orderListBasketEl) {
+        drawListToBasket (basketList);
+    }
+
+}
+
+// функция вывода в корзину товаров 
+
+function drawListToBasket (list) {
+    orderListBasketEl.textContent = '';
+
+    for(let item of list) {
+        createElementInBasket(item);
+    }
+
+}
+
+// функция создания элемента товара в корзине
+
+function createElementInBasket (listObject) {
+    let listElementHTML = 
+    // Строчка товара в корзине начало
+    `<div class="order_list__item">
+        <div class="order_item_foto">
+            <img src=${listObject.imgSrc} alt="foto" class="item_foto">
+        </div>
+        <div class="order_item_info">
+            <p class="main_text_title">${listObject.name}</p>
+            <p class="small_text">${listObject.color}</p>
+            <p class="main_text uppercase">${listObject.size}</p>
+        </div>
+        <div class="order_item_price main_text">
+        ${listObject.price} р.
+        </div>
+        <div class="order_item_count">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13V12H18V13H5Z" fill="#393939"/>
+            </svg>
+            <p class="main_text">${listObject.quantity}</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M5 13V12H11V6H12V12H18V13H12V19H11V13H5Z" fill="#393939"/>
+            </svg>
+        </div>
+        <div class="order_item_cost main_text">
+            8 000 р.
+        </div>
+        <a href="#" class="order_item_favourite">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="heart">
+                <path d="M10 18.0166C9.87726 18.0162 9.75809 17.9752 9.66112 17.8999C6.57223 15.4999 4.44445 13.4333 2.95556 11.3944C1.05556 8.78883 0.62223 6.38328 1.66667 4.24439C2.41112 2.71661 4.55001 1.46661 7.05001 2.19439C8.24198 2.53869 9.28195 3.27705 10 4.28883C10.7181 3.27705 11.758 2.53869 12.95 2.19439C15.4445 1.47772 17.5889 2.71661 18.3333 4.24439C19.3778 6.38328 18.9445 8.78883 17.0445 11.3944C15.5556 13.4333 13.4278 15.4999 10.3389 17.8999C10.2419 17.9752 10.1228 18.0162 10 18.0166Z"/>
+            </svg>
+        </a>
+        <div data-art="${listObject.art}" class="order_item_delete small_text uppercase">
+            удалить
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5.33414 15.2565L4.74414 14.6665L9.41081 9.99983L4.74414 5.33316L5.33414 4.74316L10.0008 9.40983L14.6675 4.74316L15.2575 5.33316L10.5908 9.99983L15.2575 14.6665L14.6675 15.2565L10.0008 10.5898L5.33414 15.2565Z" fill="#393939"/>
+            </svg>
+        </div>
+    </div>`
+    // Строчка товара в корзине конец
+
+    orderListBasketEl.insertAdjacentHTML('beforeend', listElementHTML);
+}
+
+
+// функция удаления товара при нажатии крестика
+
+function removeProductFromBusket (e) {
+
+    let artBtn = e.target.getAttribute('data-art');
+    let artItem = basketList.findIndex((item) => {
+        return item.art == artBtn;
+    });
+
+    basketList.splice(artItem, 1);
+    window.localStorage.setItem('basketList', JSON.stringify(basketList));
+
+    drawTotalQuantityInBasket(basketList);
+
+    if (basketList.length == 0) {
+        clearBasket();
+    }
+    else {
+        drawListToBasket (basketList); // выводим список товаров в корзину при загрузке, если список пуст, то выводим пустую корзину
+    }
+};
+
+if (orderListBasketEl) {
+    orderListBasketEl.addEventListener('click', (e) => {
+        if (e.target.classList.contains('order_item_delete')) {
+            removeProductFromBusket (e);
+        }
+    })
+}
+
+
+
+

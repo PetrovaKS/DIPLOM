@@ -315,7 +315,6 @@ html {
     left: -100%;
     z-index: 999;
     width: 100%;
-    // min-height: calc(100vh - 85px);
     height: calc(100vh - 85px);
     height: calc(var(--vh, 1vh) * 100 - 85px);
     transition: 0.5s;
@@ -2427,9 +2426,9 @@ html {
     min-height: 45px;
 
     .clear {
-        display: flex;
         justify-content: flex-end;
         align-items: center;
+        cursor: pointer;
 
         @media screen and (max-width: 920px) {
             .small_text {
@@ -2576,6 +2575,7 @@ html {
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            cursor: pointer;
 
             @media screen and (max-width: 920px) {
                 .uppercase {

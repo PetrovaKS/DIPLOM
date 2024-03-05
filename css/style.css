@@ -2885,9 +2885,9 @@ html {
   min-height: 45px;
 }
 .log_in_stroke .clear {
-  display: flex;
   justify-content: flex-end;
   align-items: center;
+  cursor: pointer;
 }
 @media screen and (max-width: 920px) {
   .log_in_stroke .clear .small_text {
@@ -3028,6 +3028,7 @@ html {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  cursor: pointer;
 }
 @media screen and (max-width: 920px) {
   .order_list .order_list__item .order_item_delete .uppercase {
