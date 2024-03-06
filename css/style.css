@@ -2036,11 +2036,16 @@ html {
 }
 
 .min_height {
-  min-height: calc(100vh - 565px);
+  min-height: calc(100vh - 656px);
 }
 @media screen and (max-width: 920px) {
   .min_height {
-    min-height: calc(100vh - 369px);
+    min-height: calc(100vh - 348px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .min_height {
+    min-height: calc(100vh - 408px);
   }
 }
 
@@ -3031,7 +3036,7 @@ html {
   cursor: pointer;
 }
 @media screen and (max-width: 920px) {
-  .order_list .order_list__item .order_item_delete .uppercase {
+  .order_list .order_list__item .order_item_delete span {
     display: none;
   }
 }

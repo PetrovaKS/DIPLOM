@@ -214,7 +214,7 @@ for (let i = 0; i < shareCatalogEl.length; i++) {
 
 if (document.querySelector('.sort_title')) {  //проверяем, есть ли сортировка на странице
     let sortingEl = document.querySelector('.sort_title');
-    let sortingDropdownEl = document.querySelector('.sortingDropdown');
+    let sortingDropdownEl = document.querySelector('.sorting_dropdown');
 
     sortingEl.addEventListener('click', () => {
         if (sortingDropdownEl.classList.contains('sorting_dropdown_show')) {
@@ -303,7 +303,6 @@ if (document.querySelector('.hide_filters') || document.querySelector('.show_fil
     // выгрузили из local storage сохраненный массив активных фильтров
     let checkedFiltersValue = window.sessionStorage.getItem('checkedFiltersValue') || '[]';
     checkedFiltersValue = JSON.parse(checkedFiltersValue);
-    console.log(checkedFiltersValue)
 
     //отметили чекбоксы после перезагрузки
     for (let i = 0; i < checkboxFiltresGroupEl.length; i++) {
@@ -464,15 +463,6 @@ for (let i = 0; i < optionInfoRowGroupEl.length; i++) {
     let inBasketEl = document.querySelector('.btn_in_basket');
 
     let pushedBtnInBasket = window.localStorage.getItem('pushedBtnInBasket') || 'false';
-
-    let artEl = document.querySelector('.art');
-    let nameEl = document.querySelector('.name');
-    let priceInBasketEl = document.querySelector('.price_in_basket');
-    let q;
-    let mainFotoEl = document.querySelector('.main_foto');
-
-    let basketList = JSON.parse(window.localStorage.getItem('basketList')) || [];
-    console.log(basketList)
 
 
 if (colorChoosedNameEl) {
@@ -711,17 +701,26 @@ let emptyBasketEl = document.querySelector('.empty_basket');
 let orderListBasketEl = document.querySelector('.order_list_basket');
 let totalCostBasketEl = document.querySelector('.total_cost_basket');
 let orderBtnBasketEl = document.querySelector('.order_btn_basket');
-let basketAmountInHeaderEl = document.querySelector('.basket__amount'); // такой класс есть и в товарах, но в хэдере всегда первый, он и нужен
+let basketAmountInHeaderEl = document.querySelectorAll('.total_amount');
+
+let artEl = document.querySelector('.art');
+let nameEl = document.querySelector('.name');
+let priceInBasketEl = document.querySelector('.price_in_basket');
+let q;
+let mainFotoEl = document.querySelector('.main_foto');
+
+let basketList = JSON.parse(window.localStorage.getItem('basketList')) || [];
 
 
 function drawTotalQuantityInBasket (list) {
     let quantityTotal = list
         .map(obj => obj.quantity)
         .reduce((accumulator, current) => accumulator + current, 0);
-    console.log(quantityTotal);
 
-    basketAmountInHeaderEl.textContent = '';
-    basketAmountInHeaderEl.textContent = quantityTotal;
+    basketAmountInHeaderEl.forEach((item) => {
+        item.textContent = '';
+        item.textContent = quantityTotal;
+    })
 }
 
 drawTotalQuantityInBasket (basketList);
@@ -841,7 +840,7 @@ function createElementInBasket (listObject) {
             </svg>
         </a>
         <div data-art="${listObject.art}" class="order_item_delete small_text uppercase">
-            удалить
+            <span>удалить</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M5.33414 15.2565L4.74414 14.6665L9.41081 9.99983L4.74414 5.33316L5.33414 4.74316L10.0008 9.40983L14.6675 4.74316L15.2575 5.33316L10.5908 9.99983L15.2575 14.6665L14.6675 15.2565L10.0008 10.5898L5.33414 15.2565Z" fill="#393939"/>
             </svg>
