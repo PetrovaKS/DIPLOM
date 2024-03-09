@@ -711,6 +711,46 @@ let mainFotoEl = document.querySelector('.main_foto');
 
 let basketList = JSON.parse(window.localStorage.getItem('basketList')) || [];
 
+let totalCostInBasket = [];
+let totalCostInBasketEl = document.querySelectorAll('.total_cost_in_basket');
+let totalCost = Number(window.localStorage.getItem('totalCost')); // итоговая сумма товаров в корзине, выгружаем из LS, выгружается в форму оформления заказа
+
+let totalDiscountEl = document.querySelectorAll('.total_discount');
+let totalDiscount = Number(window.localStorage.getItem('totalDiscount'));  // итоговая скидка клиента выгружается из LS, выгружается в форму оформления заказа
+
+let totalDiscountInBasketSumEl = document.querySelectorAll('.total_discount_in_basket_sum');
+let totalCostDeliveryEl = document.querySelectorAll('.total_cost_delivery');
+let totalCostInBasketSumEl = document.querySelectorAll('.total_cost_in_basket_sum');
+let totalOrdersSumEl = document.querySelector('.total_orders_sum');
+let totalOrdersSum = 100000; // общая сумма заказов, пока цифрой, потом помещать в LS и выгружать
+
+let totalAmountWordEl = document.querySelector('.total_amount_word');
+
+let idCounter = Date.now();
+
+calculateTotalOrderSum();
+
+function calculateTotalOrderSum() {
+    countDiscount();
+
+    totalCostInBasketEl.forEach(item => item.textContent = '');
+    totalCostInBasketEl.forEach(item => item.append(totalCost.toLocaleString("ru-RU")));
+
+    totalDiscountEl.forEach(item => item.textContent = '');
+    totalDiscountEl.forEach(item => item.append(totalDiscount.toLocaleString("ru-RU")));
+
+    let totalDiscountSum = totalCost * totalDiscount / 100;
+    totalDiscountInBasketSumEl.forEach(item => item.textContent = '');
+    totalDiscountInBasketSumEl.forEach(item => item.append(totalDiscountSum.toLocaleString("ru-RU")));
+
+    let totalDelivery = 1000; // пока 1000, потом написаь формулу расчета
+    totalCostDeliveryEl.forEach(item => item.textContent = '');
+    totalCostDeliveryEl.forEach(item => item.append(totalDelivery.toLocaleString("ru-RU")));
+
+    let totalSum = totalCost - totalDiscountSum + totalDelivery;
+    totalCostInBasketSumEl.forEach(item => item.textContent = '');
+    totalCostInBasketSumEl.forEach(item => item.append(totalSum.toLocaleString("ru-RU")));
+}
 
 function drawTotalQuantityInBasket (list) {
     let quantityTotal = list
@@ -721,6 +761,17 @@ function drawTotalQuantityInBasket (list) {
         item.textContent = '';
         item.textContent = quantityTotal;
     })
+
+    if(totalAmountWordEl) {
+        totalAmountWordEl.textContent = '';
+        if (quantityTotal >= 5 && quantityTotal <= 20) {
+            totalAmountWordEl.textContent = 'товаров';
+        } else if (quantityTotal >= 2 && quantityTotal <= 4) {
+            totalAmountWordEl.textContent = 'товара';
+        } else {
+            totalAmountWordEl.textContent = 'товар';
+        }
+    }
 }
 
 drawTotalQuantityInBasket (basketList);
@@ -766,22 +817,26 @@ function addProductInBusket () {
         color: colorChoosedNameEl.textContent,
         size: sizeChoosedEl.textContent,
         imgSrc: mainFotoEl.src,
-        price: priceInBasketEl.textContent,
+        price: Number(priceInBasketEl.textContent),
         quantity: 1,
+        id: idCounter++
     };
+
+    let q = 0;
 
     if (basketList.length == 0) {
         basketList.push(productInBasket);
     }
     else {
         basketList.forEach((item) => {
-            if (productInBasket.art == item.art) {
+            if (productInBasket.art == item.art && productInBasket.color == item.color && productInBasket.size == item.size) {
                 item.quantity = item.quantity + 1;
-            }
-            else {
-                basketList.push(productInBasket);
+                q = 1;
             }
         })
+        if (q == 0) {
+            basketList.push(productInBasket);
+        }
     }
 
     window.localStorage.setItem('basketList', JSON.stringify(basketList));
@@ -791,23 +846,31 @@ function addProductInBusket () {
     if(orderListBasketEl) {
         drawListToBasket (basketList);
     }
-
 }
 
 // функция вывода в корзину товаров 
 
 function drawListToBasket (list) {
+    // console.log(basketList)
     orderListBasketEl.textContent = '';
+    totalCostInBasket = [];
 
     for(let item of list) {
         createElementInBasket(item);
     }
 
+    totalCost = totalCostInBasket.reduce((accumulator, current) => accumulator + current, 0);
+    window.localStorage.setItem('totalCost', totalCost);
+
+    calculateTotalOrderSum();
 }
 
 // функция создания элемента товара в корзине
 
 function createElementInBasket (listObject) {
+    let cost = Number(listObject.price) * listObject.quantity;
+    let price = Number(listObject.price);
+
     let listElementHTML = 
     // Строчка товара в корзине начало
     `<div class="order_list__item">
@@ -820,67 +883,275 @@ function createElementInBasket (listObject) {
             <p class="main_text uppercase">${listObject.size}</p>
         </div>
         <div class="order_item_price main_text">
-        ${listObject.price} р.
+        ${price.toLocaleString("ru-RU")} р.
         </div>
         <div class="order_item_count">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M5 13V12H18V13H5Z" fill="#393939"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="minus" data-id="${listObject.id}">
+                <path d="M5 13V12H18V13H5Z" fill="#393939" class="minus" data-id="${listObject.id}"/>
             </svg>
             <p class="main_text">${listObject.quantity}</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M5 13V12H11V6H12V12H18V13H12V19H11V13H5Z" fill="#393939"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="plus" data-id="${listObject.id}">
+                <path d="M5 13V12H11V6H12V12H18V13H12V19H11V13H5Z" fill="#393939" class="plus" data-id="${listObject.id}"/>
             </svg>
         </div>
         <div class="order_item_cost main_text">
-            8 000 р.
+            <span>${cost.toLocaleString("ru-RU")}</span> &nbsp;р.
         </div>
         <a href="#" class="order_item_favourite">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="heart">
                 <path d="M10 18.0166C9.87726 18.0162 9.75809 17.9752 9.66112 17.8999C6.57223 15.4999 4.44445 13.4333 2.95556 11.3944C1.05556 8.78883 0.62223 6.38328 1.66667 4.24439C2.41112 2.71661 4.55001 1.46661 7.05001 2.19439C8.24198 2.53869 9.28195 3.27705 10 4.28883C10.7181 3.27705 11.758 2.53869 12.95 2.19439C15.4445 1.47772 17.5889 2.71661 18.3333 4.24439C19.3778 6.38328 18.9445 8.78883 17.0445 11.3944C15.5556 13.4333 13.4278 15.4999 10.3389 17.8999C10.2419 17.9752 10.1228 18.0162 10 18.0166Z"/>
             </svg>
         </a>
-        <div data-art="${listObject.art}" class="order_item_delete small_text uppercase">
-            <span>удалить</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M5.33414 15.2565L4.74414 14.6665L9.41081 9.99983L4.74414 5.33316L5.33414 4.74316L10.0008 9.40983L14.6675 4.74316L15.2575 5.33316L10.5908 9.99983L15.2575 14.6665L14.6675 15.2565L10.0008 10.5898L5.33414 15.2565Z" fill="#393939"/>
+        <div class="order_item_delete small_text uppercase">
+            <span class="item_delete" data-id="${listObject.id}">удалить</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="item_delete" data-id="${listObject.id}">
+                <path d="M5.33414 15.2565L4.74414 14.6665L9.41081 9.99983L4.74414 5.33316L5.33414 4.74316L10.0008 9.40983L14.6675 4.74316L15.2575 5.33316L10.5908 9.99983L15.2575 14.6665L14.6675 15.2565L10.0008 10.5898L5.33414 15.2565Z" fill="#393939"  class="item_delete" data-id="${listObject.id}"/>
             </svg>
         </div>
     </div>`
     // Строчка товара в корзине конец
 
     orderListBasketEl.insertAdjacentHTML('beforeend', listElementHTML);
+
+    totalCostInBasket.push(cost);
 }
 
 
 // функция удаления товара при нажатии крестика
+let idBtn;
+let idItem;
 
-function removeProductFromBusket (e) {
+function removeProductFromBusket(e) {
 
-    let artBtn = e.target.getAttribute('data-art');
-    let artItem = basketList.findIndex((item) => {
-        return item.art == artBtn;
+    idBtn = e.target.getAttribute('data-id');
+    idItem = basketList.findIndex((item) => {
+        return item.id == idBtn;
     });
 
-    basketList.splice(artItem, 1);
+    basketList.splice(idItem, 1);
     window.localStorage.setItem('basketList', JSON.stringify(basketList));
 
     drawTotalQuantityInBasket(basketList);
 
-    if (basketList.length == 0) {
+    if (basketList.length == 0) {  // выводим список товаров в корзину при загрузке, если список пуст, то выводим пустую корзину
         clearBasket();
     }
     else {
-        drawListToBasket (basketList); // выводим список товаров в корзину при загрузке, если список пуст, то выводим пустую корзину
+        drawListToBasket (basketList); 
     }
 };
 
+// функции изменения количества кнопоками +/- в корзине
+
+function reduceProductInBusket(e) {
+    idBtn = e.target.getAttribute('data-id');
+    idItem = basketList.findIndex((item) => {
+        return item.id == idBtn;
+    });
+
+    basketList[idItem].quantity--;
+
+    if (basketList[idItem].quantity == 0) {
+        basketList.splice(idItem, 1);
+    }
+
+    window.localStorage.setItem('basketList', JSON.stringify(basketList));
+
+    drawTotalQuantityInBasket(basketList);
+
+    if (basketList.length == 0) {  // выводим список товаров в корзину при загрузке, если список пуст, то выводим пустую корзину
+        clearBasket();
+    }
+    else {
+        drawListToBasket (basketList); 
+    }
+}
+
+function increaseProductInBusket(e) {
+    idBtn = e.target.getAttribute('data-id');
+    idItem = basketList.findIndex((item) => {
+        return item.id == idBtn;
+    });
+
+    basketList[idItem].quantity++;
+    window.localStorage.setItem('basketList', JSON.stringify(basketList));
+
+    drawTotalQuantityInBasket(basketList);
+
+    if (basketList.length == 0) {  // выводим список товаров в корзину при загрузке, если список пуст, то выводим пустую корзину
+        clearBasket();
+    }
+    else {
+        drawListToBasket (basketList); 
+    }
+}
+
 if (orderListBasketEl) {
     orderListBasketEl.addEventListener('click', (e) => {
-        if (e.target.classList.contains('order_item_delete')) {
-            removeProductFromBusket (e);
+        if (e.target.classList.contains('item_delete')) {
+            removeProductFromBusket(e);
+            console.log(e.target)
+        }
+        if (e.target.classList.contains('minus')) {
+            reduceProductInBusket(e);
+        }
+        if (e.target.classList.contains('plus')) {
+            increaseProductInBusket(e);
         }
     })
 }
+
+
+// расчет размера скидки
+
+function countDiscount() {
+    if (totalOrdersSum < 50000) {
+        totalDiscount = 0;
+    }
+    if (totalOrdersSum >= 50000 && totalOrdersSum < 100000) {
+        totalDiscount = 5;
+    }
+    if (totalOrdersSum >= 100000 && totalOrdersSum < 150000) {
+        totalDiscount = 7;
+    }
+    if (totalOrdersSum >= 150000) {
+        totalDiscount = 10;
+    }
+}
+
+
+// ОФОРМЛЕНИЕ ЗАКАЗА - сделать сохранение данных по доставке
+
+let blockDataBtnEl = document.querySelector('.block_data .btn_main');
+let modalWindowCheckPhoneEl = document.querySelector('.dark_window_check_phone');
+let blockTabsDataEl = document.querySelector('.block_data');
+let checkPhoneInputEl = document.querySelector('.dark_window_check_phone input');
+let blockTabsDeliveryEl = document.querySelector('.block_delivery');
+let deliveryRadioEl = document.querySelectorAll('.block_delivery .сustom_сheckbox');
+let deliveryOptionEl = document.querySelector('.delivery_option');
+let pickupOptionEl = document.querySelector('.pickup_option');
+let blockDeliveryBtnEl = document.querySelector('.block_delivery .btn_main');
+let blockTabsPaymentEl = document.querySelector('.block_payment');
+let tabDataEl = document.querySelector('.tab_data');
+let tabDeliveryEl = document.querySelector('.tab_delivery');
+let tabPaymentEl = document.querySelector('.tab_payment');
+
+//  открытие и закрытие модального окна проверки номера телефона 
+
+if (blockTabsDataEl) {
+    blockDataBtnEl.addEventListener('click', () => {
+
+        // сделать открытие только если в номер вносились изменения, так как на эту страницу попадает уже зарегистрированный пользователь (если value не равно тому, что было сохранено, то открываем, если нет, то просто переходим на вкладку доставка)
+        modalWindowCheckPhoneEl.classList.remove('inactive');
+        document.body.style.overflow = 'hidden';
+    })
+    
+    for (let i = 0; i < closeIconEl.length; i++) {
+        closeIconEl[i].addEventListener('click', function () {
+            modalWindowCheckPhoneEl.classList.add('inactive');
+            document.body.style.overflow = '';
+        })
+    }
+
+    checkPhoneInputEl.addEventListener('input', () => {  // проверка кода, пока просто 1234. Доделать ограниечение ввода 4 цифр и вывод ошибки, если введен неверный код
+        if (checkPhoneInputEl.value == 1234) {
+            checkPhoneInputEl.value = '';
+
+            modalWindowCheckPhoneEl.classList.add('inactive');
+            document.body.style.overflow = '';
+
+            blockTabsDataEl.classList.add('inactive');
+            blockTabsDeliveryEl.classList.remove('inactive');
+
+            tabDataEl.classList.remove('tab_active');
+            tabDataEl.classList.add('tab_inactive_left');
+            tabDataEl.classList.add('main_text_addit_dark');
+            tabDataEl.classList.remove('main_text');
+
+            tabDeliveryEl.classList.remove('tab_inactive_right');
+            tabDeliveryEl.classList.remove('main_text_addit_dark');
+            tabDeliveryEl.classList.add('tab_active');
+            tabDeliveryEl.classList.add('main_text');
+
+            tabDataEl.addEventListener('click', returnToDataTab) // добавили возможность вернуться на вкладку Данные
+        }
+    })
+}
+
+if (blockTabsDeliveryEl) {
+    for (let i = 0; i < deliveryRadioEl.length; i++) {
+        deliveryRadioEl[i].addEventListener('click', () =>{
+            if(deliveryRadioEl[i].checked == true && deliveryRadioEl[i].id == "courier") {
+                deliveryOptionEl.classList.remove('inactive');
+                pickupOptionEl.classList.add('inactive');
+            } else {
+                deliveryOptionEl.classList.add('inactive');
+                pickupOptionEl.classList.remove('inactive');
+            } ;
+        })
+    }
+
+    blockDeliveryBtnEl.addEventListener('click', () => {
+        blockTabsDeliveryEl.classList.add('inactive');
+        blockTabsPaymentEl.classList.remove('inactive');
+
+        tabDeliveryEl.classList.add('tab_inactive_left');
+        tabDeliveryEl.classList.remove('tab_active');
+        tabDeliveryEl.classList.remove('main_text');
+        tabDeliveryEl.classList.add('main_text_addit_dark');
+
+        tabPaymentEl.classList.remove('tab_inactive_right');
+        tabPaymentEl.classList.add('tab_active');
+        tabPaymentEl.classList.add('main_text');
+        tabPaymentEl.classList.remove('main_text_addit_dark');
+
+        tabDeliveryEl.addEventListener('click', returnToDeliveryTab) // добавили возможность вернуться на вкладку Доставка
+    })
+}
+
+// переход назад возможен по нажатию вкладки, вперед только по кнопке ДАЛЕЕ. Делаем предшествующие вкладки активными.
+
+function returnToDeliveryTab() {
+    blockTabsPaymentEl.classList.add('inactive');
+    tabPaymentEl.classList.add('tab_inactive_right');
+    tabPaymentEl.classList.remove('tab_active');
+    tabPaymentEl.classList.remove('main_text');
+    tabPaymentEl.classList.add('main_text_addit_dark');
+
+    blockTabsDeliveryEl.classList.remove('inactive');
+    tabDeliveryEl.classList.remove('tab_inactive_left');
+    tabDeliveryEl.classList.add('tab_active');
+    tabDeliveryEl.classList.add('main_text');
+    tabDeliveryEl.classList.remove('main_text_addit_dark');
+
+    tabDeliveryEl.removeEventListener('click', returnToDeliveryTab)
+}
+
+function returnToDataTab() {
+    blockTabsPaymentEl.classList.add('inactive');
+    tabPaymentEl.classList.add('tab_inactive_right');
+    tabPaymentEl.classList.remove('tab_active');
+    tabPaymentEl.classList.remove('main_text');
+    tabPaymentEl.classList.add('main_text_addit_dark');
+
+    blockTabsDeliveryEl.classList.add('inactive');
+    tabDeliveryEl.classList.add('tab_inactive_right');
+    tabDeliveryEl.classList.remove('tab_active');
+    tabDeliveryEl.classList.remove('main_text');
+    tabDeliveryEl.classList.add('main_text_addit_dark');
+
+    blockTabsDataEl.classList.remove('inactive');
+    tabDataEl.classList.remove('tab_inactive_left');
+    tabDataEl.classList.add('tab_active');
+    tabDataEl.classList.add('main_text');
+    tabDataEl.classList.remove('main_text_addit_dark');
+
+    tabDeliveryEl.removeEventListener('click', returnToDeliveryTab);
+    tabDeliveryEl.removeEventListener('click', returnToDeliveryTab);
+}
+
+
+
 
 
 

@@ -1399,6 +1399,22 @@ html {
     left: 0;
     z-index: 9980;
     padding: 30px 10px;
+    animation: dropdown_show 0.3s;
+}
+
+.dark_window_check_phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($addit_color_dark, .7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9980;
+    padding: 30px 10px;
+    animation: dropdown_show 0.3s;
 }
 
 .dark_window_add_to_basket {
@@ -1413,6 +1429,7 @@ html {
     left: 0;
     z-index: 9980;
     padding: 30px 10px;
+    animation: dropdown_show 0.3s;
 }
 
 .dark_window_location {
@@ -1427,6 +1444,7 @@ html {
     left: 0;
     z-index: 9980;
     padding: 30px 10px;
+    animation: dropdown_show 0.3s;
 }
 
 .dark_window_subscribe {
@@ -1441,6 +1459,7 @@ html {
     left: 0;
     z-index: 9980;
     padding: 30px 10px;
+    animation: dropdown_show 0.3s;
 }
 
 .pop-up_title {
@@ -2616,10 +2635,10 @@ html {
         align-items: center;
         justify-content: flex-start;
         width: calc(100% / 12 * 5);
-        height: 85px;
+        height: 70px;
         border-bottom: 1px solid $addit_color_dark;
 
-        &:first-child {
+        &:first-child,  &:nth-child(2){
             border-bottom: none;
         }
 
@@ -3584,8 +3603,6 @@ html {
     overflow: hidden;
 }
 
-// .mobile_choice_women_men {
-//     position: absolute;
-//     top: 50px;
-//     width: 100%;
-// }
+.minus, .plus {
+    cursor: pointer;
+}
