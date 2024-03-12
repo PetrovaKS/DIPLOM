@@ -21,8 +21,8 @@ html {
 }
 
 *::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
+    height: 4px;
+    width: 4px;
   }
   *::-webkit-scrollbar-track {
     background: rgba($addit_color_dark, .25);
@@ -121,6 +121,7 @@ html {
             align-items: center;
             gap: 5px;
             transition: 1s;
+            cursor: pointer;
 
             a:hover {
                 transform: scale(1.05)
@@ -1402,6 +1403,36 @@ html {
     animation: dropdown_show 0.3s;
 }
 
+.dark_window_discount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($addit_color_dark, .7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9980;
+    padding: 30px 10px;
+    animation: dropdown_show 0.3s;
+}
+
+.dark_window_entrance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($addit_color_dark, .7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9980;
+    padding: 30px 10px;
+    animation: dropdown_show 0.3s;
+}
+
 .dark_window_check_phone {
     display: flex;
     justify-content: center;
@@ -2293,6 +2324,10 @@ html {
 
         .btn_main {
             width: 100%;
+
+            @media screen and (max-width: 767px) {
+                margin-top: 15px;
+            }
         }
     }
 }
@@ -2812,10 +2847,6 @@ html {
         border-bottom: none;
     }
 
-    .orders_history__item--after_opened {
-        border-top: 1px solid $addit_color_dark;
-    }
-
     .total_orders_value {
         display: flex;
         align-items: center;
@@ -2901,6 +2932,8 @@ html {
     }
 
     .total_cost {
+        border-bottom: 1px solid $addit_color_dark;
+
         @media screen and (max-width: 920px) {
             padding-left: 0;
             padding-right: 0;
@@ -3169,6 +3202,7 @@ html {
 
     .btn_main {
         width: 100%;
+        margin-top: 18.39px;
     }
 
     .check_phone_cell {
@@ -3180,6 +3214,15 @@ html {
         border-bottom: 1px solid $addit_color_dark;
         margin-bottom: 20px;
         position: relative;
+
+        .toggle_entrance_type {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                cursor: pointer;
+            }
+        }
     }
 
     .info_cell {
@@ -3196,7 +3239,19 @@ html {
 
         .mistake_under_line_text {
             position: absolute;
-            bottom: -15px;
+            top: 87px;
+        }
+    }
+}
+
+.registration_form {
+    .cell_mistake {
+        border-bottom: 1px solid $addit_color_first;
+        position: relative;
+    
+        .mistake_under_line_text {
+            position: absolute;
+            top: 62px;
         }
     }
 }
@@ -3240,7 +3295,8 @@ html {
 }
 
 .block_tabs_height-big {
-    height: 871px;
+    max-height: calc(100vh - 40px);
+    max-height: calc(var(--vh, 1vh) * 100 - 40px);
 }
 
 .addit_line_products {
@@ -3497,10 +3553,6 @@ html {
     margin-bottom: 40px;
 }
 
-.margin_top-15 {
-    margin-top: 15px;
-}
-
 .btn_in_basket {
     width: 100%;
     height: 70px;
@@ -3603,6 +3655,18 @@ html {
     overflow: hidden;
 }
 
-.minus, .plus {
+.minus, .plus, .log-in_tab, .registration_tab {
+    cursor: pointer;
+}
+
+.subscribe_ok {
+    cursor: pointer;
+}
+
+.discount_info {
+    text-align: end;
+}
+
+.pointer {
     cursor: pointer;
 }

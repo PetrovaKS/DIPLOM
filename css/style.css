@@ -631,8 +631,8 @@ html {
 }
 
 *::-webkit-scrollbar {
-  height: 8px;
-  width: 8px;
+  height: 4px;
+  width: 4px;
 }
 
 *::-webkit-scrollbar-track {
@@ -730,6 +730,7 @@ html {
   align-items: center;
   gap: 5px;
   transition: 1s;
+  cursor: pointer;
 }
 #header_dark .customer_info .personal_account a:hover {
   transform: scale(1.05);
@@ -1914,6 +1915,36 @@ html {
   animation: dropdown_show 0.3s;
 }
 
+.dark_window_discount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(138, 138, 138, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9980;
+  padding: 30px 10px;
+  animation: dropdown_show 0.3s;
+}
+
+.dark_window_entrance {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(138, 138, 138, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9980;
+  padding: 30px 10px;
+  animation: dropdown_show 0.3s;
+}
+
 .dark_window_check_phone {
   display: flex;
   justify-content: center;
@@ -2766,6 +2797,11 @@ html {
 .row_info .row_info_col .btn_main {
   width: 100%;
 }
+@media screen and (max-width: 767px) {
+  .row_info .row_info_col .btn_main {
+    margin-top: 15px;
+  }
+}
 
 .info_cell {
   height: 60px;
@@ -3261,9 +3297,6 @@ html {
 .orders_history .orders_history__item--opened {
   border-bottom: none;
 }
-.orders_history .orders_history__item--after_opened {
-  border-top: 1px solid #8A8A8A;
-}
 .orders_history .total_orders_value {
   display: flex;
   align-items: center;
@@ -3346,6 +3379,9 @@ html {
   .orders_history .order_list .order_item_cost {
     width: auto;
   }
+}
+.orders_history .total_cost {
+  border-bottom: 1px solid #8A8A8A;
 }
 @media screen and (max-width: 920px) {
   .orders_history .total_cost {
@@ -3606,6 +3642,7 @@ html {
 }
 .pop_up_col .btn_main {
   width: 100%;
+  margin-top: 18.39px;
 }
 .pop_up_col .check_phone_cell {
   display: flex;
@@ -3616,6 +3653,13 @@ html {
   border-bottom: 1px solid #8A8A8A;
   margin-bottom: 20px;
   position: relative;
+}
+.pop_up_col .check_phone_cell .toggle_entrance_type {
+  display: flex;
+  justify-content: space-between;
+}
+.pop_up_col .check_phone_cell .toggle_entrance_type p {
+  cursor: pointer;
 }
 .pop_up_col .info_cell {
   margin-bottom: 20px;
@@ -3629,7 +3673,16 @@ html {
 }
 .pop_up_col .cell_mistake .mistake_under_line_text {
   position: absolute;
-  bottom: -15px;
+  top: 87px;
+}
+
+.registration_form .cell_mistake {
+  border-bottom: 1px solid #FF4242;
+  position: relative;
+}
+.registration_form .cell_mistake .mistake_under_line_text {
+  position: absolute;
+  top: 62px;
 }
 
 .btn_main_inactive {
@@ -3674,7 +3727,8 @@ html {
 }
 
 .block_tabs_height-big {
-  height: 871px;
+  max-height: calc(100vh - 40px);
+  max-height: calc(var(--vh, 1vh) * 100 - 40px);
 }
 
 .addit_line_products {
@@ -3897,10 +3951,6 @@ html {
   margin-bottom: 40px;
 }
 
-.margin_top-15 {
-  margin-top: 15px;
-}
-
 .btn_in_basket {
   width: 100%;
   height: 70px;
@@ -4006,6 +4056,18 @@ html {
   overflow: hidden;
 }
 
-.minus, .plus {
+.minus, .plus, .log-in_tab, .registration_tab {
+  cursor: pointer;
+}
+
+.subscribe_ok {
+  cursor: pointer;
+}
+
+.discount_info {
+  text-align: end;
+}
+
+.pointer {
   cursor: pointer;
 }

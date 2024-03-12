@@ -28,6 +28,12 @@ for (let i = 0; i < closeIconEl.length; i++) {
     closeIconEl[i].addEventListener('click', function () {
         modalWindowSubscribeEl.style.display = 'none';
         modalWindowLocationEl.style.display = 'none';
+        modalWindowEntrance.classList.add('inactive');
+        if (modalWindowEntrance) {
+            toggleTabLogin();
+        }
+        modalWindowDiscountEl.classList.add('inactive');
+
         // При закрытии модального окна разрешаем прокрутку
         document.body.style.overflow = '';
     })
@@ -1151,7 +1157,393 @@ function returnToDataTab() {
 }
 
 
+// ВХОД и РЕГИСТРАЦИЯ
 
+let entranceEl = document.querySelectorAll('.entrance');
+let modalWindowEntrance = document.querySelector('.dark_window_entrance');
+let loginTabEl = document.querySelector('.log-in_tab');
+let registrationTabEl = document.querySelector('.registration_tab');
+let loginFormEl = document.querySelector('.log-in_form');
+let registrationFormEl = document.querySelector('.registration_form');
+let popupBlockTabsEl = document.querySelector('.pop_up_block_tabs');
+
+let checkPhoneFormEl = document.querySelector('.check_phone_form');
+let loginBtnEl = document.querySelector('.log-in_btn');
+let loginPhoneInputEl = document.querySelector('.log-in_phone input');
+let loginEmailInputEl = document.querySelector('.log-in_email input');
+let checkPhoneCellInLoginEl = document.querySelector('.log-in_form .check_phone_cell');
+let err1El = document.querySelector('.err1');
+let err2El = document.querySelector('.err2');
+let err10El = document.querySelector('.err10');
+let err11El = document.querySelector('.err11');
+let loginPhoneTitleEl = document.querySelector('.toggle_entrance_type .log-in_phone_title');
+let loginEmailTitleEl = document.querySelector('.toggle_entrance_type .log-in_email_title');
+let loginPhoneEl = document.querySelector('.log-in_phone');
+let loginEmailEl = document.querySelector('.log-in_email');
+
+let registrationBtnEl = document.querySelector('.registration_btn');
+let err3El = document.querySelector('.err3');
+let err4El = document.querySelector('.err4');
+let err5El = document.querySelector('.err5');
+let err6El = document.querySelector('.err6');
+let err7El = document.querySelector('.err7');
+let err8El = document.querySelector('.err8');
+let err9El = document.querySelector('.err9');
+let infoCellInRegListEl = document.querySelectorAll('.registration_form .info_cell');
+let infoCellInputInRegListEl = document.querySelectorAll('.registration_form input');
+let infoCellTitleInRegListEl = document.querySelectorAll('.info_cell .addit_text_addit_dark');
+
+let regExpPhone = /\+7[0-9]{10}/;
+let regExpEmail = /^[a-z0-9\.\-]+@[a-z0-9\.\-]+\.[a-z]{1,3}\.?[a-z]{0,3}$/i;
+
+if (entranceEl) {
+    for (let i = 0; i < entranceEl.length; i++) {
+        entranceEl[i].addEventListener('click', () => {
+            modalWindowEntrance.classList.remove('inactive');
+            document.body.style.overflow = 'hidden';
+        })
+    }
+
+    function toggleTabLogin() {
+        loginTabEl.classList.remove('tab_inactive_left');
+        loginTabEl.classList.add('tab_active');
+        registrationTabEl.classList.remove('tab_active');
+        registrationTabEl.classList.add('tab_inactive_right');
+
+        loginTabEl.classList.add('main_text');
+        loginTabEl.classList.remove('main_text_addit_dark');
+        registrationTabEl.classList.remove('main_text');
+        registrationTabEl.classList.add('main_text_addit_dark');
+
+        loginFormEl.classList.remove('inactive');
+        registrationFormEl.classList.add('inactive');
+        popupBlockTabsEl.classList.remove('block_tabs_height-big');
+        popupBlockTabsEl.classList.add('block_tabs_height-small');
+        checkPhoneFormEl.classList.add('inactive');
+
+        loginTabEl.removeEventListener('click', toggleTabLogin);
+        registrationTabEl.addEventListener('click', toggleTabRegistration);
+
+        loginPhoneInputEl.value = '';
+    }
+
+    function toggleTabRegistration() {
+        loginTabEl.classList.add('tab_inactive_left');
+        loginTabEl.classList.remove('tab_active');
+        registrationTabEl.classList.add('tab_active');
+        registrationTabEl.classList.remove('tab_inactive_right');
+
+        registrationTabEl.classList.add('main_text');
+        registrationTabEl.classList.remove('main_text_addit_dark');
+        loginTabEl.classList.remove('main_text');
+        loginTabEl.classList.add('main_text_addit_dark');
+
+        loginFormEl.classList.add('inactive');
+        registrationFormEl.classList.remove('inactive');
+        popupBlockTabsEl.classList.add('block_tabs_height-big');
+        popupBlockTabsEl.classList.remove('block_tabs_height-small');
+        checkPhoneFormEl.classList.add('inactive');
+
+        loginTabEl.addEventListener('click', toggleTabLogin)
+        registrationTabEl.removeEventListener('click', toggleTabRegistration)
+
+        err1El.classList.add('inactive');
+        err2El.classList.add('inactive');
+        checkPhoneCellInLoginEl.classList.remove('cell_mistake');
+
+        if (iconMenuBurgerEl || iconMenuCloseEl) {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        for (let i = 0; i < infoCellInputInRegListEl.length; i++) {
+            infoCellInputInRegListEl[i].value = '';
+            infoCellInRegListEl[i].classList.remove('cell_mistake');
+            infoCellTitleInRegListEl[i].classList.remove('red');
+    
+            if (i == 0) {
+                err7El.classList.add('inactive');
+            }
+            if (i == 1) {
+                err8El.classList.add('inactive');
+            }
+            if (i == 2) {
+                err3El.classList.add('inactive');
+                err4El.classList.add('inactive');
+            }
+            if (i == 3) {
+                err5El.classList.add('inactive');
+                err6El.classList.add('inactive');
+                err9El.classList.add('inactive');
+            };
+        }
+    }
+
+    // переключение вкладок
+
+    loginTabEl.addEventListener('click', toggleTabLogin);
+    registrationTabEl.addEventListener('click', toggleTabRegistration);
+
+
+    // переключение типа входа
+
+    loginPhoneTitleEl.addEventListener('click', () => {
+        loginPhoneEl.classList.remove('inactive');
+        loginEmailEl.classList.add('inactive');
+
+        err1El.classList.add('inactive');
+        err2El.classList.add('inactive');
+        checkPhoneCellInLoginEl.classList.remove('cell_mistake');
+        loginPhoneInputEl.value = '';
+    })
+
+    loginEmailTitleEl.addEventListener('click', () => {
+        loginPhoneEl.classList.add('inactive');
+        loginEmailEl.classList.remove('inactive');
+
+        err10El.classList.add('inactive');
+        err11El.classList.add('inactive');
+        checkPhoneCellInLoginEl.classList.remove('cell_mistake');
+        loginEmailInputEl.value = '';
+    })
+
+    // ввод номера в форме входа
+
+    loginBtnEl.addEventListener('click', () => { 
+
+        // здесь нужно сделать провеку, есть ли уже номер в базе, если нет, то выдать ошибку
+        if (loginPhoneInputEl.value == '' || loginPhoneInputEl.value == '+7') {
+            checkPhoneCellInLoginEl.classList.add('cell_mistake');
+            err1El.classList.remove('inactive');
+            err2El.classList.add('inactive');
+        }
+        else if (regExpPhone.test(loginPhoneInputEl.value)) {
+            checkPhoneFormEl.classList.remove('inactive');
+            loginFormEl.classList.add('inactive');
+        }
+        else {
+            checkPhoneCellInLoginEl.classList.add('cell_mistake');
+            err2El.classList.remove('inactive');
+            err1El.classList.add('inactive');
+        }
+
+        //добавить проверку наличия почты в базе - если нет - выдать ошибку
+        if (loginEmailInputEl.value == '') {
+            err11El.classList.remove('inactive');
+        } else if (loginEmailInputEl.value != '' && !regExpEmail.test(loginEmailInputEl.value)) {  
+            err10El.classList.remove('inactive');
+            checkPhoneCellInLoginEl.classList.add('cell_mistake');
+        } else {
+            checkPhoneFormEl.classList.remove('inactive');
+            loginFormEl.classList.add('inactive');
+        }
+    })
+
+    loginPhoneInputEl.addEventListener('focus', () => {
+        loginPhoneInputEl.value = '+7';
+    })
+
+    loginPhoneInputEl.addEventListener('input', () => {
+        err1El.classList.add('inactive');
+        err2El.classList.add('inactive');
+        checkPhoneCellInLoginEl.classList.remove('cell_mistake');
+
+        loginPhoneInputEl.value = loginPhoneInputEl.value.replace(/[a-zа-я]/gi, "");
+    })
+
+    loginEmailInputEl.addEventListener('input', () => {
+        err10El.classList.add('inactive');
+        err11El.classList.add('inactive');
+        checkPhoneCellInLoginEl.classList.remove('cell_mistake');
+    })
+
+    // ввод данных в форме регистрации
+
+    infoCellInputInRegListEl[2].addEventListener('focus', () => {
+        infoCellInputInRegListEl[2].value = '+7';
+    })
+
+    infoCellInputInRegListEl[2].addEventListener('input', () => {
+        infoCellInputInRegListEl[2].value = infoCellInputInRegListEl[2].value.replace(/[a-zа-я]/gi, "");
+    })
+
+
+    registrationBtnEl.addEventListener('click', () => { 
+
+        for (let i = 0; i < 4; i++) {
+            if (infoCellInputInRegListEl[i].value == '') {
+                infoCellInRegListEl[i].classList.add('cell_mistake');
+                infoCellTitleInRegListEl[i].classList.add('red');
+            }
+        }
+
+        if (infoCellInputInRegListEl[0].value == '') {
+            err7El.classList.remove('inactive');
+        }
+
+        if (infoCellInputInRegListEl[1].value == '') {
+            err8El.classList.remove('inactive');
+        }
+        
+        if (infoCellInputInRegListEl[2].value == '' || !regExpPhone.test(infoCellInputInRegListEl[2].value)) { 
+            // добавить проверку наличия телефона в базе - ошибка 4
+            err3El.classList.remove('inactive');
+            infoCellInRegListEl[2].classList.add('cell_mistake');
+            infoCellTitleInRegListEl[2].classList.add('red');
+        }
+
+        if (infoCellInputInRegListEl[3].value == '') {
+            err9El.classList.remove('inactive');
+        } else if (infoCellInputInRegListEl[3].value != '' && !regExpEmail.test(infoCellInputInRegListEl[3].value)) {  
+            //добавить проверку наличия почты в базе - ошибка 5
+            err6El.classList.remove('inactive');
+            infoCellInRegListEl[3].classList.add('cell_mistake');
+            infoCellTitleInRegListEl[3].classList.add('red');
+        }
+    
+        if (infoCellInputInRegListEl[0].value != '' &&
+            infoCellInputInRegListEl[1].value != '' &&
+            infoCellInputInRegListEl[2].value != '' &&
+            infoCellInputInRegListEl[3].value != '' &&
+            regExpPhone.test(infoCellInputInRegListEl[2].value) == true &&
+            regExpEmail.test(infoCellInputInRegListEl[3].value) == true) {
+
+                checkPhoneFormEl.classList.remove('inactive');
+                registrationFormEl.classList.add('inactive');
+        }
+    })
+
+    for (let i = 0; i < 4; i++) {
+        infoCellInputInRegListEl[i].addEventListener('input', () => {
+            infoCellInRegListEl[i].classList.remove('cell_mistake');
+            infoCellTitleInRegListEl[i].classList.remove('red');
+    
+            if (i == 0) {
+                err7El.classList.add('inactive');
+            }
+            if (i == 1) {
+                err8El.classList.add('inactive');
+            }
+            if (i == 2) {
+                err3El.classList.add('inactive');
+                err4El.classList.add('inactive');
+            }
+            if (i == 3) {
+                err5El.classList.add('inactive');
+                err6El.classList.add('inactive');
+                err9El.classList.add('inactive');
+            }
+        })
+    }
+}
+
+// проверка введенной почты в поля подписки
+
+let inputEmailGroupEl = document.querySelectorAll('.input_e-mail');
+let subscribeOkGroupEl = document.querySelectorAll('.subscribe_ok');
+
+for (let i = 0; i < inputEmailGroupEl.length; i++) {
+    subscribeOkGroupEl[i].addEventListener('click', () => {
+        if (inputEmailGroupEl[i].value == '') {
+            inputEmailGroupEl[i].value = 'введите EMAIL';
+            inputEmailGroupEl[i].classList.add('red');
+            if (inputEmailGroupEl[i].classList.contains('footer_input_e-mail')) {
+                inputEmailGroupEl[i].classList.remove('footer_input_e-mail')
+            }
+        }
+        else if (inputEmailGroupEl[i].value != '' && !regExpEmail.test(inputEmailGroupEl[i].value)) {  
+            inputEmailGroupEl[i].value = 'проверьте EMAIL';
+            inputEmailGroupEl[i].classList.add('red');
+            if (inputEmailGroupEl[i].classList.contains('footer_input_e-mail')) {
+                inputEmailGroupEl[i].classList.remove('footer_input_e-mail')
+            }
+        }
+        else {
+            inputEmailGroupEl[i].value = 'вы успешно подписаны';
+            inputEmailGroupEl[i].classList.add('red');
+            if (inputEmailGroupEl[i].classList.contains('footer_input_e-mail')) {
+                inputEmailGroupEl[i].classList.remove('footer_input_e-mail')
+            }
+        }
+    })
+
+    inputEmailGroupEl[i].addEventListener('focus', () => {
+        inputEmailGroupEl[i].value = '';
+        inputEmailGroupEl[i].classList.remove('red');
+        if (inputEmailGroupEl[i].closest('.footer_subscribe_form')) {
+            inputEmailGroupEl[i].classList.add('footer_input_e-mail')
+        }
+    })
+}
+
+
+// ЛИЧНЫЙ КАБИНЕТ
+
+let modalWindowDiscountEl = document.querySelector('.dark_window_discount');
+let discountInfoEl = document.querySelector('.discount_info');
+let personalInfoTabEl = document.querySelector('.personal_info_tab');
+let historyTabEl = document.querySelector('.history_tab');
+let personalInfoEl = document.querySelector('.personal_info');
+let ordersHistoryEl = document.querySelector('.orders_history');
+// вкладка история заказов
+let ordersHistoryItemGroupEl = document.querySelectorAll('.orders_history__item');
+let iconOpenOrderGroupEl = document.querySelectorAll('.icon_open_order');
+let iconCloseOrderGroupEl = document.querySelectorAll('.icon_close_order');
+let orderListInHistoryGroupEl = document.querySelectorAll('.orders_history .order_list ');
+let totalCostInHistoryGroupEl = document.querySelectorAll('.orders_history .total_cost ')
+
+if (personalInfoTabEl) {
+
+    discountInfoEl.addEventListener('click', () => {
+        modalWindowDiscountEl.classList.remove('inactive');
+        document.body.style.overflow = 'hidden';
+    })
+    
+    personalInfoTabEl.addEventListener('click', () =>{
+        historyTabEl.classList.add('tab_inactive_right');
+        historyTabEl.classList.remove('tab_active');
+        personalInfoTabEl.classList.add('tab_active');
+        personalInfoTabEl.classList.remove('tab_inactive_left');
+        personalInfoTabEl.classList.add('main_text');
+        personalInfoTabEl.classList.remove('main_text_addit_dark');
+        historyTabEl.classList.remove('main_text');
+        historyTabEl.classList.add('main_text_addit_dark');
+        personalInfoEl.classList.remove('inactive');
+        ordersHistoryEl.classList.add('inactive');
+    })
+    
+    historyTabEl.addEventListener('click', () =>{
+        historyTabEl.classList.remove('tab_inactive_right');
+        historyTabEl.classList.add('tab_active');
+        personalInfoTabEl.classList.remove('tab_active');
+        personalInfoTabEl.classList.add('tab_inactive_left');
+        historyTabEl.classList.add('main_text');
+        historyTabEl.classList.remove('main_text_addit_dark');
+        personalInfoTabEl.classList.remove('main_text');
+        personalInfoTabEl.classList.add('main_text_addit_dark');
+        personalInfoEl.classList.add('inactive');
+        ordersHistoryEl.classList.remove('inactive');
+    })
+    
+    for (let i = 0; i < iconOpenOrderGroupEl.length; i++) {
+        iconOpenOrderGroupEl[i].addEventListener('click', () => {
+            orderListInHistoryGroupEl[i].classList.remove('inactive');
+            totalCostInHistoryGroupEl[i].classList.remove('inactive');
+            iconOpenOrderGroupEl[i].classList.add('inactive');
+            iconCloseOrderGroupEl[i].classList.remove('inactive');
+            ordersHistoryItemGroupEl[i].classList.add('orders_history__item--opened');
+        })
+    
+        iconCloseOrderGroupEl[i].addEventListener('click', () => {
+            orderListInHistoryGroupEl[i].classList.add('inactive');
+            totalCostInHistoryGroupEl[i].classList.add('inactive');
+            iconOpenOrderGroupEl[i].classList.remove('inactive');
+            iconCloseOrderGroupEl[i].classList.add('inactive');
+            ordersHistoryItemGroupEl[i].classList.remove('orders_history__item--opened');
+        })
+    }
+    
+}
 
 
 

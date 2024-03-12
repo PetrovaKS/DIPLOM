@@ -17,20 +17,37 @@
 
 {% block content %}
 
+<!-- Окно система скидок начало -->
+
+<div class="dark_window_discount inactive">
+    <div class="pop-up_form_794 pop_up_discount">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="close_icon">
+            <path d="M5.33316 15.2565L4.74316 14.6665L9.40983 9.99983L4.74316 5.33316L5.33316 4.74316L9.99983 9.40983L14.6665 4.74316L15.2565 5.33316L10.5898 9.99983L15.2565 14.6665L14.6665 15.2565L9.99983 10.5898L5.33316 15.2565Z" fill="#393939"/>
+        </svg>
+        <p class="main_text_contrast">Размер скидки зависит от общей суммы покупок:</p>
+        <p class="info_pages_text">сумма выкупа более 50 000 руб. - 5%</p>
+        <p class="info_pages_text">сумма выкупа более 100 000 руб. - 7%</p>
+        <p class="info_pages_text">сумма выкупа более 150 000 руб. - 10%</p>
+        <p class="main_text">Сумма ваших покупок отражена в разделе история заказов.</p>
+        <p class="main_text_contrast">Скидка по системе лояльности суммируется с действующими акциями.</p>
+    </div>
+</div>
+
+<!-- Окно система скидок конец -->
+
 <!-- Личный кабинет инфо начало -->
 <div class="container block_tabs">
 
     <div class="row_tabs">
-        <div class="tab_active">
-            <p class="main_text uppercase">личная информация</p>
+        <div class="tab_active main_text uppercase personal_info_tab pointer">
+            личная информация
         </div>
-        <a href="personal_account_orders.html" class="tab_inactive_right">
-            <p class="main_text_addit_dark uppercase">история заказов</p>
-        </a>
+        <div class="tab_inactive_right main_text_addit_dark uppercase history_tab pointer">
+            история заказов
+        </div>
     </div>
 
-    <div class="row_info">
-
+    <div class="row_info personal_info">
         <div class="row_info_col">
             <div class="info_cell">
                 <p class="addit_text_addit_dark">Фамилия</p>
@@ -52,7 +69,7 @@
             </div>
             <div class="discount_cell">
                 <p class="main_text uppercase">персональная скидка <span class="red total_discount">5</span><span class="red">%</span></p>
-                <a href="personal_account_info_discount.html" class="small_text underline">подробнее о системе лояльности</a>
+                <div class="small_text underline discount_info pointer">подробнее о системе лояльности</div>
             </div>
         </div>
 
@@ -89,9 +106,449 @@
                     </form>
                 </div>
             </div>
-            <a href="#" class="btn_main margin_top-15">
+            <div class="btn_main">
                 <p class="main_text uppercase btn_text">сохранить изменения</p>
-            </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- История заказов -->
+
+    <div class="orders_history inactive">
+
+        <!-- Строка заказа начало -->
+        <div class="orders_history__item">
+
+            <div class="order_group">
+                <div class="item_number main_text uppercase">
+                    заказ №35021-0003
+                </div>
+                <div class="order_create main_text_addit_dark">
+                    создан 12.06.2023 г.
+                </div>
+                <div class="order_delivery main_text_addit_dark">
+                    трек-номер: ABC123456789
+                </div>
+            </div>
+
+            <div class="order_value main_text">
+                31 400 р.
+            </div>
+            <div class="open_order">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="pointer inactive icon_close_order">
+                    <path d="M14.1693 11.667L10.0026 7.50033L5.83594 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="pointer icon_open_order">
+                    <path d="M5.83464 8.33301L10.0013 12.4997L14.168 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <!-- Строка заказа конец -->
+
+        <!-- Корзина с товарами начало -->
+
+        <div class="order_list inactive">
+
+            <!-- Строчка товара в корзине начало -->
+            <div class="order_list__item">
+                <div class="order_item_foto">
+                    <img src="./img/product_cards/women/clothes/product3.jpeg" alt="foto" class="item_foto">
+                </div>
+                <div class="order_item_info">
+                    <p class="main_text_title">кардиган из шерсти</p>
+                    <p class="small_text">Серый</p>
+                    <p class="main_text uppercase">M</p>
+                </div>
+                <div class="order_item_price main_text">
+                    8 000 р.
+                </div>
+                <div class="order_item_count">
+                    <p class="main_text">1 шт.</p>
+                </div>
+                <div class="order_item_cost main_text">
+                    8 000 р.
+                </div>
+            </div>
+            <!-- Строчка товара в корзине конец -->
+
+            <!-- Строчка товара в корзине начало -->
+            <div class="order_list__item">
+                <div class="order_item_foto">
+                    <img src="./img/product_cards/women/clothes/product5.jpeg" alt="foto" class="item_foto">
+                </div>
+                <div class="order_item_info">
+                    <p class="main_text_title">рубашка</p>
+                    <p class="small_text">Белый</p>
+                    <p class="main_text uppercase">M</p>
+                </div>
+                <div class="order_item_price main_text">
+                    8 000 р.
+                </div>
+                <div class="order_item_count">
+                    <p class="main_text">2 шт.</p>
+                </div>
+                <div class="order_item_cost main_text">
+                    16 000 р.
+                </div>
+            </div>
+            <!-- Строчка товара в корзине конец -->
+
+            <!-- Строчка товара в корзине начало -->
+            <div class="order_list__item">
+                <div class="order_item_foto">
+                    <img src="./img/product_cards/women/clothes/product8.jpeg" alt="foto" class="item_foto">
+                </div>
+                <div class="order_item_info">
+                    <p class="main_text_title">джинсы</p>
+                    <p class="small_text">Голубой</p>
+                    <p class="main_text uppercase">M</p>
+                </div>
+                <div class="order_item_price main_text">
+                    8 000 р.
+                </div>
+                <div class="order_item_count">
+                    <p class="main_text">1 шт.</p>
+                </div>
+                <div class="order_item_cost main_text">
+                    8 000 р.
+                </div>
+            </div>
+            <!-- Строчка товара в корзине конец -->
+
+        </div>
+
+        <div class="container total_cost inactive">
+
+            <div class="total_cost__item">
+                <div class="total_item_name main_text">
+                    4 товара
+                </div>
+                <div class="total_item_value main_text">
+                    32 000 р.
+                </div>
+            </div>
+
+            <div class="total_cost__item">
+                <div class="total_item_name main_text">
+                    Скидка 5%
+                </div>
+                <div class="total_item_value main_text">
+                    1 600 р.
+                </div>
+            </div>
+
+            <div class="total_cost__item">
+                <div class="total_item_name main_text">
+                    Доставка
+                </div>
+                <div class="total_item_value main_text">
+                    1 000 р.
+                </div>
+            </div>
+
+            <div class="total_cost__item">
+                <div class="total_item_name main_text_contrast">
+                    Оплачено
+                </div>
+                <div class="total_item_value main_text_contrast">
+                    31 400 р.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Корзина с товарами конец -->
+
+
+        <!-- Строка заказа начало -->
+        <div class="orders_history__item">
+            <div class="order_group">
+                <div class="item_number main_text uppercase">
+                    заказ №35021-0002
+                </div>
+                <div class="order_create main_text_addit_dark">
+                    создан 01.02.2024 г.
+                </div>
+                <div class="order_delivery main_text_addit_dark">
+                    получен 10.02.2024 г.
+                </div>
+            </div>
+            <div class="order_value main_text">
+                64 000 р.
+            </div>
+            <div class="open_order">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"  class="pointer icon_open_order">
+                    <path d="M5.83464 8.33301L10.0013 12.4997L14.168 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="pointer inactive icon_close_order">
+                    <path d="M14.1693 11.667L10.0026 7.50033L5.83594 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <!-- Строка заказа конец -->
+
+                <!-- Корзина с товарами начало -->
+
+                <div class="order_list inactive">
+
+                    <!-- Строчка товара в корзине начало -->
+                    <div class="order_list__item">
+                        <div class="order_item_foto">
+                            <img src="./img/product_cards/women/clothes/product3.jpeg" alt="foto" class="item_foto">
+                        </div>
+                        <div class="order_item_info">
+                            <p class="main_text_title">кардиган из шерсти</p>
+                            <p class="small_text">Серый</p>
+                            <p class="main_text uppercase">M</p>
+                        </div>
+                        <div class="order_item_price main_text">
+                            8 000 р.
+                        </div>
+                        <div class="order_item_count">
+                            <p class="main_text">1 шт.</p>
+                        </div>
+                        <div class="order_item_cost main_text">
+                            8 000 р.
+                        </div>
+                    </div>
+                    <!-- Строчка товара в корзине конец -->
+        
+                    <!-- Строчка товара в корзине начало -->
+                    <div class="order_list__item">
+                        <div class="order_item_foto">
+                            <img src="./img/product_cards/women/clothes/product5.jpeg" alt="foto" class="item_foto">
+                        </div>
+                        <div class="order_item_info">
+                            <p class="main_text_title">рубашка</p>
+                            <p class="small_text">Белый</p>
+                            <p class="main_text uppercase">M</p>
+                        </div>
+                        <div class="order_item_price main_text">
+                            8 000 р.
+                        </div>
+                        <div class="order_item_count">
+                            <p class="main_text">2 шт.</p>
+                        </div>
+                        <div class="order_item_cost main_text">
+                            16 000 р.
+                        </div>
+                    </div>
+                    <!-- Строчка товара в корзине конец -->
+        
+                    <!-- Строчка товара в корзине начало -->
+                    <div class="order_list__item">
+                        <div class="order_item_foto">
+                            <img src="./img/product_cards/women/clothes/product8.jpeg" alt="foto" class="item_foto">
+                        </div>
+                        <div class="order_item_info">
+                            <p class="main_text_title">джинсы</p>
+                            <p class="small_text">Голубой</p>
+                            <p class="main_text uppercase">M</p>
+                        </div>
+                        <div class="order_item_price main_text">
+                            8 000 р.
+                        </div>
+                        <div class="order_item_count">
+                            <p class="main_text">1 шт.</p>
+                        </div>
+                        <div class="order_item_cost main_text">
+                            8 000 р.
+                        </div>
+                    </div>
+                    <!-- Строчка товара в корзине конец -->
+        
+                </div>
+        
+                <div class="container total_cost inactive">
+        
+                    <div class="total_cost__item">
+                        <div class="total_item_name main_text">
+                            4 товара
+                        </div>
+                        <div class="total_item_value main_text">
+                            32 000 р.
+                        </div>
+                    </div>
+        
+                    <div class="total_cost__item">
+                        <div class="total_item_name main_text">
+                            Скидка 5%
+                        </div>
+                        <div class="total_item_value main_text">
+                            1 600 р.
+                        </div>
+                    </div>
+        
+                    <div class="total_cost__item">
+                        <div class="total_item_name main_text">
+                            Доставка
+                        </div>
+                        <div class="total_item_value main_text">
+                            1 000 р.
+                        </div>
+                    </div>
+        
+                    <div class="total_cost__item">
+                        <div class="total_item_name main_text_contrast">
+                            Оплачено
+                        </div>
+                        <div class="total_item_value main_text_contrast">
+                            31 400 р.
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <!-- Корзина с товарами конец -->
+
+        <!-- Строка заказа начало -->
+        <div class="orders_history__item">
+            <div class="order_group">
+                <div class="item_number main_text uppercase">
+                    заказ №35021-0001
+                </div>
+                <div class="order_create main_text_addit_dark">
+                    создан 12.06.2023 г.
+                </div>
+                <div class="order_delivery main_text_addit_dark">
+                    получен 20.06.2023 г.
+                </div>
+            </div>
+            <div class="order_value main_text">
+                25 000 р.
+            </div>
+            <div class="open_order">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"  class="pointer icon_open_order">
+                    <path d="M5.83464 8.33301L10.0013 12.4997L14.168 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="pointer inactive icon_close_order">
+                    <path d="M14.1693 11.667L10.0026 7.50033L5.83594 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <!-- Строка заказа конец -->
+
+                <!-- Корзина с товарами начало -->
+
+                <div class="order_list inactive">
+
+                    <!-- Строчка товара в корзине начало -->
+                    <div class="order_list__item">
+                        <div class="order_item_foto">
+                            <img src="./img/product_cards/women/clothes/product3.jpeg" alt="foto" class="item_foto">
+                        </div>
+                        <div class="order_item_info">
+                            <p class="main_text_title">кардиган из шерсти</p>
+                            <p class="small_text">Серый</p>
+                            <p class="main_text uppercase">M</p>
+                        </div>
+                        <div class="order_item_price main_text">
+                            8 000 р.
+                        </div>
+                        <div class="order_item_count">
+                            <p class="main_text">1 шт.</p>
+                        </div>
+                        <div class="order_item_cost main_text">
+                            8 000 р.
+                        </div>
+                    </div>
+                    <!-- Строчка товара в корзине конец -->
+        
+                    <!-- Строчка товара в корзине начало -->
+                    <div class="order_list__item">
+                        <div class="order_item_foto">
+                            <img src="./img/product_cards/women/clothes/product5.jpeg" alt="foto" class="item_foto">
+                        </div>
+                        <div class="order_item_info">
+                            <p class="main_text_title">рубашка</p>
+                            <p class="small_text">Белый</p>
+                            <p class="main_text uppercase">M</p>
+                        </div>
+                        <div class="order_item_price main_text">
+                            8 000 р.
+                        </div>
+                        <div class="order_item_count">
+                            <p class="main_text">2 шт.</p>
+                        </div>
+                        <div class="order_item_cost main_text">
+                            16 000 р.
+                        </div>
+                    </div>
+                    <!-- Строчка товара в корзине конец -->
+        
+                    <!-- Строчка товара в корзине начало -->
+                    <div class="order_list__item">
+                        <div class="order_item_foto">
+                            <img src="./img/product_cards/women/clothes/product8.jpeg" alt="foto" class="item_foto">
+                        </div>
+                        <div class="order_item_info">
+                            <p class="main_text_title">джинсы</p>
+                            <p class="small_text">Голубой</p>
+                            <p class="main_text uppercase">M</p>
+                        </div>
+                        <div class="order_item_price main_text">
+                            8 000 р.
+                        </div>
+                        <div class="order_item_count">
+                            <p class="main_text">1 шт.</p>
+                        </div>
+                        <div class="order_item_cost main_text">
+                            8 000 р.
+                        </div>
+                    </div>
+                    <!-- Строчка товара в корзине конец -->
+        
+                </div>
+        
+                <div class="container total_cost inactive">
+        
+                    <div class="total_cost__item">
+                        <div class="total_item_name main_text">
+                            4 товара
+                        </div>
+                        <div class="total_item_value main_text">
+                            32 000 р.
+                        </div>
+                    </div>
+        
+                    <div class="total_cost__item">
+                        <div class="total_item_name main_text">
+                            Скидка 5%
+                        </div>
+                        <div class="total_item_value main_text">
+                            1 600 р.
+                        </div>
+                    </div>
+        
+                    <div class="total_cost__item">
+                        <div class="total_item_name main_text">
+                            Доставка
+                        </div>
+                        <div class="total_item_value main_text">
+                            1 000 р.
+                        </div>
+                    </div>
+        
+                    <div class="total_cost__item">
+                        <div class="total_item_name main_text_contrast">
+                            Оплачено
+                        </div>
+                        <div class="total_item_value main_text_contrast">
+                            31 400 р.
+                        </div>
+                    </div>
+        
+                </div>
+        
+                <!-- Корзина с товарами конец -->
+
+        <div class="total_orders_value">
+            <div class="value_text main_text_contrast">
+                Общая сумма покупок
+            </div>
+            <div class="value_amount main_text_contrast">
+                119 400 р.
+            </div>
         </div>
 
     </div>
