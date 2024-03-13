@@ -734,6 +734,11 @@ let totalAmountWordEl = document.querySelector('.total_amount_word');
 
 let idCounter = Date.now();
 
+let quantityTotal;
+let totalDiscountSum;
+let totalDelivery;
+let totalSum;
+
 calculateTotalOrderSum();
 
 function calculateTotalOrderSum() {
@@ -745,21 +750,21 @@ function calculateTotalOrderSum() {
     totalDiscountEl.forEach(item => item.textContent = '');
     totalDiscountEl.forEach(item => item.append(totalDiscount.toLocaleString("ru-RU")));
 
-    let totalDiscountSum = totalCost * totalDiscount / 100;
+    totalDiscountSum = totalCost * totalDiscount / 100;
     totalDiscountInBasketSumEl.forEach(item => item.textContent = '');
     totalDiscountInBasketSumEl.forEach(item => item.append(totalDiscountSum.toLocaleString("ru-RU")));
 
-    let totalDelivery = 1000; // пока 1000, потом написаь формулу расчета
+    totalDelivery = 1000; // пока 1000, потом написаь формулу расчета
     totalCostDeliveryEl.forEach(item => item.textContent = '');
     totalCostDeliveryEl.forEach(item => item.append(totalDelivery.toLocaleString("ru-RU")));
 
-    let totalSum = totalCost - totalDiscountSum + totalDelivery;
+    totalSum = totalCost - totalDiscountSum + totalDelivery;
     totalCostInBasketSumEl.forEach(item => item.textContent = '');
     totalCostInBasketSumEl.forEach(item => item.append(totalSum.toLocaleString("ru-RU")));
 }
 
 function drawTotalQuantityInBasket (list) {
-    let quantityTotal = list
+    quantityTotal = list
         .map(obj => obj.quantity)
         .reduce((accumulator, current) => accumulator + current, 0);
 
@@ -857,7 +862,6 @@ function addProductInBusket () {
 // функция вывода в корзину товаров 
 
 function drawListToBasket (list) {
-    // console.log(basketList)
     orderListBasketEl.textContent = '';
     totalCostInBasket = [];
 
@@ -1307,7 +1311,7 @@ if (entranceEl) {
         loginEmailInputEl.value = '';
     })
 
-    // ввод номера в форме входа
+    // ввод номера или почты в форме входа
 
     loginBtnEl.addEventListener('click', () => { 
 
@@ -1485,12 +1489,8 @@ let personalInfoTabEl = document.querySelector('.personal_info_tab');
 let historyTabEl = document.querySelector('.history_tab');
 let personalInfoEl = document.querySelector('.personal_info');
 let ordersHistoryEl = document.querySelector('.orders_history');
-// вкладка история заказов
-let ordersHistoryItemGroupEl = document.querySelectorAll('.orders_history__item');
-let iconOpenOrderGroupEl = document.querySelectorAll('.icon_open_order');
-let iconCloseOrderGroupEl = document.querySelectorAll('.icon_close_order');
-let orderListInHistoryGroupEl = document.querySelectorAll('.orders_history .order_list ');
-let totalCostInHistoryGroupEl = document.querySelectorAll('.orders_history .total_cost ')
+
+// переключение вкладок
 
 if (personalInfoTabEl) {
 
@@ -1523,28 +1523,197 @@ if (personalInfoTabEl) {
         personalInfoTabEl.classList.add('main_text_addit_dark');
         personalInfoEl.classList.add('inactive');
         ordersHistoryEl.classList.remove('inactive');
-    })
-    
-    for (let i = 0; i < iconOpenOrderGroupEl.length; i++) {
-        iconOpenOrderGroupEl[i].addEventListener('click', () => {
-            orderListInHistoryGroupEl[i].classList.remove('inactive');
-            totalCostInHistoryGroupEl[i].classList.remove('inactive');
-            iconOpenOrderGroupEl[i].classList.add('inactive');
-            iconCloseOrderGroupEl[i].classList.remove('inactive');
-            ordersHistoryItemGroupEl[i].classList.add('orders_history__item--opened');
-        })
-    
-        iconCloseOrderGroupEl[i].addEventListener('click', () => {
-            orderListInHistoryGroupEl[i].classList.add('inactive');
-            totalCostInHistoryGroupEl[i].classList.add('inactive');
-            iconOpenOrderGroupEl[i].classList.remove('inactive');
-            iconCloseOrderGroupEl[i].classList.add('inactive');
-            ordersHistoryItemGroupEl[i].classList.remove('orders_history__item--opened');
-        })
-    }
-    
+    }) 
 }
 
 
+// открытие окна регистрации или входа по клику на строку в корзине
+
+let loginTextEl = document.querySelector('.login_text');
+let regTextEl = document.querySelector('.reg_text');
+
+if (loginTextEl) {
+    loginTextEl.addEventListener('click', () => {
+        modalWindowEntrance.classList.remove('inactive');
+        document.body.style.overflow = 'hidden';
+    })
+
+    regTextEl.addEventListener('click', () => {
+        modalWindowEntrance.classList.remove('inactive');
+        document.body.style.overflow = 'hidden';
+        toggleTabRegistration ();
+    })
+}
+
+// при нажатии кнопки Оплатить - в историю заказов добавляется новый элемент
+
+let payBtnEl = document.querySelector('.pay_btn');
+let historyList = JSON.parse(window.localStorage.getItem('historyList')) || [];  //массив с историей заказов выгружаем из LS
+
+if (payBtnEl) {
+    payBtnEl.addEventListener('click', () => {
+        addHistoryItem();
+        basketList = [];
+        window.localStorage.setItem('basketList', JSON.stringify(basketList));
+        drawTotalQuantityInBasket (basketList);
+    })
+}
+
+function addHistoryItem () {
+    let dateNow = new Date();
+    let date = (dateNow.getDate() < 10 ? "0" + dateNow.getDate() : dateNow.getDate()) + "."
+             + ((Number(dateNow.getMonth()) + 1) < 10 ? "0" + (Number(dateNow.getMonth()) + 1) : (Number(dateNow.getMonth()) + 1)) + "."
+             + dateNow.getFullYear();
+
+    let historyItem = {
+        number: historyList.length + 1,
+        dateOrder: date,
+        status: 'оплачен',
+        basketList: basketList,
+        totalQuantity: quantityTotal,
+        totalDiscount: totalDiscount,
+        totalCost: totalCost,
+        totalDiscountSum: totalDiscountSum,
+        totalDelivery: totalDelivery,
+        totalSum: totalSum
+    }
+    console.log(historyItem);
+
+    historyList.push(historyItem);
+    window.localStorage.setItem('historyList', JSON.stringify(historyList));
+
+}
+
+if (ordersHistoryEl) {
+    drawListOrdersHistory(historyList);
+}
+
+function drawListOrdersHistory (list) {
+    for (let item of list) {
+        createListHistoryElement(item)
+    }
+}
 
 
+function createListHistoryElement (listObject) {
+    ordersHistoryEl.insertAdjacentHTML('afterbegin', 
+    `<div class="container total_cost inactive">
+        
+        <div class="total_cost__item">
+            <div class="total_item_name main_text">
+            ${listObject.totalQuantity} товара
+            </div>
+            <div class="total_item_value main_text">
+            ${listObject.totalCost.toLocaleString("ru-RU")} р.
+            </div>
+        </div>
+
+        <div class="total_cost__item">
+            <div class="total_item_name main_text">
+                Скидка ${listObject.totalDiscount}%
+            </div>
+            <div class="total_item_value main_text">
+                ${listObject.totalDiscountSum.toLocaleString("ru-RU")} р.
+            </div>
+        </div>
+
+        <div class="total_cost__item">
+            <div class="total_item_name main_text">
+                Доставка
+            </div>
+            <div class="total_item_value main_text">
+                ${listObject.totalDelivery.toLocaleString("ru-RU")} р.
+            </div>
+        </div>
+
+        <div class="total_cost__item">
+            <div class="total_item_name main_text_contrast">
+                Оплачено
+            </div>
+            <div class="total_item_value main_text_contrast">
+            ${listObject.totalSum.toLocaleString("ru-RU")} р.
+            </div>
+        </div>
+
+    </div>`)
+
+    ordersHistoryEl.insertAdjacentHTML('afterbegin', `<div class="order_list inactive order_list_history"></div>`);
+
+    let orderListEl = document.querySelector('.order_list_history');
+
+    for (item of listObject.basketList) {
+        let cost = Number(item.price) * item.quantity;
+        let price = Number(item.price);
+
+        orderListEl.insertAdjacentHTML('beforeend', 
+        `<div class="order_list__item">
+            <div class="order_item_foto">
+                <img src=${item.imgSrc} alt="foto" class="item_foto">
+            </div>
+            <div class="order_item_info">
+                <p class="main_text_title">${item.name}</p>
+                <p class="small_text">${item.color}</p>
+                <p class="main_text uppercase">${item.size}</p>
+            </div>
+            <div class="order_item_price main_text">
+                ${price.toLocaleString("ru-RU")}  р.
+            </div>
+            <div class="order_item_count">
+                <p class="main_text">${item.quantity} шт.</p>
+            </div>
+            <div class="order_item_cost main_text">
+                ${cost.toLocaleString("ru-RU")} р.
+            </div>
+        </div>`)
+    }
+
+    ordersHistoryEl.insertAdjacentHTML('afterbegin', 
+    `<div class="orders_history__item">
+        <div class="order_group">
+            <div class="item_number main_text uppercase">
+                заказ №35021-${listObject.number}
+            </div>
+            <div class="order_create main_text_addit_dark">
+                создан ${listObject.dateOrder} г.
+            </div>
+            <div class="order_delivery main_text_addit_dark">
+                ${listObject.status}
+            </div>
+        </div>
+        <div class="order_value main_text">
+            ${listObject.totalSum.toLocaleString("ru-RU")} р.
+        </div>
+        <div class="open_order">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"  class="pointer icon_open_order">
+                <path d="M5.83464 8.33301L10.0013 12.4997L14.168 8.33301" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="pointer inactive icon_close_order">
+                <path d="M14.1693 11.667L10.0026 7.50033L5.83594 11.667" stroke="#393939" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>`);
+}
+
+let ordersHistoryItemGroupEl = document.querySelectorAll('.orders_history__item');
+let iconOpenOrderGroupEl = document.querySelectorAll('.icon_open_order');
+let iconCloseOrderGroupEl = document.querySelectorAll('.icon_close_order');
+let orderListInHistoryGroupEl = document.querySelectorAll('.orders_history .order_list ');
+let totalCostInHistoryGroupEl = document.querySelectorAll('.orders_history .total_cost ')
+
+for (let i = 0; i < iconOpenOrderGroupEl.length; i++) {
+    iconOpenOrderGroupEl[i].addEventListener('click', () => {
+        orderListInHistoryGroupEl[i].classList.remove('inactive');
+        totalCostInHistoryGroupEl[i].classList.remove('inactive');
+        iconOpenOrderGroupEl[i].classList.add('inactive');
+        iconCloseOrderGroupEl[i].classList.remove('inactive');
+        ordersHistoryItemGroupEl[i].classList.add('orders_history__item--opened');
+    })
+
+    iconCloseOrderGroupEl[i].addEventListener('click', () => {
+        orderListInHistoryGroupEl[i].classList.add('inactive');
+        totalCostInHistoryGroupEl[i].classList.add('inactive');
+        iconOpenOrderGroupEl[i].classList.remove('inactive');
+        iconCloseOrderGroupEl[i].classList.add('inactive');
+        ordersHistoryItemGroupEl[i].classList.remove('orders_history__item--opened');
+    })
+}
