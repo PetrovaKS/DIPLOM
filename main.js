@@ -7,14 +7,14 @@ let modalWindowSubscribeEl = document.querySelector('.dark_window_subscribe');
 
 if (!sessionStorage.getItem('counterOpenWindow')) {
     setTimeout (() => {
-        modalWindowSubscribeEl.style.display='flex';
+        modalWindowSubscribeEl.classList.remove('inactive');
         window.sessionStorage.setItem('counterOpenWindow', '1');
     }, 5000);
 }
 
 if (sessionStorage.getItem('counterOpenWindow') == '1') {
     setTimeout (() => {
-        modalWindowSubscribeEl.style.display='flex';
+        modalWindowSubscribeEl.classList.remove('inactive');
         window.sessionStorage.setItem('counterOpenWindow', '2');
     }, 15000);
 }
@@ -26,8 +26,8 @@ let closeIconEl = document.querySelectorAll('.close_icon');
 
 for (let i = 0; i < closeIconEl.length; i++) {
     closeIconEl[i].addEventListener('click', function () {
-        modalWindowSubscribeEl.style.display = 'none';
-        modalWindowLocationEl.style.display = 'none';
+        modalWindowSubscribeEl.classList.add('inactive');
+        modalWindowLocationEl.classList.add('inactive');
         modalWindowEntrance.classList.add('inactive');
         if (modalWindowEntrance) {
             toggleTabLogin();
@@ -47,7 +47,7 @@ let locationEl = document.querySelectorAll('.location');
 
 locationEl.forEach((item) => {
     item.addEventListener('click', () => {
-        modalWindowLocationEl.style.display = 'flex';
+        modalWindowLocationEl.classList.remove('inactive');
         // Блокируем прокрутку body
         document.body.style.overflow = 'hidden';
     })
@@ -111,7 +111,7 @@ function getCityName() {
     if (chooseCityEl.value) {
         choosedLocationEl.forEach((item) => item.textContent = '');
         choosedLocationEl.forEach((item) => item.textContent = chooseCityEl.value.toUpperCase());
-        modalWindowLocationEl.style.display = 'none';
+        modalWindowLocationEl.classList.add('inactive');
         document.body.style.overflow = '';
         window.localStorage.setItem('city', chooseCityEl.value.toUpperCase());
         chooseCityEl.value = '';
@@ -581,7 +581,7 @@ if (colorChoosedNameEl) {
             }
             else {
                 // открываем модальное окно
-                modalWindowAddToBasketEl.style.display = 'flex';
+                modalWindowAddToBasketEl.classList.remove('inactive');
 
                 // Блокируем прокрутку body
                 document.body.style.overflow = 'hidden';
@@ -606,7 +606,7 @@ if (colorChoosedNameEl) {
 
     for (let i = 0; i < closeIconEl.length; i++) {
         closeIconEl[i].addEventListener('click', function () {
-            modalWindowAddToBasketEl.style.display = 'none';
+            modalWindowAddToBasketEl.classList.add('inactive');
             document.body.style.overflow = '';
         })
     }
@@ -615,7 +615,7 @@ if (colorChoosedNameEl) {
 
     if (turnToShopBtnEl) {
         turnToShopBtnEl.addEventListener('click', () => {
-            modalWindowAddToBasketEl.style.display = 'none';
+            modalWindowAddToBasketEl.classList.add('inactive');
             document.body.style.overflow = '';
         })
     }
@@ -728,7 +728,7 @@ let totalDiscountInBasketSumEl = document.querySelectorAll('.total_discount_in_b
 let totalCostDeliveryEl = document.querySelectorAll('.total_cost_delivery');
 let totalCostInBasketSumEl = document.querySelectorAll('.total_cost_in_basket_sum');
 let totalOrdersSumEl = document.querySelector('.total_orders_sum');
-let totalOrdersSum = 100000; // общая сумма заказов, пока цифрой, потом помещать в LS и выгружать
+let totalOrdersSum = JSON.parse(window.localStorage.getItem('totalOrdersSum'));; // общая сумма заказов, пока цифрой, выгружаем из LS
 
 let totalAmountWordEl = document.querySelector('.total_amount_word');
 
@@ -1550,6 +1550,7 @@ if (loginTextEl) {
 let payBtnEl = document.querySelector('.pay_btn');
 let historyList = JSON.parse(window.localStorage.getItem('historyList')) || [];  //массив с историей заказов выгружаем из LS
 
+
 if (payBtnEl) {
     payBtnEl.addEventListener('click', () => {
         addHistoryItem();
@@ -1577,11 +1578,9 @@ function addHistoryItem () {
         totalDelivery: totalDelivery,
         totalSum: totalSum
     }
-    console.log(historyItem);
 
     historyList.push(historyItem);
     window.localStorage.setItem('historyList', JSON.stringify(historyList));
-
 }
 
 if (ordersHistoryEl) {
@@ -1589,13 +1588,21 @@ if (ordersHistoryEl) {
 }
 
 function drawListOrdersHistory (list) {
+    totalOrdersSum = 0;
     for (let item of list) {
         createListHistoryElement(item)
     }
+    console.log(totalOrdersSum)
+    window.localStorage.setItem('totalOrdersSum', totalOrdersSum);  
+    totalOrdersSumEl.textContent = totalOrdersSum.toLocaleString("ru-RU");
+
+    countDiscount();
 }
 
-
 function createListHistoryElement (listObject) {
+
+    let sumWithDiscount = listObject.totalCost - listObject.totalDiscountSum;
+
     ordersHistoryEl.insertAdjacentHTML('afterbegin', 
     `<div class="container total_cost inactive">
         
@@ -1681,7 +1688,7 @@ function createListHistoryElement (listObject) {
             </div>
         </div>
         <div class="order_value main_text">
-            ${listObject.totalSum.toLocaleString("ru-RU")} р.
+            ${sumWithDiscount.toLocaleString("ru-RU")} р.
         </div>
         <div class="open_order">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"  class="pointer icon_open_order">
@@ -1692,6 +1699,8 @@ function createListHistoryElement (listObject) {
             </svg>
         </div>
     </div>`);
+
+    totalOrdersSum = totalOrdersSum + listObject.totalCost - listObject.totalDiscountSum;
 }
 
 let ordersHistoryItemGroupEl = document.querySelectorAll('.orders_history__item');
@@ -1717,3 +1726,26 @@ for (let i = 0; i < iconOpenOrderGroupEl.length; i++) {
         ordersHistoryItemGroupEl[i].classList.remove('orders_history__item--opened');
     })
 }
+
+
+
+// геолокация подключение
+
+// if ("geolocation" in navigator) {
+//   console.log('Geolocation API доступен');
+// } else {
+//   console.log('Geolocation API не поддерживается браузером пользователя');
+// }
+
+
+// navigator.geolocation.getCurrentPosition(
+//   function (position) {
+//     console.log("Latitude:", position.coords.latitude);
+//     console.log("Longitude:", position.coords.longitude);
+//   },
+//   function (error) {
+//     console.error("Ошибка получения местоположения:", error);
+//   }
+// );
+
+// подключить геолокцию тут https://yandex.ru/dev/geocode/doc/ru/
