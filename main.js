@@ -1753,7 +1753,7 @@ for (let i = 0; i < iconOpenOrderGroupEl.length; i++) {
 
 // делаем выпадающий список городов при выборе геолокации
 
-const API_URL = 'http://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address'
+const API_URL = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address'
 const API_KEY = 'acf562dfb6d0097c02ead5d1d44848d0373cd3b1'
 
 document.querySelector('.input_city').addEventListener('input', () => {
