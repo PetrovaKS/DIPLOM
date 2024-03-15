@@ -1749,3 +1749,60 @@ for (let i = 0; i < iconOpenOrderGroupEl.length; i++) {
 // );
 
 // подключить геолокцию тут https://yandex.ru/dev/geocode/doc/ru/
+
+
+// делаем выпадающий список городов при выборе геолокации
+
+const API_URL = 'http://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address'
+const API_KEY = 'acf562dfb6d0097c02ead5d1d44848d0373cd3b1'
+
+document.querySelector('.input_city').addEventListener('input', () => {
+    let city = document.querySelector('.input_city');
+    let cityRegExp = new RegExp(city.value, 'i')
+
+    const options = {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Token " + API_KEY
+        },
+        body: JSON.stringify({query: city.value})
+    }
+
+    let cityList = [];
+
+    fetch(API_URL, options)  // запрос сюда https://dadata.ru/api/suggest/address/
+    .then(response => response.json())
+    .then((data) => {
+        for(let item of data.suggestions) {
+            if(cityRegExp.test(item.data.city) && !cityList.includes(item.data.city)) {
+                cityList.push(item.data.city);
+                cityList.sort()
+            }
+        }
+        drawCityList (cityList);
+    })
+})
+
+function drawCityList(list) {
+    let cityListEl = document.querySelector('.city_list');
+    cityListEl.textContent = '';  // очищаем див, в который будем выводить список
+
+    for(let i = 0; i < list.length; i++) { // выводим список городов из массива
+        let itemHTML = `<div class="city_list__item pointer">${list[i]}</div>`;
+        cityListEl.insertAdjacentHTML('beforeend', itemHTML);
+    }
+
+    let cityListItemGroupEl = document.querySelectorAll('.city_list__item'); 
+
+    for (let i = 0; i < cityListItemGroupEl.length; i++) { 
+        cityListItemGroupEl[i].addEventListener('click', () => { 
+            document.querySelector('.input_city').value = cityListItemGroupEl[i].textContent;
+            cityListEl.textContent = '';
+        })
+    }
+}
+
+
