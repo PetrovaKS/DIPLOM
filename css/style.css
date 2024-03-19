@@ -631,8 +631,8 @@ html {
 }
 
 *::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
+  height: 0;
+  width: 0;
 }
 
 *::-webkit-scrollbar-track {
@@ -1073,7 +1073,7 @@ html {
   display: flex;
   justify-content: space-between;
   column-gap: 15px;
-  overflow-x: hidden;
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
 }
 @media screen and (max-width: 920px) {
@@ -1082,10 +1082,11 @@ html {
     padding-bottom: 20px;
   }
 }
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 767px) {
   .our_hits .gorizontal_scroll_block {
     padding-top: 35px;
     padding-bottom: 35px;
+    -webkit-overflow-scrolling: touch;
   }
 }
 @media screen and (max-width: 767px) {
@@ -1462,6 +1463,7 @@ html {
   flex-direction: column;
   align-items: center;
   padding: 85px 0;
+  position: relative;
 }
 @media screen and (max-width: 920px) {
   .main_page_blog {
@@ -1487,6 +1489,7 @@ html {
   justify-content: space-between;
   row-gap: 35px;
   flex-wrap: wrap;
+  overflow: auto;
 }
 @media screen and (max-width: 920px) {
   .main_page_blog .main_page_blog__posts {
@@ -1499,11 +1502,27 @@ html {
     justify-content: flex-start;
     column-gap: 15px;
     flex-wrap: nowrap;
-    overflow-x: scroll;
     width: 100%;
     margin-top: 35px;
     margin-bottom: 0;
   }
+}
+.main_page_blog .main_page_blog__posts .scroll_arrow {
+  display: none;
+  position: absolute;
+}
+@media screen and (max-width: 767px) {
+  .main_page_blog .main_page_blog__posts .scroll_arrow {
+    display: flex;
+  }
+}
+.main_page_blog .main_page_blog__posts .arrow_left {
+  top: calc(50% - 20px);
+  left: 20px;
+}
+.main_page_blog .main_page_blog__posts .arrow_right {
+  top: calc(50% - 20px);
+  left: calc(100% - 60px);
 }
 .main_page_blog .main_page_blog__posts .post {
   height: 200px;
@@ -2111,6 +2130,9 @@ html {
 .our_blog .article:last-child {
   margin-bottom: 0;
 }
+.our_blog .article .art_pic {
+  position: relative;
+}
 .our_blog .article .article__pictures {
   width: 100%;
   display: flex;
@@ -2118,7 +2140,6 @@ html {
   column-gap: 20px;
   flex-wrap: nowrap;
   overflow-x: auto;
-  position: relative;
 }
 @media screen and (max-width: 920px) {
   .our_blog .article .article__pictures {
@@ -2136,7 +2157,7 @@ html {
   }
 }
 .our_blog .article .article__pictures .picture_vertical {
-  width: 33.3333333333%;
+  width: calc((100% - 40px) / 3);
   aspect-ratio: 387/490;
   object-fit: fill;
 }
@@ -2594,6 +2615,7 @@ html {
   column-gap: 15px;
   width: 100%;
   margin-bottom: 35px;
+  position: relative;
 }
 @media screen and (max-width: 767px) {
   .total_look {
@@ -2619,7 +2641,6 @@ html {
   width: 50%;
   max-height: 759px;
   overflow: auto;
-  position: relative;
 }
 @media screen and (max-width: 767px) {
   .total_look .total_look__separately {
@@ -2629,13 +2650,31 @@ html {
 }
 .total_look .total_look__separately .looks_arrow_up {
   position: absolute;
-  right: calc(50% - 15px);
+  right: calc((100% - 15px) / 4 - 20px);
   top: 15px;
 }
 .total_look .total_look__separately .looks_arrow_down {
   position: absolute;
-  right: calc(50% - 15px);
+  right: calc((100% - 15px) / 4 - 20px);
   bottom: 15px;
+}
+.total_look .total_look__separately .arrow_left {
+  position: absolute;
+  left: 15px;
+  bottom: 207px;
+}
+.total_look .total_look__separately .arrow_right {
+  position: absolute;
+  right: 15px;
+  bottom: 207px;
+}
+@media screen and (max-width: 920px) {
+  .total_look .total_look__separately .looks_arrow_up {
+    right: calc((100% - 457px) / 2 - 20px);
+  }
+  .total_look .total_look__separately .looks_arrow_down {
+    right: calc((100% - 457px) / 2 - 20px);
+  }
 }
 @media screen and (max-width: 1220px) {
   .total_look .total_look__separately {
@@ -3679,6 +3718,12 @@ html {
     width: 100%;
   }
 }
+@media screen and (max-width: 767px) {
+  .product_page .product_page__foto {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 .product_page .product_page__foto .product_foto {
   width: 100%;
   aspect-ratio: 590/755;
@@ -3997,4 +4042,11 @@ html {
   align-items: center;
   background-color: #FFF;
   padding-left: 35px;
+}
+
+.fullscrean_img {
+  transform: scale(2);
+  transition: 0.3s;
+  position: absolute;
+  left: calc(33% + 10px);
 }

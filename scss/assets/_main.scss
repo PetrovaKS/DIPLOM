@@ -21,8 +21,8 @@ html {
 }
 
 *::-webkit-scrollbar {
-    height: 4px;
-    width: 4px;
+    height: 0;
+    width: 0;
   }
   *::-webkit-scrollbar-track {
     background: rgba($addit_color_dark, .25);
@@ -507,7 +507,7 @@ html {
         display: flex;
         justify-content: space-between;
         column-gap: 15px;
-        overflow-x: hidden;
+        overflow-x: auto;
         scroll-snap-type: x mandatory;
 
         @media screen and (max-width: 920px) {
@@ -515,9 +515,10 @@ html {
             padding-bottom: 20px;
         }
 
-        @media screen and (max-width: 920px) {
+        @media screen and (max-width: 767px) {
             padding-top: 35px;
             padding-bottom: 35px;
+            -webkit-overflow-scrolling: touch;
         }
     }
 
@@ -932,6 +933,7 @@ html {
     flex-direction: column;
     align-items: center;
     padding: 85px 0;
+    position: relative;
 
     @media screen and (max-width: 920px) {
         padding: 70px 0;
@@ -957,6 +959,7 @@ html {
         justify-content: space-between;
         row-gap: 35px;
         flex-wrap: wrap;
+        overflow: auto;
 
         @media screen and (max-width: 920px) {
             margin-top: 70px;
@@ -967,10 +970,28 @@ html {
             justify-content: flex-start;
             column-gap: 15px;
             flex-wrap: nowrap;
-            overflow-x: scroll;
             width: 100%;
             margin-top: 35px;
             margin-bottom: 0;
+        }
+        
+        .scroll_arrow {
+            display: none;
+            position: absolute;
+
+            @media screen and (max-width: 767px) {
+                display: flex;
+            }
+        }
+
+        .arrow_left {
+            top: calc(50% - 20px);
+            left: 20px;
+        }
+
+        .arrow_right {
+            top: calc(50% - 20px);
+            left: calc(100% - 60px);
         }
 
         .post {
@@ -1423,7 +1444,6 @@ html {
     position: relative;
     padding: 60px 35px;
     padding-bottom: 85px;
-    // overflow: auto;
     
     display: flex;
     flex-direction: column;
@@ -1612,6 +1632,10 @@ html {
             margin-bottom: 0;
         }
     
+        .art_pic {
+            position: relative;
+        }
+
         .article__pictures {
             width: 100%;
             display: flex;
@@ -1619,7 +1643,6 @@ html {
             column-gap: 20px;
             flex-wrap: nowrap;
             overflow-x: auto;
-            position: relative;
 
             @media screen and (max-width: 920px){
                 column-gap: 10px;
@@ -1636,7 +1659,7 @@ html {
             }
 
             .picture_vertical {
-                width: calc(100% / 3);
+                width: calc((100% - 40px) / 3);
                 aspect-ratio: 387/490;
                 object-fit: fill;
             }
@@ -2131,6 +2154,7 @@ html {
     column-gap: 15px;
     width: 100%;
     margin-bottom: 35px;
+    position: relative;
 
     @media screen and (max-width: 767px) {
         flex-direction: column;
@@ -2156,7 +2180,6 @@ html {
         width: 50%;
         max-height: 759px;
         overflow: auto;
-        position: relative;
 
         @media screen and (max-width: 767px) {
             width: 100%;
@@ -2165,14 +2188,37 @@ html {
 
         .looks_arrow_up {
             position: absolute;
-            right: calc(50% - 15px);
+            right: calc((100% - 15px) / 4 - 20px);
             top: 15px;
         }
 
         .looks_arrow_down {
             position: absolute;
-            right: calc(50% - 15px);
+            right: calc((100% - 15px) / 4 - 20px);
             bottom: 15px;
+        }
+
+        .arrow_left {
+            position: absolute;
+            left: 15px;
+            bottom: 207px;
+        }
+
+        .arrow_right {
+            position: absolute;
+            right: 15px;
+            bottom: 207px;
+        }
+
+        @media screen and (max-width: 920px) {
+
+            .looks_arrow_up {
+                right: calc((100% - 457px) / 2 - 20px);
+            }
+    
+            .looks_arrow_down {
+                right: calc((100% - 457px) / 2 - 20px);
+            }
         }
 
         @media screen and (max-width: 1220px) {
@@ -3252,6 +3298,11 @@ html {
             width: 100%;
         }
 
+        @media screen and (max-width: 767px) {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .product_foto {
             width: 100%;
             aspect-ratio: 590/755;
@@ -3601,4 +3652,11 @@ html {
     align-items: center;
     background-color: $main_color_light;
     padding-left: 35px;
+}
+
+.fullscrean_img {
+    transform: scale(2);
+    transition: .3s;
+    position: absolute;
+    left: calc(33% + 10px);
 }

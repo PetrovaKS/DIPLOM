@@ -1833,12 +1833,49 @@ class Scroll {
                 behavior: 'smooth' 
             });
         });
+
+        this.blockScroll.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            this.blockScroll.scrollBy({
+              left: event.deltaY < 0 ? -(this.blockScroll.offsetWidth + this.shift) : this.blockScroll.offsetWidth + this.shift,
+              behavior: 'smooth' 
+            });
+        });
+    }
+
+    scrollVertical() {
+        this.leftBtn.addEventListener('click', () => {
+            this.blockScroll.scrollBy({ 
+                top: -(this.blockScroll.offsetHeight + this.shift),
+                behavior: 'smooth' 
+            });
+        });
+        
+        this.rightBtn.addEventListener('click', () => {
+            this.blockScroll.scrollBy({ 
+                top: this.blockScroll.offsetHeight + this.shift,
+                behavior: 'smooth' 
+            });
+        });
+
+        this.blockScroll.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            this.blockScroll.scrollBy({
+              top: event.deltaY < 0 ? -(this.blockScroll.offsetHeight + this.shift) : this.blockScroll.offsetHeight + this.shift,
+              behavior: 'smooth' 
+            });
+        });
     }
 }
 
 if (document.querySelector('.first_page')) {
     let scrollHits = new Scroll ('.our_hits__scroll', 15)
     scrollHits.scrollGorizontal()
+
+    let scrollBlogs = new Scroll ('.main_page_blog__posts', 15)
+    if (window.innerWidth < 767) {
+        scrollBlogs.scrollGorizontal()
+    }
 }
 
 if (document.querySelector('.product_page')) {
@@ -1852,3 +1889,81 @@ if (document.querySelector('.product_page')) {
     productsFoto.scrollGorizontal()
 }
 
+if (document.querySelector('.article__pictures')) { // на странице блога каждому разделу с картинками присваиваем класс скролл
+    let articlePicturesListEl = document.querySelectorAll('.article__pictures');
+
+    for (let i = 0; i < articlePicturesListEl.length; i++) {
+
+        let imgCount = articlePicturesListEl[i].querySelectorAll('img').length;
+        if (imgCount <= 3) { // проверяем, если картинок меньше 4, то стрелки скролла не нужны
+            document.querySelector(`.article-${i+1} .article_arrow_left`).classList.add('inactive');
+            document.querySelector(`.article-${i+1} .article_arrow_left`).classList.remove('left');
+            document.querySelector(`.article-${i+1} .article_arrow_right`).classList.add('inactive');
+            document.querySelector(`.article-${i+1} .article_arrow_right`).classList.remove('right');
+        }
+        else {
+            let item = articlePicturesListEl[i];
+            item = new Scroll (`.article-${i+1}`, 20);
+            item.scrollGorizontal()
+        }
+    }
+
+    let blogImages = document.querySelectorAll('.article__pictures img');
+
+    for (let img of blogImages) { //увеличиваем фотки в разделе блог по клику
+        img.addEventListener('click', () => {
+            img.classList.toggle('fullscrean_img')
+        })
+    }
+}
+
+if (document.querySelector('.total_look')) {
+
+    let arrowUpListEl = document.querySelectorAll('.total_look .looks_arrow_up');
+    let arrowDownListEl = document.querySelectorAll('.total_look .looks_arrow_down');
+    let arrowLeftListEl = document.querySelectorAll('.total_look .arrow_left');
+    let arrowRightListEl = document.querySelectorAll('.total_look .arrow_right');
+
+    if (window.innerWidth > 920) {
+
+        for (let i = 0; i < arrowRightListEl.length; i++) {
+            arrowUpListEl[i].classList.add('left');
+            arrowDownListEl[i].classList.add('right');
+            arrowUpListEl[i].classList.remove('inactive');
+            arrowDownListEl[i].classList.remove('inactive');
+            arrowLeftListEl[i].classList.remove('left');
+            arrowRightListEl[i].classList.remove('right');
+            arrowLeftListEl[i].classList.add('inactive');
+            arrowRightListEl[i].classList.add('inactive');
+
+            let totalLookSeparateListEl = document.querySelectorAll('.total_look__separately');
+
+            let item = totalLookSeparateListEl[i];
+            item.classList.add(`totalLook-${i+1}`);
+            item = new Scroll (`.totalLook-${i+1}`, 0);
+            item.scrollVertical();
+        }    
+    }
+    else {
+
+        for (let i = 0; i < arrowUpListEl.length; i++) {
+            arrowUpListEl[i].classList.remove('left');
+            arrowDownListEl[i].classList.remove('right');
+            arrowUpListEl[i].classList.add('inactive');
+            arrowDownListEl[i].classList.add('inactive');
+            arrowLeftListEl[i].classList.add('left');
+            arrowRightListEl[i].classList.add('right');
+            arrowLeftListEl[i].classList.remove('inactive');
+            arrowRightListEl[i].classList.remove('inactive');
+
+            let totalLookSeparateListEl = document.querySelectorAll('.total_look__separately');
+
+            let item = totalLookSeparateListEl[i];
+            item.classList.add(`totalLook-${i+1}`);
+            item = new Scroll (`.totalLook-${i+1}`, 0);
+            item.scrollGorizontal();
+        }  
+    }
+
+
+}
