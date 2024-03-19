@@ -1806,3 +1806,49 @@ function drawCityList(list) {
 }
 
 
+// скролл карточек горизонтальный
+
+class Scroll {
+    constructor (selector, shift) {
+        this.blockScroll = document.querySelector(selector);
+        this.leftBtn = document.querySelector(selector).querySelector('.left');
+        this.rightBtn = document.querySelector(selector).querySelector('.right');
+        this.shift = shift;
+        console.log(this.blockScroll)
+        console.log(this.leftBtn)
+        console.log(this.rightBtn)
+    }
+
+    scrollGorizontal() {
+        this.leftBtn.addEventListener('click', () => {
+            this.blockScroll.scrollBy({ 
+                left: -(this.blockScroll.offsetWidth + this.shift),
+                behavior: 'smooth' 
+            });
+        });
+        
+        this.rightBtn.addEventListener('click', () => {
+            this.blockScroll.scrollBy({ 
+                left: this.blockScroll.offsetWidth + this.shift,
+                behavior: 'smooth' 
+            });
+        });
+    }
+}
+
+if (document.querySelector('.first_page')) {
+    let scrollHits = new Scroll ('.our_hits__scroll', 15)
+    scrollHits.scrollGorizontal()
+}
+
+if (document.querySelector('.product_page')) {
+    let additProducts = new Scroll ('.addit_products__scroll', 15)
+    additProducts.scrollGorizontal()
+    
+    let recentProducts = new Scroll ('.recent_products__scroll', 15)
+    recentProducts.scrollGorizontal()
+    
+    let productsFoto = new Scroll ('.product_page__foto', 0)
+    productsFoto.scrollGorizontal()
+}
+

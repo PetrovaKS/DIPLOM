@@ -491,23 +491,24 @@ html {
     .hits_arrow_left {
         position: absolute;
         left: 20px;
-        top: calc(50% - 50px);
+        top: calc(50% - 20px);
     }
 
     .hits_arrow_right {
         position: absolute;
-        left: calc(100% - 50px);
-        top: calc(50% - 50px);
+        left: calc(100% - 60px);
+        top: calc(50% - 20px);
     }
     
-    .our_hits__scroll {
+    .gorizontal_scroll_block {
         width: 100%;
         padding-top: 85px;
         padding-bottom: 50px;
         display: flex;
         justify-content: space-between;
         column-gap: 15px;
-        overflow-x: auto;
+        overflow-x: hidden;
+        scroll-snap-type: x mandatory;
 
         @media screen and (max-width: 920px) {
             padding-top: 70px;
@@ -518,7 +519,6 @@ html {
             padding-top: 35px;
             padding-bottom: 35px;
         }
-
     }
 
     .link_all_hits {
@@ -660,8 +660,8 @@ html {
 
 
 .scroll_arrow {
-    width: 30px;    
-    height: 30px;
+    width: 40px;    
+    height: 40px;
     flex-shrink: 0;
     border-radius: 50%;
     background: $main_color_light;
@@ -670,10 +670,11 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
-    @media screen and (max-width: 920px) {
-        display: none;
-    }
+    // @media screen and (max-width: 920px) {
+    //     display: none;
+    // }
 }
 
 .subscribe {
@@ -3230,6 +3231,7 @@ html {
     display: flex;
     justify-content: space-between;
     column-gap: 20px;
+    position: relative;
 
     @media screen and (max-width: 920px) {
         flex-direction: column;
@@ -3237,16 +3239,14 @@ html {
         padding-bottom: 20px;
     }
 
-    .roduct_page__foto {
+    .product_page__foto {
         width: calc((100% - 20px) / 2);
-        overflow-x: hidden;
-        display: flex;
-        position: relative;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
         flex-shrink: 0;
-        overflow-x: scroll;
+        overflow-x: hidden;
+        scroll-snap-type: x mandatory;
 
         @media screen and (max-width: 920px) {
             width: 100%;
@@ -3261,32 +3261,36 @@ html {
         .arrow_left {
             position: absolute;
             left: 20px;
-            top: calc(50% - 15px);
+            top: calc(50% - 20px);
         }
     
         .arrow_right {
             position: absolute;
-            left: calc(100% - 50px);
-            top: calc(50% - 15px);
+            left: calc(50% - 70px);
+            top: calc(50% - 20px);
         }
 
-        @media screen and (max-width: 1220px) {
+        @media screen and (max-width: 920px) {
             .arrow_left {
-                top: calc(50% - 100px);
+                left: 20px;
+                top: 25%;
             }
         
             .arrow_right {
-                top: calc(50% - 100px);
+                left: calc(100% - 60px);
+                top: 25%;
             }
         }
-    
-        @media screen and (max-width: 1024px) {
+
+        @media screen and (max-width: 560px) {
             .arrow_left {
-                top: calc(50% - 110px);
+                left: 20px;
+                top: 20%;
             }
         
             .arrow_right {
-                top: calc(50% - 110px);
+                left: calc(100% - 60px);
+                top: 20%;
             }
         }
     }
