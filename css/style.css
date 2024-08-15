@@ -798,6 +798,7 @@ html {
 }
 .nav_section_left .nav_menu .nav_menu__men {
   cursor: pointer;
+  border-bottom: 1.5px solid #FFF;
 }
 .nav_section_left .nav_menu .nav_menu__men:hover {
   border-bottom: 1.5px solid #393939;
@@ -4045,7 +4046,7 @@ html {
 }
 
 .fullscrean_img {
-  transform: scale(2);
+  transform: scale(2.5);
   transition: 0.3s;
   position: absolute;
   left: calc(33% + 10px);
